@@ -72,7 +72,11 @@ import it.mealmap.ui.week.WeekViewModel
 import java.time.DayOfWeek
 
 @Composable
-fun TodayScreen(modifier: Modifier = Modifier) {
+fun TodayScreen(
+    onEditMeal: (MealSlot) -> Unit,
+    onSwapMeal: (MealSlot) -> Unit,
+    modifier: Modifier = Modifier,
+) {
     val viewModel = appViewModel { WeekViewModel(it.weekRepository) }
     val state by viewModel.state.collectAsStateWithLifecycle()
     val detail = mealDetailViewModel()
@@ -85,7 +89,7 @@ fun TodayScreen(modifier: Modifier = Modifier) {
         onOpenReminder = { reminder = it },
         modifier = modifier,
     )
-    MealDetailSheet(detail)
+    MealDetailSheet(detail, onEdit = onEditMeal, onSwap = onSwapMeal)
     reminder?.let { RemindersSheet(it, onDismiss = { reminder = null }) }
 }
 

@@ -50,6 +50,9 @@ object AppIcons {
     val Lock = icon("M6 11h12v9H6z M8.5 11V8a3.5 3.5 0 0 1 7 0v3")
     val Unlock = icon("M6 11h12v9H6z M8.5 11V8a3.5 3.5 0 0 1 6.8-1.2")
     val Close = icon("M6 6l12 12 M18 6 6 18")
+    val Edit = icon("M4 20h4L19 9l-4-4L4 16z")
+    val Swap = icon("M7 4 3 8l4 4 M3 8h14 M17 20l4-4-4-4 M21 16H7")
+    val Drag = icon("M9 6v.01 M15 6v.01 M9 12v.01 M15 12v.01 M9 18v.01 M15 18v.01")
     val Link = icon(
         "M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1 " +
             "M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1",

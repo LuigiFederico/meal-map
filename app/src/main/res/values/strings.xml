@@ -76,7 +76,6 @@
         <item quantity="one">%1$d categoria oltre il limite</item>
         <item quantity="other">%1$d categorie oltre il limite</item>
     </plurals>
-    <string name="week_grid_description">Griglia della settimana</string>
 
     <plurals name="balance_alert_title">
         <item quantity="one">%1$d categoria fuori limite</item>
@@ -135,4 +134,28 @@
     <string name="detail_vegetables_body">A piacere, da variare · metà del piatto</string>
     <string name="detail_healthy_plate">Ricorda il piatto sano: metà verdura e frutta, un quarto cereali, un quarto proteine.</string>
     <string name="open_detail">Apri il dettaglio</string>
+
+    <string name="detail_change">Cambia</string>
+    <string name="detail_swap">Scambia</string>
+    <string name="detail_other">Fuori…</string>
+
+    <string name="edit_kicker">Cambia categoria</string>
+    <string name="edit_close">Chiudi senza salvare</string>
+    <string name="edit_save">Salva</string>
+    <string name="edit_now">Ora:</string>
+    <string name="edit_protein">Fonte proteica</string>
+    <string name="edit_carb">Cereale</string>
+    <string name="edit_other">Oppure senza categoria</string>
+    <string name="edit_projection_current">attuale · %1$d</string>
+    <string name="edit_projection_new">diventa %1$d</string>
+    <string name="edit_limit_max">max %1$d</string>
+    <string name="edit_limit_min">min %1$d</string>
+    <string name="edit_over_limit">%1$s arriverebbe a %2$d su un massimo di %3$d. Puoi salvare comunque: lo vedrai segnalato nel Bilancio.</string>
+
+    <string name="week_drag_hint">Tieni premuto e trascina per scambiare due pasti o due giorni.</string>
+    <string name="week_swap_mode">Tocca il pasto da scambiare con %1$s, oppure il nome di un giorno per scambiare la giornata.</string>
+    <string name="week_swapped">%1$s e %2$s scambiati</string>
+    <string name="cancel">Annulla</string>
+    <string name="undo">Annulla</string>
+    <string name="week_swap_here">Scambia qui</string>
 </resources>

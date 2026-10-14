@@ -37,6 +37,7 @@ class MealDetailContentTest {
         )
     }
     private var lockToggles = 0
+    private var edits = 0
 
     private fun show(meal: Meal) = compose.setContent {
         MealMapTheme {
@@ -49,6 +50,8 @@ class MealDetailContentTest {
                     carbFoods = emptyList(),
                 ),
                 onToggleLock = { lockToggles++ },
+                onEdit = { edits++ },
+                onSwap = {},
                 onClose = {},
             )
         }
@@ -74,6 +77,24 @@ class MealDetailContentTest {
         compose.onNodeWithText("Blocca").assertIsOff().performScrollTo().performClick()
 
         assertEquals(1, lockToggles)
+    }
+
+    @Test
+    fun changeAndOtherBothOpenTheEditor() {
+        show(Meal.Food(ProteinCategory.LEGUMES, Carb.PASTA))
+
+        compose.onNodeWithText("Cambia").performClick()
+        compose.onNodeWithText("Fuori…").performClick()
+
+        assertEquals(2, edits)
+    }
+
+    @Test
+    fun mealsWithoutCategoryCannotBeLocked() {
+        show(Meal.Other(OtherKind.CANTEEN))
+
+        compose.onNodeWithText("Scambia").assertExists()
+        compose.onNodeWithText("Blocca").assertDoesNotExist()
     }
 
     @Test

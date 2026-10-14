@@ -1,6 +1,7 @@
 package it.mealmap.ui.meal
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -48,7 +49,11 @@ import it.mealmap.ui.components.mealTitle
 /** Bottom sheet with the alternatives and portions of the meal selected in [viewModel]. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MealDetailSheet(viewModel: MealDetailViewModel) {
+fun MealDetailSheet(
+    viewModel: MealDetailViewModel,
+    onEdit: (MealSlot) -> Unit,
+    onSwap: (MealSlot) -> Unit,
+) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val slot = state.slot ?: return
     // Open only once the meal is loaded, so the sheet does not jump while it fills in.
@@ -58,6 +63,14 @@ fun MealDetailSheet(viewModel: MealDetailViewModel) {
             slot,
             state,
             onToggleLock = viewModel::toggleLock,
+            onEdit = {
+                viewModel.hide()
+                onEdit(slot)
+            },
+            onSwap = {
+                viewModel.hide()
+                onSwap(slot)
+            },
             onClose = viewModel::hide,
         )
     }
@@ -73,6 +86,8 @@ fun MealDetailContent(
     slot: MealSlot,
     state: MealDetailUiState,
     onToggleLock: () -> Unit,
+    onEdit: () -> Unit,
+    onSwap: () -> Unit,
     onClose: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -105,17 +120,9 @@ fun MealDetailContent(
             }
         }
         Column(Modifier.padding(end = 8.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+            Actions(meal, onEdit = onEdit, onSwap = onSwap, onToggleLock = onToggleLock)
             when (meal) {
                 is Meal.Food -> {
-                    val lockLabel =
-                        if (meal.locked) R.string.meal_locked_label else R.string.detail_lock
-                    ActionTile(
-                        icon = if (meal.locked) AppIcons.Lock else AppIcons.Unlock,
-                        label = stringResource(lockLabel),
-                        selected = meal.locked,
-                        onClick = onToggleLock,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
                     FoodSection(
                         title = stringResource(meal.protein.label),
                         hint = stringResource(R.string.detail_protein_hint),
@@ -137,25 +144,64 @@ fun MealDetailContent(
     }
 }
 
-/** A square action button with the icon above the label; [selected] shows a toggle as on. */
+/** Cambia, Scambia and, for food meals, Blocca and Fuori…, which also opens the editor. */
+@Composable
+private fun Actions(meal: Meal, onEdit: () -> Unit, onSwap: () -> Unit, onToggleLock: () -> Unit) {
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        val tile = Modifier.weight(1f)
+        ActionTile(
+            AppIcons.Edit,
+            stringResource(R.string.detail_change),
+            onEdit,
+            tile,
+            primary = true,
+        )
+        ActionTile(AppIcons.Swap, stringResource(R.string.detail_swap), onSwap, tile)
+        if (meal is Meal.Food) {
+            val lockLabel = if (meal.locked) R.string.meal_locked_label else R.string.detail_lock
+            ActionTile(
+                icon = if (meal.locked) AppIcons.Lock else AppIcons.Unlock,
+                label = stringResource(lockLabel),
+                onClick = onToggleLock,
+                modifier = tile,
+                toggledOn = meal.locked,
+            )
+            ActionTile(AppIcons.EatingOut, stringResource(R.string.detail_other), onEdit, tile)
+        }
+    }
+}
+
+/**
+ * A square action button with the icon above the label. With [toggledOn] it is a switch,
+ * filled while on; [primary] gives a plain button a tonal fill.
+ */
 @Composable
 private fun ActionTile(
     icon: ImageVector,
     label: String,
-    selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    primary: Boolean = false,
+    toggledOn: Boolean? = null,
 ) {
     val colors = MaterialTheme.colorScheme
-    val container = if (selected) colors.primary else colors.surfaceContainerHigh
-    val content = if (selected) colors.onPrimary else colors.onSurface
+    val (container, content) = when {
+        toggledOn == true -> colors.primary to colors.onPrimary
+        primary -> colors.secondaryContainer to colors.onSecondaryContainer
+        else -> colors.surfaceContainerHigh to colors.onSurface
+    }
+    val action = if (toggledOn != null) {
+        Modifier.toggleable(value = toggledOn, role = Role.Switch, onValueChange = { onClick() })
+    } else {
+        Modifier.clickable(role = Role.Button, onClick = onClick)
+    }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
         modifier = modifier
             .heightIn(min = 72.dp)
             .background(container, RoundedCornerShape(16.dp))
-            .toggleable(value = selected, role = Role.Switch, onValueChange = { onClick() })
+            .then(action)
             .padding(8.dp),
     ) {
         Icon(icon, contentDescription = null, tint = content, modifier = Modifier.size(22.dp))
@@ -167,6 +213,7 @@ private const val COLLAPSED_FOODS = 6
 
 @Composable
 private fun FoodSection(title: String, hint: String, foods: List<Food>) {
+    if (foods.isEmpty()) return
     var expanded by rememberSaveable(title) { mutableStateOf(false) }
     val shown = if (expanded) foods else foods.take(COLLAPSED_FOODS)
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {

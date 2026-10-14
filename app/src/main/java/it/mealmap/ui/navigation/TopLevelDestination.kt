@@ -14,6 +14,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable data object RulesRoute
 
+/** Full-screen editor of one meal; [slot] is its index in [it.mealmap.domain.model.MealSlot.ALL]. */
+@Serializable data class EditMealRoute(val slot: Int)
+
 /** The four tabs of the bottom navigation bar. */
 enum class TopLevelDestination(
     val route: Any,
