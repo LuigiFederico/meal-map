@@ -37,9 +37,10 @@ class MealMapAppTest {
         tab("Settimana").assertIsSelected()
         compose.onNodeWithText("Lunedì – domenica · senza date").assertExists()
 
-        tab("Regole").performClick()
-        tab("Regole").assertIsSelected()
+        tab("Impostazioni").performClick()
+        tab("Impostazioni").assertIsSelected()
         compose.onNodeWithText("Dal piano della nutrizionista · nov 2024").assertExists()
+        compose.onNodeWithText("Controlla aggiornamenti").performScrollTo().assertExists()
 
         tab("Oggi").performClick()
         tab("Oggi").assertIsSelected()
@@ -76,7 +77,7 @@ class MealMapAppTest {
     fun browsesTheSeededAlternatives() {
         compose.setContent { MealMapTheme { MealMapApp() } }
 
-        tab("Regole").performClick()
+        tab("Impostazioni").performClick()
         compose.onNodeWithText("Alternative").performClick()
         compose.waitUntil(5_000) {
             compose.onAllNodesWithText("26").fetchSemanticsNodes().isNotEmpty()

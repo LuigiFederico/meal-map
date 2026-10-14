@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable data object BalanceRoute
 
-@Serializable data object RulesRoute
+@Serializable data object SettingsRoute
 
 /** Full-screen editor of one meal; [slot] is its index in [it.mealmap.domain.model.MealSlot.ALL]. */
 @Serializable data class EditMealRoute(val slot: Int)
@@ -31,5 +31,5 @@ enum class TopLevelDestination(
     TODAY(TodayRoute, R.string.tab_today, AppIcons.Today),
     WEEK(WeekRoute, R.string.tab_week, AppIcons.Week),
     BALANCE(BalanceRoute, R.string.tab_balance, AppIcons.Balance),
-    RULES(RulesRoute, R.string.tab_rules, AppIcons.Rules),
+    SETTINGS(SettingsRoute, R.string.tab_settings, AppIcons.Settings),
 }
