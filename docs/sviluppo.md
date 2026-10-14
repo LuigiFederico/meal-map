@@ -40,7 +40,8 @@ Meal Map è un'app Android personale che disegna la mappa della settimana dei pa
 ### Regole
 
 - I min/max e le liste di alternative con le porzioni si modificano dall'app.
-- Si possono ripristinare i valori del piano.
+- I min/max si possono riportare ai valori del piano, dopo una conferma. Le alternative non hanno un ripristino: tornano quelle del piano solo cancellando i dati dell'app.
+- I promemoria di colazione, spuntino e merenda sono i tipi fissi del piano. Le liste "Colazione" e "Spuntini e merende" delle alternative servono solo come riferimento per le porzioni e non li modificano.
 
 ### Navigazione
 
@@ -54,11 +55,20 @@ Quattro tab: Oggi · Settimana · Bilancio · Regole. L'app si apre sul giorno r
 
 ### Casi limite
 
+- **Stepper delle regole:** permettono di impostare:
+  - il minimo, da "nessuno" in su;
+  - il massimo, fino a 0 ("mai");
+  - "Nessun limite", con un pulsante apposito. Il mockup toglieva il limite premendo "−" su 1: è stato cambiato perché faceva il contrario di quanto ci si aspetta.
 - **Regole impossibili:** gli stepper non permettono min > max. Se i pasti con categoria non bastano a coprire tutti i minimi (per esempio troppi pasti in mensa), il generatore riempie quello che può e il deficit compare nel Bilancio.
 - **Limiti indipendenti:** carne rossa e affettati hanno ciascuno il proprio max (1 e 2), come nella tabella delle frequenze. Il limite combinato della piramide non viene applicato.
 - **Promemoria esclusi dal bilancio:** formaggi o affettati a merenda non vengono conteggiati, anche se ci sono.
 - **Carboidrati:** il generatore li varia. Il consiglio "il carboidrato della cena si ripete nel pranzo del giorno dopo" non viene applicato in automatico; si ottiene modificando il pasto a mano.
-- **Lucchetto:** il blocco segue il pasto. Se scambi un pasto bloccato, il blocco si sposta con lui.
+- **Lucchetto:** il blocco segue il pasto. Se scambi un pasto bloccato, il blocco si sposta con lui. Solo i pasti con categoria si bloccano.
+- **Nuova settimana:**
+  - i pasti bloccati partono come "Fisso";
+  - i pasti senza categoria della settimana attuale partono uguali, perché è probabile che si ripetano;
+  - tutto il resto parte come "Genera".
+- **Alternative del carboidrato:** ogni porzione da pasto del gruppo "Cereali e carboidrati" dice quali carboidrati sostituisce (es. "Riso / pasta / orzo" vale per pasta, riso e orzo). Il dettaglio di un pasto mostra solo quelle. Le porzioni di contorno ("Pane e sostituti") e i misti restano nella lista completa.
 
 ## Scelte tecniche
 
