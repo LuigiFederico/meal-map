@@ -26,8 +26,8 @@ Meal Map è un'app Android personale che disegna la mappa della settimana dei pa
 - Avviene solo su richiesta, dopo un passo vincoli in cui si segnano i pasti fuori, in mensa o a scelta.
 - I pasti bloccati restano fissi.
 - Criteri di varietà:
-  - mai la stessa proteina due volte nello stesso giorno;
-  - evitare la stessa proteina in pasti consecutivi;
+  - mai la stessa proteina due volte nello stesso giorno, se i pasti fissi lo permettono;
+  - evitare la stessa proteina in pasti consecutivi, compreso il passaggio da domenica sera a lunedì a pranzo;
   - carboidrati il più possibile vari.
 
 ### Modifiche
