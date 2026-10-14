@@ -14,8 +14,24 @@ android {
         applicationId = "it.mealmap"
         minSdk = 26
         targetSdk = 37
-        versionCode = 1
-        versionName = "1.0"
+        // CI releases number themselves after the workflow run.
+        versionCode = System.getenv("GITHUB_RUN_NUMBER")?.toInt() ?: 1
+        versionName = "1.0.$versionCode"
+    }
+
+    buildTypes {
+        release {
+            // Signed only when the release keystore is provided (CI); local builds stay unsigned.
+            System.getenv("RELEASE_KEYSTORE")?.let { keystore ->
+                signingConfig =
+                    signingConfigs.create("release") {
+                        storeFile = file(keystore)
+                        storePassword = System.getenv("RELEASE_KEYSTORE_PASSWORD")
+                        keyAlias = "meal-map"
+                        keyPassword = System.getenv("RELEASE_KEYSTORE_PASSWORD")
+                    }
+            }
+        }
     }
 
     buildFeatures {
