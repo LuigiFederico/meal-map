@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase.CONFLICT_ABORT
 import androidx.core.content.contentValuesOf
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import it.mealmap.data.db.FoodEntity
+import it.mealmap.domain.model.Carb
 import it.mealmap.domain.model.FoodGroup
 import it.mealmap.domain.model.FrequencyRule
 import it.mealmap.domain.model.ProteinCategory
@@ -33,6 +35,7 @@ class Seeder(private val assets: AssetManager) : RoomDatabase.Callback() {
                 "category" to food.category?.name,
                 "name" to food.name,
                 "portion" to food.portion,
+                "carbs" to FoodEntity.encodeCarbs(food.carbs),
             )
         }
     }
@@ -52,6 +55,7 @@ class Seeder(private val assets: AssetManager) : RoomDatabase.Callback() {
         val category: ProteinCategory?,
         val name: String,
         val portion: String,
+        val carbs: Set<Carb>,
     )
 
     private companion object {

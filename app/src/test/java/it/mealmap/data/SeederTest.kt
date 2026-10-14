@@ -1,6 +1,7 @@
 package it.mealmap.data
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import it.mealmap.domain.model.Carb
 import it.mealmap.domain.model.FoodGroup
 import it.mealmap.domain.model.FrequencyRule
 import it.mealmap.domain.model.ProteinCategory
@@ -9,6 +10,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -42,6 +44,27 @@ class SeederTest {
             listOf(ProteinCategory.WHITE_MEAT, ProteinCategory.RED_MEAT, ProteinCategory.CURED_MEAT)
                 .map { foods.forCategory(it).first().size },
         )
+    }
+
+    @Test
+    fun mapsMealSizeCarbPortionsToTheirCarbs() = runTest {
+        val carbs = FoodRepository(database.foodDao()).inGroup(FoodGroup.CARBS).first()
+
+        assertEquals(
+            listOf(
+                "Agnolotti",
+                "Pasta all'uovo",
+                "Riso / pasta / orzo / bulgur ecc.",
+                "Tortellini",
+                "Udon",
+            ),
+            carbs.filter { Carb.PASTA in it.carbs }.map { it.name },
+        )
+        assertEquals(
+            listOf("Pane · invece della pasta"),
+            carbs.filter { Carb.BREAD in it.carbs && it.name.startsWith("Pane") }.map { it.name },
+        )
+        assertTrue(Carb.entries.all { carb -> carbs.any { carb in it.carbs } })
     }
 
     @Test

@@ -1,6 +1,7 @@
 package it.mealmap.ui.week
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,12 +22,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -48,6 +53,8 @@ import it.mealmap.ui.components.label
 import it.mealmap.ui.components.mealDescription
 import it.mealmap.ui.components.rememberToday
 import it.mealmap.ui.components.slotPhrase
+import it.mealmap.ui.meal.MealDetailSheet
+import it.mealmap.ui.meal.mealDetailViewModel
 import java.time.DayOfWeek
 
 @Composable
@@ -58,13 +65,16 @@ fun WeekScreen(
 ) {
     val viewModel = appViewModel { WeekViewModel(it.weekRepository) }
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val detail = mealDetailViewModel()
     WeekContent(
         state,
         overLimit,
         today = rememberToday(),
         onOpenBalance = onOpenBalance,
+        onOpenMeal = detail::show,
         modifier = modifier,
     )
+    MealDetailSheet(detail)
 }
 
 @Composable
@@ -73,6 +83,7 @@ fun WeekContent(
     overLimit: List<ProteinCategory>,
     today: DayOfWeek,
     onOpenBalance: () -> Unit,
+    onOpenMeal: (MealSlot) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier.verticalScroll(rememberScrollState())) {
@@ -90,7 +101,7 @@ fun WeekContent(
                 week == null -> EmptyWeek()
                 else -> {
                     if (overLimit.isNotEmpty()) OverLimitChip(overLimit, onOpenBalance)
-                    WeekGrid(week, today)
+                    WeekGrid(week, today, onOpenMeal)
                 }
             }
         }
@@ -126,7 +137,8 @@ private fun OverLimitChip(overLimit: List<ProteinCategory>, onClick: () -> Unit)
 }
 
 @Composable
-private fun WeekGrid(week: Week, today: DayOfWeek) {
+private fun WeekGrid(week: Week, today: DayOfWeek, onOpenMeal: (MealSlot) -> Unit) {
+    val openLabel = stringResource(R.string.open_detail)
     val gridDescription = stringResource(R.string.week_grid_description)
     Column(
         verticalArrangement = Arrangement.spacedBy(6.dp),
@@ -154,7 +166,16 @@ private fun WeekGrid(week: Week, today: DayOfWeek) {
                         modifier = Modifier
                             .weight(1f)
                             .fillMaxHeight()
-                            .clearAndSetSemantics { contentDescription = description },
+                            // The semantics replace the inner clickable's, keeping one node per tile.
+                            .clearAndSetSemantics {
+                                contentDescription = description
+                                role = Role.Button
+                                onClick(openLabel) {
+                                    onOpenMeal(mealSlot)
+                                    true
+                                }
+                            }
+                            .clickable { onOpenMeal(mealSlot) },
                     )
                 }
             }

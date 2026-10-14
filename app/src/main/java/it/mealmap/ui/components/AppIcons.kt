@@ -48,6 +48,22 @@ object AppIcons {
     val Vegetables = icon("M5 19c0-8.3 5.2-14 14-14 0 8.8-5.7 14-14 14z M5 19l8.5-8.5")
 
     val Lock = icon("M6 11h12v9H6z M8.5 11V8a3.5 3.5 0 0 1 7 0v3")
+    val Unlock = icon("M6 11h12v9H6z M8.5 11V8a3.5 3.5 0 0 1 6.8-1.2")
+    val Close = icon("M6 6l12 12 M18 6 6 18")
+    val Link = icon(
+        "M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1 " +
+            "M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1",
+    )
+
+    val Breakfast = icon(
+        "M4 9h12v4.5A5.5 5.5 0 0 1 10.5 19h-1A5.5 5.5 0 0 1 4 13.5z " +
+            "M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16 M8 3.5v2.5 M12 3.5v2.5",
+    )
+    val Snack = icon(
+        "M12 7.5c-2-1.8-7-1.4-7 3.8 0 4 2.8 8.7 4.8 8.7 1 0 1.4-.5 2.2-.5s1.2.5 2.2.5 " +
+            "c2 0 4.8-4.7 4.8-8.7 0-5.2-5-5.6-7-3.8z M12 7.5c0-2 1-3.5 3-4",
+    )
+    val AfternoonSnack = icon("M5.5 9h13l-1.5 11h-10z M4.5 9h15 M8.5 4.5h7l1 4.5h-9z")
     val Warning = icon("M12 4 2.5 20h19z M12 10v4.5 M12 17.2v.01")
     val Check = icon("M5 12.5l4.5 4.5L19 7.5")
     val ChevronRight = icon("M9 6l6 6-6 6")

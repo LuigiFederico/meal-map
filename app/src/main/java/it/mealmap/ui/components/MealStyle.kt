@@ -138,3 +138,14 @@ fun mealDescription(meal: Meal): String = when (meal) {
         stringResource(R.string.meal_locked).takeIf { meal.locked },
     ).joinToString(", ")
 }
+
+/** Title of a meal, e.g. "Legumi, verdure, pasta" or "Mensa". */
+@Composable
+fun mealTitle(meal: Meal): String = when (meal) {
+    is Meal.Other -> stringResource(meal.kind.label)
+    is Meal.Food -> stringResource(
+        R.string.meal_line,
+        stringResource(meal.protein.label),
+        stringResource(meal.carb.label).lowercase(Locale.ITALIAN),
+    )
+}

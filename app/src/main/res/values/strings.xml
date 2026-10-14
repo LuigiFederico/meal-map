@@ -94,4 +94,45 @@
     <string name="balance_status_under">sotto il minimo</string>
     <string name="balance_status_ok">nei limiti</string>
     <string name="balance_tab_over_limit">limite superato</string>
+
+    <string-array name="days_letter">
+        <item>L</item>
+        <item>M</item>
+        <item>Me</item>
+        <item>G</item>
+        <item>V</item>
+        <item>S</item>
+        <item>D</item>
+    </string-array>
+    <string name="today_subtitle_other_day">Settimana tipo</string>
+    <string name="today_back_to_today">Torna a oggi</string>
+    <string name="meal_locked_label">Bloccato</string>
+    <string name="meal_no_category">Nessuna categoria · ricorda il piatto sano</string>
+    <string name="meal_line">%1$s, verdure, %2$s</string>
+
+    <string name="reminder_breakfast">Colazione</string>
+    <string name="reminder_snack">Spuntino</string>
+    <string name="reminder_afternoon_snack">Merenda</string>
+    <string name="reminder_breakfast_hint">Promemoria · 4 tipi a scelta</string>
+    <string name="reminder_snack_hint">Promemoria · facoltativo</string>
+    <string name="reminder_afternoon_snack_hint">Promemoria · facoltativa</string>
+    <string name="reminders_kicker">Uguale ogni giorno · scegli tu</string>
+    <string name="reminders_snack_note">Facoltativo. Se a metà mattina non riesci, aggiungilo a pranzo.</string>
+    <string name="reminders_afternoon_snack_note">Facoltativa. Se il pomeriggio non riesci, aggiungila a cena.</string>
+    <string name="reminders_tip">Consiglio: abbina i tipi con lo stesso numero (colazione 1 + spuntino 1 + merenda 1).</string>
+    <string name="reminders_option">Tipo %1$d</string>
+
+    <string name="close">Chiudi</string>
+    <string name="detail_kicker">%1$s · %2$s</string>
+    <string name="detail_lock">Blocca</string>
+    <string name="detail_protein_hint">scegli uno · porzione per il pasto</string>
+    <string name="detail_carb_hint">pesi da crudo</string>
+    <plurals name="detail_show_all">
+        <item quantity="one">Mostra l’alternativa</item>
+        <item quantity="other">Mostra tutte le %1$d alternative</item>
+    </plurals>
+    <string name="detail_vegetables_title">Verdura e frutta</string>
+    <string name="detail_vegetables_body">A piacere, da variare · metà del piatto</string>
+    <string name="detail_healthy_plate">Ricorda il piatto sano: metà verdura e frutta, un quarto cereali, un quarto proteine.</string>
+    <string name="open_detail">Apri il dettaglio</string>
 </resources>

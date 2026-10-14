@@ -8,6 +8,8 @@ data class Food(
     val category: ProteinCategory?,
     val name: String,
     val portion: String,
+    /** For carbs, the meal carbs this portion can replace; empty for side portions and mixes. */
+    val carbs: Set<Carb> = emptySet(),
 ) {
     init {
         val valid = when (group) {
@@ -15,6 +17,9 @@ data class Food(
             else -> category == group.category
         }
         require(valid) { "$category does not belong to $group" }
+        require(carbs.isEmpty() || group == FoodGroup.CARBS) {
+            "only carbs can replace a meal carb"
+        }
     }
 }
 

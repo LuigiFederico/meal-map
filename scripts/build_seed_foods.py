@@ -28,6 +28,25 @@ MEAT = {
 }
 MEAT_CATEGORY = {name: category for category, names in MEAT.items() for name in names}
 PROTEIN_GROUPS = {'Legumi': 'LEGUMES', 'Pesce': 'FISH', 'Uova': 'EGGS', 'Formaggi': 'CHEESE'}
+# Carbs a meal-size portion stands for; side portions ("Pane e sostituti") and mixes have none.
+CARBS = {
+    'Riso / pasta / orzo / bulgur ecc.': ['PASTA', 'RICE', 'BARLEY'],
+    'Farro': ['SPELT'],
+    'Gnocchi': ['GNOCCHI'],
+    'Udon': ['PASTA'],
+    'Polenta': ['POLENTA'],
+    "Pasta all'uovo": ['PASTA'],
+    'Tortellini': ['PASTA'],
+    'Agnolotti': ['PASTA'],
+    'Cracker · invece della pasta': ['BREAD'],
+    'Focaccia · invece della pasta': ['FOCACCIA'],
+    'Gallette di riso · invece della pasta': ['BREAD'],
+    'Mais · invece della pasta': ['POLENTA'],
+    'Patate · invece della pasta': ['POTATOES'],
+    'Pane · invece della pasta': ['BREAD'],
+    'Piadina · invece della pasta': ['PIADINA'],
+    'Riso / farro / cereali vari · invece della pasta': ['RICE', 'SPELT'],
+}
 OTHER_GROUPS = {'CEREALI E FONTI DI CARBOIDRATI': 'CARBS', 'COLAZIONE': 'BREAKFAST', 'SPUNTINI': 'SNACKS'}
 # Same foods as "Pane e sostituti" but with the larger portion that replaces pasta.
 INSTEAD_OF_PASTA = 'Pane (invece della pasta)'
@@ -62,10 +81,12 @@ def main():
             if key in seen:
                 continue
             seen.add(key)
-            foods.append({'group': group, 'category': category, 'name': name, 'portion': portion})
+            foods.append({'group': group, 'category': category, 'name': name, 'portion': portion,
+                          'carbs': CARBS.get(name, []) if group == 'CARBS' else []})
 
     meat = Counter(f['category'] for f in foods if f['group'] == 'MEAT')
     assert meat == {category: len(names) for category, names in MEAT.items()}, meat
+    assert {f['name'] for f in foods if f['carbs']} == set(CARBS), 'every carb mapping must match a food'
     TARGET.write_text('[\n' + ',\n'.join(json.dumps(f, ensure_ascii=False) for f in foods) + '\n]\n',
                       encoding='utf-8')
     print(dict(Counter(f['group'] for f in foods)))
