@@ -1,5 +1,8 @@
 package it.mealmap.ui.rules
 
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
@@ -28,6 +31,7 @@ class RulesContentTest {
 
     private fun show() = compose.setContent {
         MealMapTheme {
+            // In the app the section scrolls with the settings screen.
             RulesContent(
                 state = RulesUiState(
                     loading = false,
@@ -40,6 +44,7 @@ class RulesContentTest {
                 },
                 onReset = { reset = true },
                 onOpenGroup = { opened = it },
+                modifier = Modifier.verticalScroll(rememberScrollState()),
             )
         }
     }

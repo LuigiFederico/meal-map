@@ -23,11 +23,9 @@ I test non richiedono un emulatore: le schermate vengono provate con Robolectric
 
 ## Installare sul telefono
 
-Ogni push su `main` esegue i controlli e pubblica una release su GitHub con l'APK firmato (`.github/workflows/release.yml`). Per installarla e ricevere gli aggiornamenti:
-1. installa [Obtainium](https://github.com/ImranR98/Obtainium);
-2. aggiungi l'app con l'URL `https://github.com/LuigiFederico/meal-map`.
-
-Obtainium segnala le nuove release e le installa sopra quella vecchia, senza perdere i dati.
+Ogni push su `main` esegue i controlli e pubblica una release su GitHub con l'APK firmato (`.github/workflows/release.yml`).
+- **Prima installazione:** apri con Chrome la [pagina delle release](https://github.com/LuigiFederico/meal-map/releases/latest), scarica l'APK e aprilo. Android chiede di permettere a Chrome di installare app.
+- **Aggiornamenti:** in **Impostazioni** tocca **Controlla aggiornamenti**. Se c'è una versione nuova, l'app la scarica e apre l'installer. L'aggiornamento si installa sopra la versione vecchia e conserva i dati.
 
 Per provare una build locale hai due strade:
 - aprire il progetto in Android Studio ed eseguirlo;

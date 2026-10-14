@@ -45,7 +45,7 @@ Meal Map è un'app Android personale che disegna la mappa della settimana dei pa
 
 ### Navigazione
 
-Quattro tab: Oggi · Settimana · Bilancio · Regole. L'app si apre sul giorno reale.
+Quattro tab: Oggi · Settimana · Bilancio · Impostazioni. L'app si apre sul giorno reale. Impostazioni contiene le Regole e, in fondo, la versione installata con il pulsante "Controlla aggiornamenti".
 
 ### Altre scelte
 
@@ -98,7 +98,7 @@ Al primo avvio il database contiene le regole e le alternative del piano (`app/s
 ### Rilascio
 
 - **Quando:** ogni push su `main` diventa una release GitHub `v1.0.N`, dove N è il numero di esecuzione della Action e fa anche da `versionCode`. Esce una release anche per modifiche che non toccano l'app.
-- **Aggiornamenti:** nessun pulsante nell'app. Li installa Obtainium, che legge le release del repo.
+- **Aggiornamenti:** il pulsante "Controlla aggiornamenti" in Impostazioni legge l'ultima release del repo dall'API di GitHub (il repo è pubblico, non serve un token). Se il suo N è maggiore del `versionCode` installato, scarica l'APK e apre l'installer di sistema. La prima volta Android chiede di permettere a Meal Map di installare app.
 - **Firma:** una chiave di release dedicata, nei secret del repo. Le build locali senza chiave restano non firmate.
 - **Database:** l'aggiornamento conserva i dati, quindi ogni modifica allo schema Room richiede una migrazione. Senza, l'app aggiornata non si apre.
 

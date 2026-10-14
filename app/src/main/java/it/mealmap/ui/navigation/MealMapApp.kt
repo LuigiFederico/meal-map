@@ -39,7 +39,7 @@ import it.mealmap.ui.balance.BalanceViewModel
 import it.mealmap.ui.meal.EditMealScreen
 import it.mealmap.ui.newweek.NewWeekScreen
 import it.mealmap.ui.rules.FoodListScreen
-import it.mealmap.ui.rules.RulesScreen
+import it.mealmap.ui.settings.SettingsScreen
 import it.mealmap.ui.today.TodayScreen
 import it.mealmap.ui.week.WeekScreen
 
@@ -98,8 +98,8 @@ fun MealMapApp(navController: NavHostController = rememberNavController()) {
                     onNewWeek = onNewWeek,
                 )
             }
-            composable<RulesRoute> {
-                RulesScreen(onOpenGroup = {
+            composable<SettingsRoute> {
+                SettingsScreen(onOpenGroup = {
                     navController.navigate(FoodListRoute(it.name)) {
                         launchSingleTop =
                             true
