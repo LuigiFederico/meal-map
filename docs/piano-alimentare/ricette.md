@@ -1,6 +1,6 @@
 # Idee ricette
 
-Fonte: piano alimentare della Dott.ssa Federica Bezzi, novembre 2024.
+Fonte: piano alimentare della nutrizionista, novembre 2024.
 
 Le ricette sono consigli, non obblighi. Il PDF descrive solo il procedimento e non riporta le dosi:
 

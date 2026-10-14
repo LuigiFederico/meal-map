@@ -1,6 +1,6 @@
 # Struttura di una settimana tipo
 
-Fonte: piano alimentare della Dott.ssa Federica Bezzi, novembre 2024. Le regole generali sono in [`linee_guida.md`](linee_guida.md), le porzioni delle alternative in [`porzioni_alternative.csv`](porzioni_alternative.csv).
+Fonte: piano alimentare della nutrizionista, novembre 2024. Le regole generali sono in [`linee_guida.md`](linee_guida.md), le porzioni delle alternative in [`porzioni_alternative.csv`](porzioni_alternative.csv).
 
 ## Schema della giornata
 
