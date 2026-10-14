@@ -57,6 +57,7 @@ class RulesContentTest {
             "Diminuisci minimo Legumi",
         ).performScrollTo().performClick()
         compose.onNodeWithText("Ripristina i valori del piano").performScrollTo().performClick()
+        compose.onNodeWithText("Ripristina").performClick()
 
         assertEquals(
             listOf(

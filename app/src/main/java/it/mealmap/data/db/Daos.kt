@@ -23,9 +23,6 @@ interface RulesDao {
     @Query("SELECT * FROM frequency_rule")
     fun observeAll(): Flow<List<FrequencyRuleEntity>>
 
-    @Query("SELECT COUNT(*) FROM frequency_rule")
-    suspend fun count(): Int
-
     @Upsert
     suspend fun upsert(rules: List<FrequencyRuleEntity>)
 }

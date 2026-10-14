@@ -29,7 +29,8 @@ import it.mealmap.R
 import it.mealmap.domain.model.Meal
 import it.mealmap.ui.theme.DashedOutline
 
-private val TileShape = RoundedCornerShape(12.dp)
+/** Shape of a meal tile in the week grid. */
+val TileShape = RoundedCornerShape(12.dp)
 
 /** A lunch or dinner in the week grid: protein, carb and vegetables, or a meal with no category. */
 @Composable

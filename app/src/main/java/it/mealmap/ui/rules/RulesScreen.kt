@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -25,6 +26,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -118,9 +120,30 @@ private fun Frequencies(
         val rule = rules[category] ?: FrequencyRule()
         FrequencyCard(category, rule) { onRuleChange(category, it) }
     }
-    OutlinedButton(onClick = onReset, modifier = Modifier.fillMaxWidth()) {
+    var confirmReset by rememberSaveable { mutableStateOf(false) }
+    OutlinedButton(onClick = { confirmReset = true }, modifier = Modifier.fillMaxWidth()) {
         Icon(AppIcons.Reset, contentDescription = null, modifier = Modifier.size(18.dp))
         Text(stringResource(R.string.rules_reset), modifier = Modifier.padding(start = 8.dp))
+    }
+    if (confirmReset) {
+        AlertDialog(
+            onDismissRequest = { confirmReset = false },
+            title = { Text(stringResource(R.string.rules_reset)) },
+            text = { Text(stringResource(R.string.rules_reset_confirm)) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        confirmReset = false
+                        onReset()
+                    },
+                ) { Text(stringResource(R.string.rules_reset_action)) }
+            },
+            dismissButton = {
+                TextButton(onClick = {
+                    confirmReset = false
+                }) { Text(stringResource(R.string.cancel)) }
+            },
+        )
     }
 }
 

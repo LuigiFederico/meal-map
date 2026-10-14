@@ -21,7 +21,7 @@ data class CategoryBalance(
 
     val status: BalanceStatus
         get() = when {
-            rule.max != null && count > rule.max -> BalanceStatus.OVER
+            rule.isExceededBy(count) -> BalanceStatus.OVER
             rule.min != null && count < rule.min -> BalanceStatus.UNDER
             else -> BalanceStatus.OK
         }

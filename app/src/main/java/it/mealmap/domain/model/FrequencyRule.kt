@@ -8,6 +8,9 @@ data class FrequencyRule(val min: Int? = null, val max: Int? = null) {
         require(min == null || max == null || min <= max) { "min must not exceed max" }
     }
 
+    /** Whether [count] portions go over the max; going under the min is not an excess. */
+    fun isExceededBy(count: Int): Boolean = max != null && count > max
+
     companion object {
         /** Limits from the nutritionist's plan (docs/piano-alimentare/frequenze_settimanali.csv). */
         val DEFAULTS: Map<ProteinCategory, FrequencyRule> = mapOf(

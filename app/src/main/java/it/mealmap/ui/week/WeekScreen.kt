@@ -1,5 +1,6 @@
 package it.mealmap.ui.week
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -77,6 +78,8 @@ fun WeekScreen(
     // Swap mode only lasts while the week is on screen.
     val currentOnSwapSourceChange by rememberUpdatedState(onSwapSourceChange)
     DisposableEffect(Unit) { onDispose { currentOnSwapSourceChange(null) } }
+    // Back cancels a pending swap before it leaves the tab.
+    BackHandler(enabled = swapSource != null) { onSwapSourceChange(null) }
 
     Box(modifier.fillMaxSize()) {
         WeekContent(

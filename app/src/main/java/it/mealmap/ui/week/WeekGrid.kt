@@ -54,6 +54,7 @@ import it.mealmap.domain.model.MealSlot
 import it.mealmap.domain.model.Slot
 import it.mealmap.domain.model.Week
 import it.mealmap.ui.components.MealTile
+import it.mealmap.ui.components.TileShape
 import it.mealmap.ui.components.dashedBorder
 import it.mealmap.ui.components.dayName
 import it.mealmap.ui.components.dayShortName
@@ -64,7 +65,6 @@ import java.time.DayOfWeek
 import kotlin.math.roundToInt
 
 private val DayColumnWidth = 44.dp
-private val TileShape = RoundedCornerShape(12.dp)
 
 /** Bounds in root coordinates, not clipped by the scrolling parent like `boundsInRoot()`. */
 private fun LayoutCoordinates.unclippedBounds() = Rect(positionInRoot(), size.toSize())

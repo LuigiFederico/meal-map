@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -232,7 +233,10 @@ private fun CategoryRow(category: CategoryBalance) {
 private fun Pips(category: CategoryBalance, filledColor: Color) {
     val max = category.rule.max
     val pips = maxOf(category.count, max ?: category.rule.min ?: 0)
-    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
         repeat(pips) { index ->
             val shape = RoundedCornerShape(4.dp)
             val pip = Modifier.size(width = 22.dp, height = 8.dp)

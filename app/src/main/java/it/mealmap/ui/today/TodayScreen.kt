@@ -9,10 +9,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
@@ -165,7 +168,6 @@ fun TodayContent(
 private fun DayStrip(selected: DayOfWeek, today: DayOfWeek, onSelect: (DayOfWeek) -> Unit) {
     val letters = stringArrayResource(R.array.days_letter)
     Row(
-        horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 6.dp)
@@ -182,26 +184,39 @@ private fun DayStrip(selected: DayOfWeek, today: DayOfWeek, onSelect: (DayOfWeek
             } else {
                 name
             }
+            // The whole seventh of the row is the touch target; the circle is the visual.
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .size(44.dp)
-                    .background(if (isSelected) colors.primary else Color.Transparent, CircleShape)
-                    .then(
-                        if (day == today && !isSelected) {
-                            Modifier.border(1.5.dp, colors.primary, CircleShape)
-                        } else {
-                            Modifier
-                        },
-                    )
+                    .weight(1f)
+                    .height(48.dp)
                     .selectable(selected = isSelected, role = Role.Tab, onClick = { onSelect(day) })
                     .semantics { contentDescription = dayDescription },
             ) {
-                Text(
-                    letters[day.ordinal],
-                    style = MaterialTheme.typography.titleSmall,
-                    color = if (isSelected) colors.onPrimary else colors.onSurface,
-                )
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        // Stays round even when a seventh of the row is narrower than 44dp.
+                        .widthIn(max = 44.dp)
+                        .aspectRatio(1f)
+                        .background(
+                            if (isSelected) colors.primary else Color.Transparent,
+                            CircleShape,
+                        )
+                        .then(
+                            if (day == today && !isSelected) {
+                                Modifier.border(1.5.dp, colors.primary, CircleShape)
+                            } else {
+                                Modifier
+                            },
+                        ),
+                ) {
+                    Text(
+                        letters[day.ordinal],
+                        style = MaterialTheme.typography.titleSmall,
+                        color = if (isSelected) colors.onPrimary else colors.onSurface,
+                    )
+                }
             }
         }
     }

@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -39,7 +40,11 @@ class MealDetailViewModel(
     val state: StateFlow<MealDetailUiState> = slot
         .flatMapLatest { slot ->
             if (slot == null) return@flatMapLatest flowOf(MealDetailUiState())
-            val meal = weekRepository.week.map { it?.get(slot) }.distinctUntilChanged()
+            // Shared, so the meal and its alternatives below come from one week query.
+            val meal = weekRepository.week
+                .map { it?.get(slot) }
+                .distinctUntilChanged()
+                .shareIn(viewModelScope, SharingStarted.WhileSubscribed(), replay = 1)
             // Alternatives only depend on protein and carb, not on the lock.
             val foods = meal
                 .map { (it as? Meal.Food)?.let { food -> food.protein to food.carb } }

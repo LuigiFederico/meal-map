@@ -192,6 +192,8 @@
     <string name="rules_increase">Aumenta %1$s %2$s</string>
     <string name="rules_reset">Ripristina i valori del piano</string>
     <string name="rules_remove_max">Nessun limite</string>
+    <string name="rules_reset_confirm">Minimi e massimi di tutte le categorie tornano quelli del piano della nutrizionista. Le tue modifiche andranno perse.</string>
+    <string name="rules_reset_action">Ripristina</string>
 
     <string name="food_group_legumes">Legumi</string>
     <string name="food_group_fish">Pesce</string>

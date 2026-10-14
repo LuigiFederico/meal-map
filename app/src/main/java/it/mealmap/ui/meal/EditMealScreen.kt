@@ -161,7 +161,7 @@ private fun ProteinChoices(
                 val isCurrent = (current as? Meal.Food)?.protein == protein
                 val count = state.othersCount[protein].orZero() + 1
                 val rule = state.rules[protein] ?: FrequencyRule()
-                val over = rule.max != null && count > rule.max
+                val over = rule.isExceededBy(count)
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -207,9 +207,10 @@ private fun projection(count: Int, rule: FrequencyRule, isCurrent: Boolean): Str
 @Composable
 private fun OverLimitWarning(selection: Meal, state: EditMealUiState) {
     val protein = (selection as? Meal.Food)?.protein ?: return
-    val max = state.rules[protein]?.max ?: return
+    val rule = state.rules[protein] ?: return
     val count = state.othersCount[protein].orZero() + 1
-    if (count <= max) return
+    if (!rule.isExceededBy(count)) return
+    val max = checkNotNull(rule.max)
     Row(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         modifier = Modifier

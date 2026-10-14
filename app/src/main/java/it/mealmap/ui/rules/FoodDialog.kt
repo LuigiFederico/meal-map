@@ -24,11 +24,7 @@ import it.mealmap.R
 import it.mealmap.domain.model.Carb
 import it.mealmap.domain.model.Food
 import it.mealmap.domain.model.FoodGroup
-import it.mealmap.domain.model.ProteinCategory
 import it.mealmap.ui.components.label
-
-private val MeatCategories =
-    listOf(ProteinCategory.WHITE_MEAT, ProteinCategory.RED_MEAT, ProteinCategory.CURED_MEAT)
 
 /** Adds a food to [group], or edits [food]. Meat also asks its category, carbs what they replace. */
 @Composable

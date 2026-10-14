@@ -7,14 +7,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import it.mealmap.AppContainer
 import it.mealmap.MealMapApplication
 
-/**
- * A ViewModel built from the app's [AppContainer] (manual dependency injection).
- * Use [key] to keep one instance per argument, e.g. per meal slot.
- */
+/** A ViewModel built from the app's [AppContainer] (manual dependency injection). */
 @Composable
-inline fun <reified VM : ViewModel> appViewModel(
-    key: String? = null,
-    crossinline create: (AppContainer) -> VM,
-): VM = viewModel(key = key) {
-    create((checkNotNull(this[APPLICATION_KEY]) as MealMapApplication).container)
-}
+inline fun <reified VM : ViewModel> appViewModel(crossinline create: (AppContainer) -> VM): VM =
+    viewModel {
+        create((checkNotNull(this[APPLICATION_KEY]) as MealMapApplication).container)
+    }
