@@ -12,4 +12,86 @@
     <string name="week_subtitle">Lunedì – domenica · senza date</string>
     <string name="balance_subtitle">Settimana tipo pianificata</string>
     <string name="rules_subtitle">Dal piano della nutrizionista · nov 2024</string>
+
+    <string name="category_legumes">Legumi</string>
+    <string name="category_fish">Pesce</string>
+    <string name="category_eggs">Uova</string>
+    <string name="category_white_meat">Carne bianca</string>
+    <string name="category_red_meat">Carne rossa</string>
+    <string name="category_cured_meat">Affettati</string>
+    <string name="category_cheese">Formaggi</string>
+
+    <string name="other_canteen">Mensa</string>
+    <string name="other_eating_out">Fuori casa</string>
+    <string name="other_free_choice">A scelta</string>
+
+    <string name="carb_bread">Pane</string>
+    <string name="carb_pasta">Pasta</string>
+    <string name="carb_rice">Riso</string>
+    <string name="carb_potatoes">Patate</string>
+    <string name="carb_piadina">Piadina</string>
+    <string name="carb_spelt">Farro</string>
+    <string name="carb_barley">Orzo</string>
+    <string name="carb_polenta">Polenta</string>
+    <string name="carb_gnocchi">Gnocchi</string>
+    <string name="carb_focaccia">Focaccia</string>
+
+    <string name="vegetables">Verdure</string>
+    <string name="slot_lunch">Pranzo</string>
+    <string name="slot_dinner">Cena</string>
+    <string-array name="days">
+        <item>Lunedì</item>
+        <item>Martedì</item>
+        <item>Mercoledì</item>
+        <item>Giovedì</item>
+        <item>Venerdì</item>
+        <item>Sabato</item>
+        <item>Domenica</item>
+    </string-array>
+    <string-array name="days_short">
+        <item>Lun</item>
+        <item>Mar</item>
+        <item>Mer</item>
+        <item>Gio</item>
+        <item>Ven</item>
+        <item>Sab</item>
+        <item>Dom</item>
+    </string-array>
+    <string name="day_today">%1$s (oggi)</string>
+    <string name="meal_locked">bloccato</string>
+
+    <string name="rule_exactly">esattamente %1$d</string>
+    <string name="rule_range">%1$d–%2$d</string>
+    <string name="rule_at_least">almeno %1$d</string>
+    <string name="rule_at_most">al massimo %1$d</string>
+    <string name="rule_free">libero</string>
+
+    <string name="week_empty_title">Nessuna settimana pianificata</string>
+    <string name="week_empty_body">Generala da “Nuova settimana”.</string>
+    <string name="week_column_lunch">PRANZO</string>
+    <string name="week_column_dinner">CENA</string>
+    <string name="week_uncounted">non conta nel bilancio</string>
+    <string name="week_over_limit_one">%1$s oltre il limite</string>
+    <plurals name="week_over_limit_many">
+        <item quantity="one">%1$d categoria oltre il limite</item>
+        <item quantity="other">%1$d categorie oltre il limite</item>
+    </plurals>
+    <string name="week_grid_description">Griglia della settimana</string>
+
+    <plurals name="balance_alert_title">
+        <item quantity="one">%1$d categoria fuori limite</item>
+        <item quantity="other">%1$d categorie fuori limite</item>
+    </plurals>
+    <plurals name="balance_alert_line">
+        <item quantity="one">%1$s: %2$d pasto su un massimo di %3$d (%4$s).</item>
+        <item quantity="other">%1$s: %2$d pasti su un massimo di %3$d (%4$s).</item>
+    </plurals>
+    <string name="balance_alert_hint">Puoi lasciare così o cambiare qualche pasto.</string>
+    <string name="balance_show_in_week">Vedi nella settimana</string>
+    <string name="balance_footnote">Contano solo pranzi e cene della settimana. I pasti senza categoria (%1$d) non sono conteggiati, come colazioni e spuntini.</string>
+    <string name="balance_count_of">%1$d / %2$d</string>
+    <string name="balance_status_over">sopra il limite</string>
+    <string name="balance_status_under">sotto il minimo</string>
+    <string name="balance_status_ok">nei limiti</string>
+    <string name="balance_tab_over_limit">limite superato</string>
 </resources>
