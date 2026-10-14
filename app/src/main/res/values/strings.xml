@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meal Map</string>
+
+    <string name="tab_today">Oggi</string>
+    <string name="tab_week">Settimana</string>
+    <string name="tab_balance">Bilancio</string>
+    <string name="tab_rules">Regole</string>
+
+    <string name="today_subtitle">Oggi · settimana tipo</string>
+    <string name="week_title">Settimana tipo</string>
+    <string name="week_subtitle">Lunedì – domenica · senza date</string>
+    <string name="balance_subtitle">Settimana tipo pianificata</string>
+    <string name="rules_subtitle">Dal piano della nutrizionista · nov 2024</string>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layered waves of the app header, from the design reference (docs/design).
+     Drawn once per screen header, so the large size is acceptable. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="VectorRaster"
+    android:width="390dp"
+    android:height="168dp"
+    android:viewportWidth="390"
+    android:viewportHeight="168">
+    <path android:fillColor="@color/navy" android:pathData="M0,0h390v168h-390z" />
+    <path android:fillColor="#183A60" android:pathData="M0 168V70C40 60 70 98 112 86S172 38 212 54 282 112 332 96 380 58 390 62V168Z" />
+    <path android:fillColor="#2A5482" android:pathData="M0 168V108C35 97 62 124 102 115S162 82 206 94 272 134 322 120 376 98 390 101V168Z" />
+    <path android:fillColor="#5C86B3" android:pathData="M110 168C134 146 168 132 204 136S262 154 302 143 362 120 390 122V168Z" />
+    <path android:fillColor="#A9C5E2" android:pathData="M244 0C266 22 298 18 312 42S298 84 330 92 380 72 390 62V0Z" />
+    <path android:fillColor="#E3EDF8" android:pathData="M298 0C312 15 330 13 338 30S332 54 352 58 384 42 390 34V0Z" />
+    <path android:fillColor="@color/surface" android:pathData="M0 168V156C60 143 122 162 192 151S322 136 390 147V168Z" />
+</vector>
