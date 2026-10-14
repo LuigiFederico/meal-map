@@ -19,6 +19,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable data object NewWeekRoute
 
+/** The alternatives of a [FoodGroup], by name: the domain enum stays free of Android annotations. */
+@Serializable data class FoodListRoute(val group: String)
+
 /** The four tabs of the bottom navigation bar. */
 enum class TopLevelDestination(
     val route: Any,

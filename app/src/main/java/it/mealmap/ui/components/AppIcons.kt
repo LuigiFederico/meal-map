@@ -55,6 +55,12 @@ object AppIcons {
     val Generate = icon(
         "M12 3.5v3 M12 17.5v3 M3.5 12h3 M17.5 12h3 M6 6l2 2 M16 16l2 2 M18 6l-2 2 M8 16l-2 2",
     )
+    val Minus = icon("M5 12h14")
+    val Plus = icon("M12 5v14 M5 12h14")
+    val Reset = icon("M4 12a8 8 0 1 0 2.3-5.7 M4 4v5h5")
+    val Back = icon("M19 12H5 M11 6l-6 6 6 6")
+    val Search = icon("M4 11a7 7 0 1 0 14 0 7 7 0 1 0-14 0 M20 20l-4-4")
+    val Trash = icon("M4 7h16 M9 7V4h6v3 M6 7l1 13h10l1-13")
     val Drag = icon("M9 6v.01 M15 6v.01 M9 12v.01 M15 12v.01 M9 18v.01 M15 18v.01")
     val Link = icon(
         "M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1 " +

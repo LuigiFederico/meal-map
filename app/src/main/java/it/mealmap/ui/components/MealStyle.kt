@@ -8,6 +8,7 @@ import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import it.mealmap.R
 import it.mealmap.domain.model.Carb
+import it.mealmap.domain.model.FoodGroup
 import it.mealmap.domain.model.Meal
 import it.mealmap.domain.model.MealSlot
 import it.mealmap.domain.model.OtherKind
@@ -149,3 +150,27 @@ fun mealTitle(meal: Meal): String = when (meal) {
         stringResource(meal.carb.label).lowercase(Locale.ITALIAN),
     )
 }
+
+@get:StringRes
+val FoodGroup.label: Int
+    get() = when (this) {
+        FoodGroup.LEGUMES -> R.string.food_group_legumes
+        FoodGroup.FISH -> R.string.food_group_fish
+        FoodGroup.MEAT -> R.string.food_group_meat
+        FoodGroup.EGGS -> R.string.food_group_eggs
+        FoodGroup.CHEESE -> R.string.food_group_cheese
+        FoodGroup.CARBS -> R.string.food_group_carbs
+        FoodGroup.BREAKFAST -> R.string.food_group_breakfast
+        FoodGroup.SNACKS -> R.string.food_group_snacks
+    }
+
+val FoodGroup.icon: ImageVector
+    get() = categories.firstOrNull()?.icon ?: when (this) {
+        FoodGroup.BREAKFAST -> AppIcons.Breakfast
+        FoodGroup.SNACKS -> AppIcons.Snack
+        else -> AppIcons.Carb
+    }
+
+/** The protein category whose colors a group uses; meat takes white meat's. */
+val FoodGroup.colorCategory: ProteinCategory?
+    get() = categories.firstOrNull()

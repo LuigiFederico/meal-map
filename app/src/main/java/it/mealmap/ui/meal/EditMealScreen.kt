@@ -2,7 +2,6 @@ package it.mealmap.ui.meal
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
@@ -48,6 +47,7 @@ import it.mealmap.domain.model.OtherKind
 import it.mealmap.domain.model.ProteinCategory
 import it.mealmap.ui.appViewModel
 import it.mealmap.ui.components.AppIcons
+import it.mealmap.ui.components.IconTile
 import it.mealmap.ui.components.containerColor
 import it.mealmap.ui.components.contentColor
 import it.mealmap.ui.components.dayName
@@ -111,7 +111,7 @@ fun EditMealContent(
                 )
             }
             Button(onClick = onSave, enabled = state.selection != null) {
-                Text(stringResource(R.string.edit_save))
+                Text(stringResource(R.string.save))
             }
         }
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
@@ -174,14 +174,7 @@ private fun ProteinChoices(
                         .padding(horizontal = 14.dp, vertical = 4.dp),
                 ) {
                     RadioButton(selected = selected, onClick = null)
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .size(34.dp)
-                            .background(protein.containerColor, RoundedCornerShape(10.dp)),
-                    ) {
-                        Icon(protein.icon, contentDescription = null, tint = protein.contentColor)
-                    }
+                    IconTile(protein.icon, protein.containerColor, protein.contentColor)
                     Text(
                         stringResource(protein.label),
                         style = MaterialTheme.typography.titleSmall,

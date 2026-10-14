@@ -36,7 +36,7 @@ class RepositoriesTest {
         val repository = RulesRepository(database.rulesDao())
         repository.resetToDefaults()
 
-        repository.update(ProteinCategory.CHEESE, FrequencyRule(min = 1, max = 3))
+        repository.update(ProteinCategory.CHEESE) { FrequencyRule(min = 1, max = 3) }
         assertEquals(
             FrequencyRule(min = 1, max = 3),
             repository.rules.first()[ProteinCategory.CHEESE],

@@ -6,6 +6,7 @@ import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.isSelectable
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
+import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
@@ -69,5 +70,25 @@ class MealMapAppTest {
             ).fetchSemanticsNodes().isNotEmpty()
         }
         tab("Oggi").assertIsSelected()
+    }
+
+    @Test
+    fun browsesTheSeededAlternatives() {
+        compose.setContent { MealMapTheme { MealMapApp() } }
+
+        tab("Regole").performClick()
+        compose.onNodeWithText("Alternative").performClick()
+        compose.waitUntil(5_000) {
+            compose.onAllNodesWithText("26").fetchSemanticsNodes().isNotEmpty()
+        }
+        compose.onNodeWithText("Legumi").performClick()
+
+        compose.waitUntil(5_000) {
+            compose.onAllNodesWithText(
+                "26 alternative · porzione per un pasto",
+            ).fetchSemanticsNodes().isNotEmpty()
+        }
+        compose.onNodeWithContentDescription("Indietro").performClick()
+        compose.onNodeWithText("Carne e affettati").assertExists()
     }
 }

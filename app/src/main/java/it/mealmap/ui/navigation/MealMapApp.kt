@@ -31,12 +31,14 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import it.mealmap.R
+import it.mealmap.domain.model.FoodGroup
 import it.mealmap.domain.model.MealSlot
 import it.mealmap.ui.appViewModel
 import it.mealmap.ui.balance.BalanceScreen
 import it.mealmap.ui.balance.BalanceViewModel
 import it.mealmap.ui.meal.EditMealScreen
 import it.mealmap.ui.newweek.NewWeekScreen
+import it.mealmap.ui.rules.FoodListScreen
 import it.mealmap.ui.rules.RulesScreen
 import it.mealmap.ui.today.TodayScreen
 import it.mealmap.ui.week.WeekScreen
@@ -96,7 +98,20 @@ fun MealMapApp(navController: NavHostController = rememberNavController()) {
                     onNewWeek = onNewWeek,
                 )
             }
-            composable<RulesRoute> { RulesScreen() }
+            composable<RulesRoute> {
+                RulesScreen(onOpenGroup = {
+                    navController.navigate(FoodListRoute(it.name)) {
+                        launchSingleTop =
+                            true
+                    }
+                })
+            }
+            composable<FoodListRoute> { entry ->
+                FoodListScreen(
+                    group = FoodGroup.valueOf(entry.toRoute<FoodListRoute>().group),
+                    onBack = { navController.popBackStackFrom<FoodListRoute>() },
+                )
+            }
             composable<EditMealRoute> { entry ->
                 EditMealScreen(
                     slot = MealSlot.ALL[entry.toRoute<EditMealRoute>().slot],
