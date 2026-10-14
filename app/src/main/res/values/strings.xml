@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meal Map</string>
+
+    <string name="tab_today">Oggi</string>
+    <string name="tab_week">Settimana</string>
+    <string name="tab_balance">Bilancio</string>
+    <string name="tab_rules">Regole</string>
+
+    <string name="today_subtitle">Oggi · settimana tipo</string>
+    <string name="week_title">Settimana tipo</string>
+    <string name="week_subtitle">Lunedì – domenica · senza date</string>
+    <string name="balance_subtitle">Settimana tipo pianificata</string>
+    <string name="rules_subtitle">Dal piano della nutrizionista · nov 2024</string>
+
+    <string name="category_legumes">Legumi</string>
+    <string name="category_fish">Pesce</string>
+    <string name="category_eggs">Uova</string>
+    <string name="category_white_meat">Carne bianca</string>
+    <string name="category_red_meat">Carne rossa</string>
+    <string name="category_cured_meat">Affettati</string>
+    <string name="category_cheese">Formaggi</string>
+
+    <string name="other_canteen">Mensa</string>
+    <string name="other_eating_out">Fuori casa</string>
+    <string name="other_free_choice">A scelta</string>
+
+    <string name="carb_bread">Pane</string>
+    <string name="carb_pasta">Pasta</string>
+    <string name="carb_rice">Riso</string>
+    <string name="carb_potatoes">Patate</string>
+    <string name="carb_piadina">Piadina</string>
+    <string name="carb_spelt">Farro</string>
+    <string name="carb_barley">Orzo</string>
+    <string name="carb_polenta">Polenta</string>
+    <string name="carb_gnocchi">Gnocchi</string>
+    <string name="carb_focaccia">Focaccia</string>
+
+    <string name="vegetables">Verdure</string>
+    <string name="slot_lunch">Pranzo</string>
+    <string name="slot_dinner">Cena</string>
+    <string-array name="days">
+        <item>Lunedì</item>
+        <item>Martedì</item>
+        <item>Mercoledì</item>
+        <item>Giovedì</item>
+        <item>Venerdì</item>
+        <item>Sabato</item>
+        <item>Domenica</item>
+    </string-array>
+    <string-array name="days_short">
+        <item>Lun</item>
+        <item>Mar</item>
+        <item>Mer</item>
+        <item>Gio</item>
+        <item>Ven</item>
+        <item>Sab</item>
+        <item>Dom</item>
+    </string-array>
+    <string name="day_today">%1$s (oggi)</string>
+    <string name="meal_locked">bloccato</string>
+
+    <string name="rule_exactly">esattamente %1$d</string>
+    <string name="rule_range">%1$d–%2$d</string>
+    <string name="rule_at_least">almeno %1$d</string>
+    <string name="rule_at_most">al massimo %1$d</string>
+    <string name="rule_free">libero</string>
+
+    <string name="week_empty_title">Nessuna settimana pianificata</string>
+    <string name="week_empty_body">Segna i pasti già decisi e l’app genera il resto rispettando le regole.</string>
+    <string name="week_column_lunch">PRANZO</string>
+    <string name="week_column_dinner">CENA</string>
+    <string name="week_uncounted">non conta nel bilancio</string>
+    <string name="week_over_limit_one">%1$s oltre il limite</string>
+    <plurals name="week_over_limit_many">
+        <item quantity="one">%1$d categoria oltre il limite</item>
+        <item quantity="other">%1$d categorie oltre il limite</item>
+    </plurals>
+
+    <plurals name="balance_alert_title">
+        <item quantity="one">%1$d categoria fuori limite</item>
+        <item quantity="other">%1$d categorie fuori limite</item>
+    </plurals>
+    <plurals name="balance_alert_line">
+        <item quantity="one">%1$s: %2$d pasto su un massimo di %3$d (%4$s).</item>
+        <item quantity="other">%1$s: %2$d pasti su un massimo di %3$d (%4$s).</item>
+    </plurals>
+    <string name="balance_alert_hint">Puoi lasciare così o cambiare qualche pasto.</string>
+    <string name="balance_show_in_week">Vedi nella settimana</string>
+    <string name="balance_footnote">Contano solo pranzi e cene della settimana. I pasti senza categoria (%1$d) non sono conteggiati, come colazioni e spuntini.</string>
+    <string name="balance_count_of">%1$d / %2$d</string>
+    <string name="balance_status_over">sopra il limite</string>
+    <string name="balance_status_under">sotto il minimo</string>
+    <string name="balance_status_ok">nei limiti</string>
+    <string name="balance_tab_over_limit">limite superato</string>
+
+    <string-array name="days_letter">
+        <item>L</item>
+        <item>M</item>
+        <item>Me</item>
+        <item>G</item>
+        <item>V</item>
+        <item>S</item>
+        <item>D</item>
+    </string-array>
+    <string name="today_subtitle_other_day">Settimana tipo</string>
+    <string name="today_back_to_today">Torna a oggi</string>
+    <string name="meal_locked_label">Bloccato</string>
+    <string name="meal_no_category">Nessuna categoria · ricorda il piatto sano</string>
+    <string name="meal_line">%1$s, verdure, %2$s</string>
+
+    <string name="reminder_breakfast">Colazione</string>
+    <string name="reminder_snack">Spuntino</string>
+    <string name="reminder_afternoon_snack">Merenda</string>
+    <string name="reminder_breakfast_hint">Promemoria · 4 tipi a scelta</string>
+    <string name="reminder_snack_hint">Promemoria · facoltativo</string>
+    <string name="reminder_afternoon_snack_hint">Promemoria · facoltativa</string>
+    <string name="reminders_kicker">Uguale ogni giorno · scegli tu</string>
+    <string name="reminders_snack_note">Facoltativo. Se a metà mattina non riesci, aggiungilo a pranzo.</string>
+    <string name="reminders_afternoon_snack_note">Facoltativa. Se il pomeriggio non riesci, aggiungila a cena.</string>
+    <string name="reminders_tip">Consiglio: abbina i tipi con lo stesso numero (colazione 1 + spuntino 1 + merenda 1).</string>
+    <string name="reminders_option">Tipo %1$d</string>
+
+    <string name="close">Chiudi</string>
+    <string name="detail_kicker">%1$s · %2$s</string>
+    <string name="detail_lock">Blocca</string>
+    <string name="detail_protein_hint">scegli uno · porzione per il pasto</string>
+    <string name="detail_carb_hint">pesi da crudo</string>
+    <plurals name="detail_show_all">
+        <item quantity="one">Mostra l’alternativa</item>
+        <item quantity="other">Mostra tutte le %1$d alternative</item>
+    </plurals>
+    <string name="detail_vegetables_title">Verdura e frutta</string>
+    <string name="detail_vegetables_body">A piacere, da variare · metà del piatto</string>
+    <string name="detail_healthy_plate">Ricorda il piatto sano: metà verdura e frutta, un quarto cereali, un quarto proteine.</string>
+    <string name="open_detail">Apri il dettaglio</string>
+
+    <string name="detail_change">Cambia</string>
+    <string name="detail_swap">Scambia</string>
+    <string name="detail_other">Fuori…</string>
+
+    <string name="edit_kicker">Cambia categoria</string>
+    <string name="edit_close">Chiudi senza salvare</string>
+    <string name="edit_now">Ora:</string>
+    <string name="edit_protein">Fonte proteica</string>
+    <string name="edit_carb">Cereale</string>
+    <string name="edit_other">Oppure senza categoria</string>
+    <string name="edit_projection_current">attuale · %1$d</string>
+    <string name="edit_projection_new">diventa %1$d</string>
+    <string name="edit_limit_max">max %1$d</string>
+    <string name="edit_limit_min">min %1$d</string>
+    <string name="edit_over_limit">%1$s arriverebbe a %2$d su un massimo di %3$d. Puoi salvare comunque: lo vedrai segnalato nel Bilancio.</string>
+
+    <string name="week_drag_hint">Tieni premuto e trascina per scambiare due pasti o due giorni.</string>
+    <string name="week_swap_mode">Tocca il pasto da scambiare con %1$s, oppure il nome di un giorno per scambiare la giornata.</string>
+    <string name="week_swapped">%1$s e %2$s scambiati</string>
+    <string name="cancel">Annulla</string>
+    <string name="undo">Annulla</string>
+    <string name="week_swap_here">Scambia qui</string>
+
+    <string name="new_week_title">Nuova settimana</string>
+    <string name="new_week_question">Cosa è già deciso?</string>
+    <string name="new_week_intro">Segna i pasti fuori, in mensa o a scelta. Il resto lo genera l’app rispettando le regole. Tocca un pasto per cambiarlo.</string>
+    <string name="new_week_generate_slot">Genera</string>
+    <string name="new_week_fixed_meal">Fisso · %1$s</string>
+    <string name="new_week_fixed_legend">Fisso (bloccato)</string>
+    <string name="new_week_change_hint">Tocca per cambiare</string>
+    <string name="new_week_lock_note">I pasti bloccati nella settimana attuale arrivano già fissati. Per fissarne un altro, bloccalo dal suo dettaglio.</string>
+    <plurals name="new_week_to_generate">
+        <item quantity="one">%1$d pasto da generare</item>
+        <item quantity="other">%1$d pasti da generare</item>
+    </plurals>
+    <plurals name="new_week_fixed_count">
+        <item quantity="one">%1$d fisso</item>
+        <item quantity="other">%1$d fissi</item>
+    </plurals>
+    <plurals name="new_week_uncounted">
+        <item quantity="one">%1$d senza categoria</item>
+        <item quantity="other">%1$d senza categoria</item>
+    </plurals>
+    <string name="new_week_cta">Genera settimana</string>
+    <string name="new_week_caption">Sostituisce la settimana attuale · potrai modificarla subito dopo</string>
+
+    <string name="rules_tab_frequencies">Frequenze</string>
+    <string name="rules_tab_alternatives">Alternative</string>
+    <string name="rules_frequencies_intro">Porzioni a settimana, contate su pranzi e cene. La generazione le rispetta; le tue modifiche vengono solo segnalate.</string>
+    <string name="rules_alternatives_intro">Gli alimenti e le porzioni che vedi nel dettaglio di ogni pasto.</string>
+    <string name="rules_min">Minimo</string>
+    <string name="rules_max">Massimo</string>
+    <string name="rules_unset">nessuno</string>
+    <string name="rules_decrease">Diminuisci %1$s %2$s</string>
+    <string name="rules_increase">Aumenta %1$s %2$s</string>
+    <string name="rules_reset">Ripristina i valori del piano</string>
+    <string name="rules_remove_max">Nessun limite</string>
+    <string name="rules_reset_confirm">Minimi e massimi di tutte le categorie tornano quelli del piano della nutrizionista. Le tue modifiche andranno perse.</string>
+    <string name="rules_reset_action">Ripristina</string>
+
+    <string name="food_group_legumes">Legumi</string>
+    <string name="food_group_fish">Pesce</string>
+    <string name="food_group_meat">Carne e affettati</string>
+    <string name="food_group_eggs">Uova</string>
+    <string name="food_group_cheese">Formaggi</string>
+    <string name="food_group_carbs">Cereali e carboidrati</string>
+    <string name="food_group_breakfast">Colazione</string>
+    <string name="food_group_snacks">Spuntini e merende</string>
+
+    <string name="back">Indietro</string>
+    <plurals name="foods_subtitle">
+        <item quantity="one">%1$d alternativa · porzione per un pasto</item>
+        <item quantity="other">%1$d alternative · porzione per un pasto</item>
+    </plurals>
+    <string name="foods_search">Cerca un alimento</string>
+    <string name="foods_edit">Modifica %1$s</string>
+    <string name="foods_delete">Rimuovi %1$s</string>
+    <string name="foods_deleted">%1$s rimosso</string>
+    <string name="foods_add">Aggiungi alimento</string>
+    <string name="food_dialog_new">Nuovo alimento</string>
+    <string name="food_dialog_edit">Modifica alimento</string>
+    <string name="food_name">Nome</string>
+    <string name="food_portion">Porzione</string>
+    <string name="food_category">Categoria</string>
+    <string name="food_carbs">Sostituisce</string>
+    <string name="food_carbs_hint">Nessuno per le porzioni di contorno.</string>
+    <string name="save">Salva</string>
+</resources>

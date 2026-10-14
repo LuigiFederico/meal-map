@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Dettaglio pasto</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400..700&amp;display=swap">
+<style>
+body{margin:0;background:#F8F9FF}
+a{color:#2F5B8A}a:hover{color:#1B3F66}
+.ic{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F8F9FF; color: #191C20; font-family: 'Roboto Flex', system-ui, sans-serif">
+
+  <div aria-hidden="true" style="position: absolute; inset: 0">
+    <svg width="390" height="168" viewBox="0 0 390 168" preserveAspectRatio="none" style="display: block">
+      <rect width="390" height="168" fill="#0F2A47"></rect>
+      <path fill="#183A60" d="M0 168V70C40 60 70 98 112 86S172 38 212 54 282 112 332 96 380 58 390 62V168Z"></path>
+      <path fill="#2A5482" d="M0 168V108C35 97 62 124 102 115S162 82 206 94 272 134 322 120 376 98 390 101V168Z"></path>
+      <path fill="#5C86B3" d="M110 168C134 146 168 132 204 136S262 154 302 143 362 120 390 122V168Z"></path>
+      <path fill="#A9C5E2" d="M244 0C266 22 298 18 312 42S298 84 330 92 380 72 390 62V0Z"></path>
+      <path fill="#F8F9FF" d="M0 168V156C60 143 122 162 192 151S322 136 390 147V168Z"></path>
+    </svg>
+    <div style="position: absolute; top: 28px; left: 20px; color: #FFFFFF; font-size: 34px; font-weight: 500">Mercoledì</div>
+    <div style="margin: 4px 16px 0; height: 56px; border-radius: 16px; background: #ECEEF4"></div>
+    <div style="margin: 14px 16px 0; height: 56px; border-radius: 16px; background: #F0F3FA"></div>
+    <div style="margin: 10px 16px 0; height: 132px; border-radius: 22px; background: #E6EDF7"></div>
+  </div>
+  <a href="Main.dc.html" aria-label="Chiudi dettaglio" style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.36)"></a>
+
+  <section role="dialog" aria-label="Dettaglio Mercoledì cena" style="position: absolute; left: 0; right: 0; bottom: 0; top: 118px; background: #F8F9FF; border-radius: 28px 28px 0 0; display: flex; flex-direction: column; overflow: hidden">
+    <div style="flex: none; display: flex; justify-content: center; padding: 14px 0 6px"><span style="width: 32px; height: 4px; border-radius: 2px; background: #73777F"></span></div>
+
+    <div style="flex: none; padding: 6px 12px 0 24px; display: flex; align-items: flex-start; justify-content: space-between">
+      <div>
+        <div style="font-size: 14px; font-weight: 600; color: #2F5B8A">Mercoledì · Cena</div>
+        <h2 style="margin: 4px 0 0; font-size: 24px; line-height: 30px; font-weight: 500">Legumi, verdure, pasta</h2>
+      </div>
+      <a href="Main.dc.html" aria-label="Chiudi" style="width: 48px; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #43474E"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.close}}"></path></svg></a>
+    </div>
+
+    <div style="flex: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 16px 16px 4px">
+      <a href="CambiaCategoria.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0; border-radius: 16px; background: #D3E3FF; color: #001C38; text-decoration: none; font-size: 13px; font-weight: 500"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.edit}}"></path></svg>Cambia</a>
+      <a href="Trascina.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0; border-radius: 16px; background: #ECEEF4; color: #191C20; text-decoration: none; font-size: 13px; font-weight: 500"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.swap}}"></path></svg>Scambia</a>
+      <button onClick="{{toggleLock}}" aria-pressed="{{locked}}" style="{{lockStyle}}"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="{{lockIcon}}"></path></svg>{{lockLabel}}</button>
+      <a href="CambiaCategoria.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0; border-radius: 16px; background: #ECEEF4; color: #191C20; text-decoration: none; font-size: 13px; font-weight: 500"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.fuori}}"></path></svg>Fuori…</a>
+    </div>
+
+    <div style="flex: 1; min-height: 0; overflow: auto; padding: 12px 24px 24px; display: flex; flex-direction: column; gap: 20px">
+
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; align-items: center; gap: 10px">
+          <span style="width: 32px; height: 32px; border-radius: 10px; background: #D0EBC6; color: #23461F; display: flex; align-items: center; justify-content: center"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.legumi}}"></path></svg></span>
+          <h3 style="margin: 0; font-size: 16px; font-weight: 600">Legumi</h3>
+          <span style="font-size: 13px; color: #43474E">scegli uno · porzione per il pasto</span>
+        </div>
+        <ul style="list-style: none; margin: 0; padding: 0; border-radius: 16px; background: #F0F3FA; overflow: hidden">
+          <sc-for list="{{legumi}}" as="r" hint-placeholder-count="6">
+            <li style="display: flex; justify-content: space-between; align-items: center; min-height: 44px; padding: 0 16px; border-bottom: 1px solid #E1E2E8; font-size: 15px"><span>{{r.n}}</span><span style="font-weight: 600; color: #2F5B8A; font-variant-numeric: tabular-nums">{{r.q}}</span></li>
+          </sc-for>
+          <li><a href="Alternative.dc.html" style="display: flex; justify-content: space-between; align-items: center; min-height: 44px; padding: 0 16px; font-size: 14px; font-weight: 600; text-decoration: none; color: #2F5B8A">Mostra tutte le 26 alternative<svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.chev}}"></path></svg></a></li>
+        </ul>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; align-items: center; gap: 10px">
+          <span style="width: 32px; height: 32px; border-radius: 10px; background: #E6E8EE; color: #43474E; display: flex; align-items: center; justify-content: center"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.cereale}}"></path></svg></span>
+          <h3 style="margin: 0; font-size: 16px; font-weight: 600">Pasta</h3>
+          <span style="font-size: 13px; color: #43474E">pesi da crudo</span>
+        </div>
+        <ul style="list-style: none; margin: 0; padding: 0; border-radius: 16px; background: #F0F3FA; overflow: hidden">
+          <sc-for list="{{pasta}}" as="r" hint-placeholder-count="4">
+            <li style="display: flex; justify-content: space-between; align-items: center; min-height: 44px; padding: 0 16px; border-bottom: 1px solid #E1E2E8; font-size: 15px"><span>{{r.n}}</span><span style="font-weight: 600; color: #2F5B8A; font-variant-numeric: tabular-nums">{{r.q}}</span></li>
+          </sc-for>
+        </ul>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 16px; border: 1px solid #C3C6CF">
+        <span style="width: 32px; height: 32px; border-radius: 10px; background: #E6E8EE; color: #43474E; display: flex; align-items: center; justify-content: center"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.verdure}}"></path></svg></span>
+        <span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Verdura e frutta</span><span style="font-size: 13px; color: #43474E">A piacere, da variare · metà del piatto</span></span>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const IC = {
+  legumi: 'M4.5 15.5C7 9 12 5 19.5 4.5 19 12 14.5 17.5 8.5 19.5c-2.5.8-4.8-1.5-4-4z M8 15a1.4 1.4 0 1 0 2.8 0 1.4 1.4 0 1 0-2.8 0 M11.5 11.5a1.4 1.4 0 1 0 2.8 0 1.4 1.4 0 1 0-2.8 0 M15 8a1.4 1.4 0 1 0 2.8 0 1.4 1.4 0 1 0-2.8 0',
+  fuori: 'M7 3v18 M4.5 3v5a2.5 2.5 0 0 0 5 0V3 M17.5 21V3c-2.2 0-3.5 3-3.5 7h3.5',
+  lock: 'M6 11h12v9H6z M8.5 11V8a3.5 3.5 0 0 1 7 0v3',
+  unlock: 'M6 11h12v9H6z M8.5 11V8a3.5 3.5 0 0 1 6.8-1.2',
+  swap: 'M7 4 3 8l4 4 M3 8h14 M17 20l4-4-4-4 M21 16H7',
+  edit: 'M4 20h4L19 9l-4-4L4 16z',
+  close: 'M6 6l12 12 M18 6 6 18',
+  chev: 'M9 6l6 6-6 6',
+  verdure: 'M5 19c0-8 5-14 14-14 0 9-6 14-14 14z M5 19l8-8',
+  cereale: 'M12 21V9 M12 9c-2.5 0-4-1.5-4-4 2.5 0 4 1.5 4 4z M12 9c2.5 0 4-1.5 4-4-2.5 0-4 1.5-4 4z M12 14c-2.5 0-4-1.5-4-4 2.5 0 4 1.5 4 4z M12 14c2.5 0 4-1.5 4-4-2.5 0-4 1.5-4 4z'
+};
+class Component extends DCLogic {
+  renderVals() {
+    const locked = !!(this.state || {}).locked;
+    const base = 'display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0; border-radius: 16px; border: none; cursor: pointer; font-size: 13px; font-weight: 500; ';
+    return {
+      ic: IC,
+      locked,
+      toggleLock: () => this.setState({ locked: !locked }),
+      lockIcon: locked ? IC.lock : IC.unlock,
+      lockLabel: locked ? 'Bloccato' : 'Blocca',
+      lockStyle: base + (locked ? 'background: #2F5B8A; color: #FFFFFF' : 'background: #ECEEF4; color: #191C20'),
+      legumi: [
+        { n: 'Ceci in scatola', q: '120 g' },
+        { n: 'Lenticchie secche', q: '60 g' },
+        { n: 'Fagioli in scatola', q: '140 g' },
+        { n: 'Piselli surgelati', q: '140 g' },
+        { n: 'Pasta di legumi', q: '60 g' },
+        { n: 'Tofu', q: '150 g' }
+      ],
+      pasta: [
+        { n: 'Pasta, riso, orzo, bulgur', q: '80 g' },
+        { n: 'Pasta all’uovo', q: '80 g' },
+        { n: 'Agnolotti', q: '100 g' },
+        { n: 'Tortellini', q: '160 g' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

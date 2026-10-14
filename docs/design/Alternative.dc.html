@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Alternative legumi</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400..700&amp;display=swap">
+<style>
+body{margin:0;background:#F8F9FF}
+a{color:#2F5B8A}a:hover{color:#1B3F66}
+.ic{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+button{font:inherit}
+input::placeholder{color:#5D6169}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F8F9FF; color: #191C20; font-family: 'Roboto Flex', system-ui, sans-serif; display: flex; flex-direction: column">
+
+  <header style="flex: none; display: flex; align-items: center; gap: 4px; height: 64px; padding: 0 12px 0 4px">
+    <a href="Regole.dc.html" aria-label="Indietro" style="width: 48px; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #191C20"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.back}}"></path></svg></a>
+    <div style="flex: 1; min-width: 0">
+      <h1 style="margin: 0; font-size: 22px; font-weight: 500">Legumi</h1>
+      <div style="font-size: 13px; color: #43474E">{{count}} alternative · porzione per un pasto</div>
+    </div>
+  </header>
+
+  <div style="flex: none; padding: 4px 16px 12px">
+    <label style="display: flex; align-items: center; gap: 10px; height: 52px; padding: 0 16px; border-radius: 26px; background: #E6E8EE; color: #43474E">
+      <svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.search}}"></path></svg>
+      <input type="search" aria-label="Cerca un alimento" placeholder="Cerca un alimento" value="{{q}}" onChange="{{onQ}}" style="flex: 1; min-width: 0; border: none; background: transparent; font: inherit; font-size: 16px; color: #191C20; outline: none">
+    </label>
+  </div>
+
+  <main style="flex: 1; min-height: 0; overflow: auto; padding: 0 16px 96px">
+    <ul style="list-style: none; margin: 0; padding: 4px 0; border-radius: 20px; background: #F0F3FA">
+      <sc-for list="{{items}}" as="it" hint-placeholder-count="10">
+        <li style="display: flex; align-items: center; gap: 4px; min-height: 52px; padding: 0 4px 0 16px; border-bottom: 1px solid #E1E2E8">
+          <span style="flex: 1; min-width: 0; font-size: 15px">{{it.n}}</span>
+          <span style="font-size: 14px; font-weight: 600; color: #2F5B8A; font-variant-numeric: tabular-nums; margin-right: 4px">{{it.q}}</span>
+          <button aria-label="{{it.editLabel}}" style="width: 44px; height: 44px; border: none; border-radius: 22px; background: transparent; color: #43474E; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.edit}}"></path></svg></button>
+          <button onClick="{{it.remove}}" aria-label="{{it.delLabel}}" style="width: 44px; height: 44px; border: none; border-radius: 22px; background: transparent; color: #43474E; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.trash}}"></path></svg></button>
+        </li>
+      </sc-for>
+    </ul>
+  </main>
+
+  <sc-if value="{{removed}}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="position: absolute; left: 16px; right: 16px; bottom: 96px; display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 4px 8px 4px 16px; border-radius: 6px; background: #2E3135; color: #EFF0F7; font-size: 14px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25)">
+      <span style="flex: 1">{{removedText}}</span>
+      <button onClick="{{undo}}" style="height: 40px; padding: 0 12px; border: none; border-radius: 20px; background: transparent; color: #A4C9FF; font-size: 14px; font-weight: 600; cursor: pointer">Annulla</button>
+    </div>
+  </sc-if>
+
+  <button style="position: absolute; right: 16px; bottom: 24px; display: inline-flex; align-items: center; gap: 10px; height: 56px; padding: 0 20px 0 16px; border: none; border-radius: 16px; background: #0F2A47; color: #FFFFFF; font-size: 15px; font-weight: 600; box-shadow: 0 4px 10px rgba(15, 42, 71, 0.3); cursor: pointer"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.plus}}"></path></svg>Aggiungi alimento</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const IC = {
+  back: 'M19 12H5 M11 6l-6 6 6 6',
+  search: 'M4 11a7 7 0 1 0 14 0 7 7 0 1 0-14 0 M20 20l-4-4',
+  edit: 'M4 20h4L19 9l-4-4L4 16z',
+  trash: 'M4 7h16 M9 7V4h6v3 M6 7l1 13h10l1-13',
+  plus: 'M12 5v14 M5 12h14'
+};
+const ALL = [
+  ['Burger di ceci', '2 pz'], ['Burger di tofu', '2 pz'], ['Burger di ceci · Kioene', '2 pz'], ['Burger di ceci · Hary&Co', '2 pz'],
+  ['Ceci secchi', '60 g'], ['Ceci in scatola', '120 g'], ['Cotoletta Kioene', '100 g'], ['Fagioli in scatola', '140 g'],
+  ['Fagioli secchi', '60 g'], ['Fave secche', '60 g'], ['Fave fresche', '200 g'], ['Lenticchie secche', '60 g'],
+  ['Lenticchie in scatola', '140 g'], ['Lupini', '100 g'], ['Hummus di ceci', '100 g'], ['Nuggets vegetali', '70 g'],
+  ['Pasta di legumi · Barilla', '60 g'], ['Pasta di legumi · Felicia', '60 g'], ['Pasta di legumi · Scoiattolo', '60 g'], ['Pasta di legumi · Rummo', '60 g'],
+  ['Piselli freschi', '200 g'], ['Piselli in scatola', '160 g'], ['Piselli surgelati', '140 g'], ['Polpette vegetali', '70 g'],
+  ['Soia edamame', '130 g'], ['Tofu', '150 g']
+];
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const gone = st.gone || [];
+    const q = st.q || '';
+    const ql = q.trim().toLowerCase();
+    const left = ALL.filter(([n]) => !gone.includes(n));
+    const shown = left.filter(([n]) => !ql || n.toLowerCase().includes(ql));
+    const last = gone[gone.length - 1];
+    return {
+      ic: IC,
+      q,
+      onQ: (e) => this.setState({ q: e.target.value }),
+      count: left.length,
+      removed: !!last,
+      removedText: last ? last + ' rimosso' : '',
+      undo: () => this.setState({ gone: gone.slice(0, -1) }),
+      items: shown.map(([n, qty]) => ({
+        n, q: qty,
+        editLabel: 'Modifica ' + n,
+        delLabel: 'Rimuovi ' + n,
+        remove: () => this.setState({ gone: gone.concat([n]) })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

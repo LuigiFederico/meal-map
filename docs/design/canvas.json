@@ -1,0 +1,40 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-14T10:00:00Z"},
+  "title": "Meal Map — design app",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 390, "h": 844, "title": "Oggi (home)", "is_interactive": true, "radius": 28},
+    "Dettaglio.dc.html": {"x": 470, "y": 0, "w": 390, "h": 844, "title": "Dettaglio pasto (bottom sheet)", "is_interactive": true, "radius": 28},
+    "Promemoria.dc.html": {"x": 940, "y": 0, "w": 390, "h": 844, "title": "Promemoria colazione · spuntino · merenda", "is_interactive": true, "radius": 28},
+    "Bilancio.dc.html": {"x": 1410, "y": 0, "w": 390, "h": 844, "title": "Bilancio", "is_interactive": true, "radius": 28},
+    "Settimana.dc.html": {"x": 0, "y": 1250, "w": 390, "h": 844, "title": "Settimana (7 giorni × pranzo e cena)", "is_interactive": true, "radius": 28},
+    "Trascina.dc.html": {"x": 470, "y": 1250, "w": 390, "h": 844, "title": "Settimana — trascina per scambiare", "is_interactive": true, "radius": 28},
+    "CambiaCategoria.dc.html": {"x": 940, "y": 1250, "w": 390, "h": 844, "title": "Cambia categoria", "is_interactive": true, "radius": 28},
+    "NuovaSettimana.dc.html": {"x": 1410, "y": 1250, "w": 390, "h": 844, "title": "Nuova settimana — vincoli", "is_interactive": true, "radius": 28},
+    "Regole.dc.html": {"x": 0, "y": 2500, "w": 390, "h": 844, "title": "Regole", "is_interactive": true, "radius": 28},
+    "Alternative.dc.html": {"x": 470, "y": 2500, "w": 390, "h": 844, "title": "Regole — alternative di una categoria", "is_interactive": true, "radius": 28}
+  },
+  "order": [
+    "Main.dc.html",
+    "Dettaglio.dc.html",
+    "Promemoria.dc.html",
+    "Bilancio.dc.html",
+    "Settimana.dc.html",
+    "Trascina.dc.html",
+    "CambiaCategoria.dc.html",
+    "NuovaSettimana.dc.html",
+    "Regole.dc.html",
+    "Alternative.dc.html"
+  ],
+  "notes": {
+    "t1": {"x": 0, "y": -300, "text": "1 · Consultare", "kind": "title1", "maxW": 1800},
+    "s1": {"x": 1880, "y": 0, "w": 340, "fill": "yellow", "size": "m", "text": "L'app si apre sul giorno reale (oggi è mercoledì) di una settimana tipo senza date.\n\nToccando pranzo o cena si apre il dettaglio con alternative e porzioni. Colazione, spuntino e merenda aprono il promemoria fisso.\n\nIl pallino rosso su Bilancio segnala un limite superato."},
+    "t2": {"x": 0, "y": 950, "text": "2 · Pianificare e modificare", "kind": "title1", "maxW": 1800},
+    "s2": {"x": 1880, "y": 1250, "w": 340, "fill": "yellow", "size": "m", "text": "Scambi: tieni premuto e trascina un pasto su un altro, oppure sull'intestazione di un giorno per scambiare la giornata intera.\n\nDal dettaglio: Cambia, Blocca, Fuori casa / Mensa / A scelta.\n\n'Nuova settimana' chiede prima i vincoli (i pasti bloccati arrivano già fissati), poi genera il resto.\n\nGli sforamenti vengono segnalati, mai impediti."},
+    "t3": {"x": 0, "y": 2200, "text": "3 · Regole della nutrizionista", "kind": "title1", "maxW": 1800},
+    "s3": {"x": 940, "y": 2500, "w": 340, "fill": "yellow", "size": "m", "text": "Quando il piano cambia: min/max per categoria e liste di alternative con porzioni si modificano dall'app."}
+  },
+  "designSystems": []
+}
