@@ -1,0 +1,12 @@
+categoria,min_settimana,max_settimana,unita,note
+Carne bianca,1,2,porzioni,Piramide: 1-2 porzioni/settimana
+Carne rossa,,1,porzioni,Piramide: meno di 1 porzione/settimana (insieme ai salumi)
+Pesce,2,,porzioni,"Pesce, crostacei e molluschi"
+Legumi,3,,porzioni,
+Uova,2,2,volte,2 volte a settimana da 2 uova (piramide: 2-4 uova/settimana)
+Affettati,,2,porzioni,Piramide: meno di 1 porzione/settimana (insieme alla carne rossa)
+Formaggi,,2,porzioni,
+Dolci (oltre la colazione),,4,volte,
+Alcolici (birra e vino compresi),,2,volte,Preferire birra e vino ai superalcolici
+Pasti saltati,,,volte,Da segnare; obiettivo: non saltare mai i pasti
+Fuori menù,,,volte,Da segnare

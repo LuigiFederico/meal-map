@@ -1,0 +1,300 @@
+categoria,sottocategoria,alimento,porzione,quantita_min,quantita_max,unita
+COLAZIONE,Cereali e muesli,Cereali al cioccolato,5-6 cucchiai,5,6,cucchiai
+COLAZIONE,Cereali e muesli,Cheerios,5-6 cucchiai,5,6,cucchiai
+COLAZIONE,Cereali e muesli,Extra Croccante di Avena,5-6 cucchiai,5,6,cucchiai
+COLAZIONE,Cereali e muesli,Fiocchi d'avena,6-7 cucchiai,6,7,cucchiai
+COLAZIONE,Cereali e muesli,Fiocchi di avena integrale - Vivibio,6-7 cucchiai,6,7,cucchiai
+COLAZIONE,Cereali e muesli,Fiocchi di avena - Fiorentini,5-6 cucchiai,5,6,cucchiai
+COLAZIONE,Cereali e muesli,Fiocchi di avena mignon - Probios,6-7 cucchiai,6,7,cucchiai
+COLAZIONE,Cereali e muesli,Fiocchi di frumento integrale - Misura,5-6 cucchiai,5,6,cucchiai
+COLAZIONE,Cereali e muesli,Fiocchi di riso,6-7 cucchiai,6,7,cucchiai
+COLAZIONE,Cereali e muesli,Fiocchi di crusca di grano,6-7 cucchiai,6,7,cucchiai
+COLAZIONE,Cereali e muesli,Kellogg's All Bran Prebiotic,5-6 cucchiai,5,6,cucchiai
+COLAZIONE,Cereali e muesli,Kellogg's Special K Protein,5-6 cucchiai,5,6,cucchiai
+COLAZIONE,Cereali e muesli,Muesli croccante,5-6 cucchiai,5,6,cucchiai
+COLAZIONE,Cereali e muesli,Muesli croccante double chocolate - Vitalis,5-6 cucchiai,5,6,cucchiai
+COLAZIONE,Cereali e muesli,Porridge cocco e lamponi - Bowlpros,5-6 cucchiai,5,6,cucchiai
+COLAZIONE,Cereali e muesli,Riso soffiato,5-6 cucchiai,5,6,cucchiai
+COLAZIONE,Cereali e muesli,Weetabix,3 formelle,3,3,formelle
+COLAZIONE,Cereali e muesli,Special K - Kellogg's,5-6 cucchiai,5,6,cucchiai
+COLAZIONE,Fette biscottate,Gallette di riso,4,4,4,pz
+COLAZIONE,Fette biscottate,Pancake,4,4,4,pz
+COLAZIONE,Fette biscottate,Pan Bauletto integrale,2 fette,2,2,fette
+COLAZIONE,Fette biscottate,Pan Bauletto ai cereali,2 fette,2,2,fette
+COLAZIONE,Fette biscottate,Pane tostato,40 g,40,40,g
+COLAZIONE,Marmellata,Burro di arachidi Smooth crema morbida - Why Nature,5-6 cucchiaini,5,6,cucchiaini
+COLAZIONE,Marmellata,Crema di arachidi - Fior di Loto,4-5 cucchiaini,4,5,cucchiaini
+COLAZIONE,Marmellata,Crema di nocciole e cacao,2-3 cucchiaini,2,3,cucchiaini
+COLAZIONE,Marmellata,Crema Novi,2-3 cucchiaini,2,3,cucchiaini
+COLAZIONE,Marmellata,Foodspring - crema alle nocciole,4-5 cucchiaini,4,5,cucchiaini
+COLAZIONE,Marmellata,Foodspring - burro di arachidi,5-6 cucchiaini,5,6,cucchiaini
+COLAZIONE,Marmellata,Marmellata - Rigoni di Asiago,6-7 cucchiaini,6,7,cucchiaini
+COLAZIONE,Marmellata,Marmellata + burro di arachidi,3-4 + 2-3 cucchiaini,,,
+COLAZIONE,Marmellata,Confettura Hero Light,7-8 cucchiaini,7,8,cucchiaini
+COLAZIONE,Marmellata,Nut Zero - crema proteica,4-5 cucchiaini,4,5,cucchiaini
+COLAZIONE,Marmellata,Nutella,1-2 cucchiaini,1,2,cucchiaini
+COLAZIONE,Marmellata,Peanut Butter - Fiorentini,4-5 cucchiaini,4,5,cucchiaini
+COLAZIONE,Marmellata,Pistacchio Zero - crema proteica - Pro Nutrition,5-6 cucchiaini,5,6,cucchiaini
+COLAZIONE,Marmellata,Skippy cremoso burro di arachidi,4-5 cucchiaini,4,5,cucchiaini
+COLAZIONE,Biscotti,Abbracci,4-5,4,5,pz
+COLAZIONE,Biscotti,Biscotti Misura,4-5,4,5,pz
+COLAZIONE,Biscotti,Biscotti Galbusera,5-6,5,6,pz
+COLAZIONE,Biscotti,Biscotti integrali,5-6,5,6,pz
+COLAZIONE,Biscotti,Biscotti senza zuccheri,5-6,5,6,pz
+COLAZIONE,Biscotti,Gocciole,2-3,2,3,pz
+COLAZIONE,Biscotti,"Gran Cereali (classici, croccanti e cioccolato)",5-6,5,6,pz
+COLAZIONE,Biscotti,Krumini,4-5,4,5,pz
+COLAZIONE,Biscotti,Nastrine,1,1,1,pz
+COLAZIONE,Biscotti,Oro Saiwa,4-5,4,5,pz
+COLAZIONE,Biscotti,Pavesini,1 pacchetto,1,1,pacchetti
+COLAZIONE,Biscotti,Pan di Stelle,3-4,3,4,pz
+COLAZIONE,Biscotti,Ritornelli,3-4,3,4,pz
+COLAZIONE,Colazione salata / spuntino salato,Alpino spalmabile - Osella,30 g,30,30,g
+COLAZIONE,Colazione salata / spuntino salato,Bresaola,40 g,40,40,g
+COLAZIONE,Colazione salata / spuntino salato,Peanut Butter - Fiorentini,1-2 cucchiaini,1,2,cucchiaini
+COLAZIONE,Colazione salata / spuntino salato,Hummus di ceci,40 g,40,40,g
+COLAZIONE,Colazione salata / spuntino salato,Fiocchi di latte,40 g,40,40,g
+COLAZIONE,Colazione salata / spuntino salato,Formaggi spalmabili,20 g,20,20,g
+COLAZIONE,Colazione salata / spuntino salato,Grana,20 g,20,20,g
+COLAZIONE,Colazione salata / spuntino salato,Salmone affumicato,40 g,40,40,g
+COLAZIONE,Colazione salata / spuntino salato,Prosciutto cotto,40 g,40,40,g
+COLAZIONE,Colazione salata / spuntino salato,Prosciutto crudo,40 g,40,40,g
+COLAZIONE,Colazione salata / spuntino salato,Uova,1,1,1,pz
+COLAZIONE,Latte e yogurt,Latte senza lattosio,1 bicchiere,1,1,bicchieri
+COLAZIONE,Latte e yogurt,Latte,1 bicchiere,1,1,bicchieri
+COLAZIONE,Latte e yogurt,Bevanda vegetale,1 bicchiere,1,1,bicchieri
+COLAZIONE,Latte e yogurt,Dessert proteico - Lidl - 200 g,1 vasetto,1,1,vasetti
+COLAZIONE,Latte e yogurt,Kefir,1 vasetto,1,1,vasetti
+COLAZIONE,Latte e yogurt,HiPro 15 g proteine - Danone (mirtillo),1 vasetto,1,1,vasetti
+COLAZIONE,Latte e yogurt,Muller greco magro alla fragola,1 vasetto,1,1,vasetti
+COLAZIONE,Latte e yogurt,Muller Kefir alla fragola da bere,mezzo bicchiere,0.5,0.5,bicchieri
+COLAZIONE,Latte e yogurt,Muller Kefir bianco,1 bicchiere,1,1,bicchieri
+COLAZIONE,Latte e yogurt,Pudding vaniglia High Protein - Ehrmann 200 g,1 vasetto,1,1,vasetti
+COLAZIONE,Latte e yogurt,Sterzing Vipiteno yogurt bianco,1 vasetto,1,1,vasetti
+COLAZIONE,Latte e yogurt,Yomo Go fragola - Yomo,1 vasetto,1,1,vasetti
+COLAZIONE,Latte e yogurt,Fage bianco 5%,1 vasetto,1,1,vasetti
+COLAZIONE,Latte e yogurt,Yogurt 0% lipidi,1 vasetto,1,1,vasetti
+COLAZIONE,Latte e yogurt,Yogurt intero alla frutta,1 vasetto,1,1,vasetti
+COLAZIONE,Latte e yogurt,Yogurt bianco,1 vasetto,1,1,vasetti
+COLAZIONE,Latte e yogurt,Yogurt greco bianco,1 vasetto,1,1,vasetti
+COLAZIONE,Latte e yogurt,Yogurt vegetale,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Alpro naturale senza zuccheri,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Alpro naturale con mandorla,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Alpro con frutti rossi zero zuccheri,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Alpro mango,100 g,100,100,g
+SPUNTINI,Yogurt e kefir,Budino Valsoia,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Kefir Nestlé,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Kefir Milk,1 vasetto e mezzo,1.5,1.5,vasetti
+SPUNTINI,Yogurt e kefir,Fruyo fragola 0%,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Gran Dessert Valsoia,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Milk zero grassi alla frutta,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Milk zero grassi bianco,2 vasetti,2,2,vasetti
+SPUNTINI,Yogurt e kefir,Muller magro bianco con isomaltulosio,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Muller magro pesca e maracuja con isomaltulosio,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Muller Mix bianco + fragole,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Sterzing Vipiteno yogurt bianco,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Sterzing Vipiteno Fitline bianco,2 vasetti,2,2,vasetti
+SPUNTINI,Yogurt e kefir,Selex intero vaniglia,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Selex magro caffè,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Selex magro bianco,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Yogurt Yomo,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Yogurt greco,1 vasetto,1,1,vasetti
+SPUNTINI,Yogurt e kefir,Yogurt Muller bianco,1 vasetto,1,1,vasetti
+SPUNTINI,Colazione salata / spuntino salato,Alpino spalmabile - Osella,30 g,30,30,g
+SPUNTINI,Colazione salata / spuntino salato,Bresaola,40 g,40,40,g
+SPUNTINI,Colazione salata / spuntino salato,Peanut Butter - Fiorentini,1-2 cucchiaini,1,2,cucchiaini
+SPUNTINI,Colazione salata / spuntino salato,Hummus di ceci,40 g,40,40,g
+SPUNTINI,Colazione salata / spuntino salato,Fiocchi di latte,40 g,40,40,g
+SPUNTINI,Colazione salata / spuntino salato,Formaggi spalmabili,20 g,20,20,g
+SPUNTINI,Colazione salata / spuntino salato,Grana,20 g,20,20,g
+SPUNTINI,Colazione salata / spuntino salato,Salmone affumicato,40 g,40,40,g
+SPUNTINI,Colazione salata / spuntino salato,Prosciutto cotto,40 g,40,40,g
+SPUNTINI,Colazione salata / spuntino salato,Prosciutto crudo,40 g,40,40,g
+SPUNTINI,Colazione salata / spuntino salato,Uova,1,1,1,pz
+SPUNTINI,Crackers e sostituti (= 1 pacchetto di crackers),Crackers,1 pacchetto,1,1,pacchetti
+SPUNTINI,Crackers e sostituti (= 1 pacchetto di crackers),Crackers integrali,1 pacchetto,1,1,pacchetti
+SPUNTINI,Crackers e sostituti (= 1 pacchetto di crackers),Fette biscottate,3-4,3,4,pz
+SPUNTINI,Crackers e sostituti (= 1 pacchetto di crackers),Gallette di riso,3,3,3,pz
+SPUNTINI,Crackers e sostituti (= 1 pacchetto di crackers),Gallette di mais,3-4,3,4,pz
+SPUNTINI,Crackers e sostituti (= 1 pacchetto di crackers),Grissini,5-6,5,6,pz
+SPUNTINI,Crackers e sostituti (= 1 pacchetto di crackers),Focaccia,40 g,40,40,g
+SPUNTINI,Crackers e sostituti (= 1 pacchetto di crackers),Pizza bianca,40 g,40,40,g
+SPUNTINI,Crackers e sostituti (= 1 pacchetto di crackers),Wasa,3-4,3,4,pz
+SPUNTINI,Crackers e sostituti (= 1 pacchetto di crackers),Bibanesi,4-5,4,5,pz
+SPUNTINI,Crackers e sostituti (= 1 pacchetto di crackers),Tarallini - Terre d'Italia,1 pacchettino (50 g),50,50,g
+SPUNTINI,Crackers e sostituti (= 1 pacchetto di crackers),Pane,50 g,50,50,g
+SPUNTINI,Frutta,"Frutto grande (mela, pera ecc.)",1,1,1,pz
+SPUNTINI,Frutta,"Frutta piccola (mandarini, kiwi)",2,2,2,pz
+SPUNTINI,Sembra frutta ma non è,Frutta disidratata NON zuccherata,30 g,30,30,g
+SPUNTINI,Sembra frutta ma non è,Fruttini - Valfrutta,100 g,100,100,g
+SPUNTINI,Sembra frutta ma non è,Mousse Melinda,100 g,100,100,g
+SPUNTINI,Frutta secca e semi,Frutta secca,30 g,30,30,g
+SPUNTINI,Frutta secca e semi,Semi,20 g,20,20,g
+CEREALI E FONTI DI CARBOIDRATI,Pane e sostituti,Crackers integrali,1.5 pacchetti,1.5,1.5,pacchetti
+CEREALI E FONTI DI CARBOIDRATI,Pane e sostituti,Fiori d'acqua,10-12,10,12,pz
+CEREALI E FONTI DI CARBOIDRATI,Pane e sostituti,Granetti integrali,4,4,4,pz
+CEREALI E FONTI DI CARBOIDRATI,Pane e sostituti,Grissini,6-7,6,7,pz
+CEREALI E FONTI DI CARBOIDRATI,Pane e sostituti,Cracker,1.5 pacchetti,1.5,1.5,pacchetti
+CEREALI E FONTI DI CARBOIDRATI,Pane e sostituti,Pane,40 g,40,40,g
+CEREALI E FONTI DI CARBOIDRATI,Pane e sostituti,Piadina,1,1,1,pz
+CEREALI E FONTI DI CARBOIDRATI,Pane e sostituti,Focaccia,40 g,40,40,g
+CEREALI E FONTI DI CARBOIDRATI,Pane (invece della pasta),Cracker,2 pacchetti,2,2,pacchetti
+CEREALI E FONTI DI CARBOIDRATI,Pane (invece della pasta),Focaccia,70 g,70,70,g
+CEREALI E FONTI DI CARBOIDRATI,Pane (invece della pasta),Gallette di riso,5-6,5,6,pz
+CEREALI E FONTI DI CARBOIDRATI,Pane (invece della pasta),Mais,150 g,150,150,g
+CEREALI E FONTI DI CARBOIDRATI,Pane (invece della pasta),Patate,250 g,250,250,g
+CEREALI E FONTI DI CARBOIDRATI,Pane (invece della pasta),Pane,100 g,100,100,g
+CEREALI E FONTI DI CARBOIDRATI,Pane (invece della pasta),Piadina,1.5,1.5,1.5,pz
+CEREALI E FONTI DI CARBOIDRATI,Pane (invece della pasta),Riso / farro / cereali vari,80 g,80,80,g
+CEREALI E FONTI DI CARBOIDRATI,Pane (invece della pasta),Mais + crackers,100 g + 1 pacchetto,,,
+CEREALI E FONTI DI CARBOIDRATI,Primi,Riso / pasta / orzo / bulgur ecc.,80 g,80,80,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Farro,70 g,70,70,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Gnocchi,200 g,200,200,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Miso,170 g,170,170,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Udon,100 g,100,100,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Mais in scatola,150 g,150,150,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Polenta,90 g,90,90,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Pasta all'uovo,80 g,80,80,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Pane,100 g,100,100,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Patate,250 g,250,250,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Focaccia,70 g,70,70,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Tortellini,160 g,160,160,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Agnolotti,100 g,100,100,g
+CEREALI E FONTI DI CARBOIDRATI,Primi,Riso + pane,60 g + 40 g,,,
+CEREALI E FONTI DI CARBOIDRATI,Primi,Riso + pasta di legumi,60 g + 60 g,,,
+CEREALI E FONTI DI CARBOIDRATI,Primi,Riso + patate,60 g + 150 g,,,
+FONTI PROTEICHE,Legumi,Burger di ceci,2,2,2,pz
+FONTI PROTEICHE,Legumi,Burger di tofu,2,2,2,pz
+FONTI PROTEICHE,Legumi,Burger di ceci - Kioene,2,2,2,pz
+FONTI PROTEICHE,Legumi,Burger di ceci - Hary&Co,2,2,2,pz
+FONTI PROTEICHE,Legumi,Ceci secchi,60 g,60,60,g
+FONTI PROTEICHE,Legumi,Ceci in scatola,120 g,120,120,g
+FONTI PROTEICHE,Legumi,Cotoletta Kioene,100 g,100,100,g
+FONTI PROTEICHE,Legumi,Fagioli in scatola,140 g,140,140,g
+FONTI PROTEICHE,Legumi,Fagioli secchi,60 g,60,60,g
+FONTI PROTEICHE,Legumi,Fave secche,60 g,60,60,g
+FONTI PROTEICHE,Legumi,Fave fresche,200 g,200,200,g
+FONTI PROTEICHE,Legumi,Lenticchie secche,60 g,60,60,g
+FONTI PROTEICHE,Legumi,Lenticchie in scatola,140 g,140,140,g
+FONTI PROTEICHE,Legumi,Lupini,100 g,100,100,g
+FONTI PROTEICHE,Legumi,Hummus di ceci,100 g,100,100,g
+FONTI PROTEICHE,Legumi,Nuggets vegetali,70 g,70,70,g
+FONTI PROTEICHE,Legumi,Pasta di legumi - Barilla,60 g,60,60,g
+FONTI PROTEICHE,Legumi,Pasta di legumi - Felicia,60 g,60,60,g
+FONTI PROTEICHE,Legumi,Pasta di legumi - Scoiattolo,60 g,60,60,g
+FONTI PROTEICHE,Legumi,Pasta di legumi - Rummo,60 g,60,60,g
+FONTI PROTEICHE,Legumi,Piselli freschi,200 g,200,200,g
+FONTI PROTEICHE,Legumi,Piselli in scatola,160 g,160,160,g
+FONTI PROTEICHE,Legumi,Piselli surgelati,140 g,140,140,g
+FONTI PROTEICHE,Legumi,Polpette vegetali,70 g,70,70,g
+FONTI PROTEICHE,Legumi,Soia edamame,130 g,130,130,g
+FONTI PROTEICHE,Legumi,Tofu,150 g,150,150,g
+FONTI PROTEICHE,Uova,Uova,2,2,2,pz
+FONTI PROTEICHE,Uova,Albume,200 g,200,200,g
+FONTI PROTEICHE,Carne,Arista di maiale,70 g,70,70,g
+FONTI PROTEICHE,Carne,Albese,80 g,80,80,g
+FONTI PROTEICHE,Carne,Agnello,70 g,70,70,g
+FONTI PROTEICHE,Carne,Bresaola,80 g,80,80,g
+FONTI PROTEICHE,Carne,Carne di cavallo,70 g,70,70,g
+FONTI PROTEICHE,Carne,Coniglio,110 g,110,110,g
+FONTI PROTEICHE,Carne,Coppa,20 g,20,20,g
+FONTI PROTEICHE,Carne,Coscia di pollo (senza pelle),100 g,100,100,g
+FONTI PROTEICHE,Carne,Coscia di tacchino,80 g,80,80,g
+FONTI PROTEICHE,Carne,Fegato,80 g,80,80,g
+FONTI PROTEICHE,Carne,Fesa di tacchino,100 g,100,100,g
+FONTI PROTEICHE,Carne,Gallina,80 g,80,80,g
+FONTI PROTEICHE,Carne,Lingua,50 g,50,50,g
+FONTI PROTEICHE,Carne,Hamburger di chianina - Terre d'Italia,1,1,1,pz
+FONTI PROTEICHE,Carne,Hamburger di chianina - Sapori & Dintorni,1,1,1,pz
+FONTI PROTEICHE,Carne,Bistecca di maiale,70 g,70,70,g
+FONTI PROTEICHE,Carne,Mortadella,20 g,20,20,g
+FONTI PROTEICHE,Carne,Petto di pollo,150 g,150,150,g
+FONTI PROTEICHE,Carne,Petto di tacchino,110 g,110,110,g
+FONTI PROTEICHE,Carne,Prosciutto cotto,80 g,80,80,g
+FONTI PROTEICHE,Carne,Prosciutto crudo,60 g,60,60,g
+FONTI PROTEICHE,Carne,Salame,2 fette,2,2,fette
+FONTI PROTEICHE,Carne,Salsiccia,40 g,40,40,g
+FONTI PROTEICHE,Carne,Salsiccia di Bra,40 g,40,40,g
+FONTI PROTEICHE,Carne,Speck,30 g,30,30,g
+FONTI PROTEICHE,Carne,Filetto di vitello,110 g,110,110,g
+FONTI PROTEICHE,Carne,Vitellone,90 g,90,90,g
+FONTI PROTEICHE,Formaggi,Asiago,40 g,40,40,g
+FONTI PROTEICHE,Formaggi,Brie,30 g,30,30,g
+FONTI PROTEICHE,Formaggi,Burrini,30 g,30,30,g
+FONTI PROTEICHE,Formaggi,Burratina Deliziosa,metà,0.5,0.5,pz
+FONTI PROTEICHE,Formaggi,Burrata Vallelata,metà,0.5,0.5,pz
+FONTI PROTEICHE,Formaggi,Burrata di Puglia,metà,0.5,0.5,pz
+FONTI PROTEICHE,Formaggi,Burrini,20 g,20,20,g
+FONTI PROTEICHE,Formaggi,Caciottina,60 g,60,60,g
+FONTI PROTEICHE,Formaggi,Caprino,40 g,40,40,g
+FONTI PROTEICHE,Formaggi,Emmenthal,30 g,30,30,g
+FONTI PROTEICHE,Formaggi,Feta,40 g,40,40,g
+FONTI PROTEICHE,Formaggi,Fiocchi di latte,110 g,110,110,g
+FONTI PROTEICHE,Formaggi,Fontina,40 g,40,40,g
+FONTI PROTEICHE,Formaggi,Gorgonzola,30 g,30,30,g
+FONTI PROTEICHE,Formaggi,Grana,30 g,30,30,g
+FONTI PROTEICHE,Formaggi,Mozzarella,50 g,50,50,g
+FONTI PROTEICHE,Formaggi,Mozzarella di bufala - Vallelata,50 g,50,50,g
+FONTI PROTEICHE,Formaggi,Parmigiano,30 g,30,30,g
+FONTI PROTEICHE,Formaggi,Philadelphia,30 g,30,30,g
+FONTI PROTEICHE,Formaggi,Pecorino,40 g,40,40,g
+FONTI PROTEICHE,Formaggi,Primosale,70 g,70,70,g
+FONTI PROTEICHE,Formaggi,Provolone,40 g,40,40,g
+FONTI PROTEICHE,Formaggi,Ricotta di bufala,50 g,50,50,g
+FONTI PROTEICHE,Formaggi,Ricotta di vacca,100 g,100,100,g
+FONTI PROTEICHE,Formaggi,Robiola,40 g,40,40,g
+FONTI PROTEICHE,Formaggi,Scamorza,40 g,40,40,g
+FONTI PROTEICHE,Formaggi,Stracchino,40 g,40,40,g
+FONTI PROTEICHE,Formaggi,Taleggio,30 g,30,30,g
+FONTI PROTEICHE,Formaggi,Yocca,100 g,100,100,g
+FONTI PROTEICHE,Formaggi,Yocca,150 g,150,150,g
+FONTI PROTEICHE,Pesce,Bastoncini di salmone - Findus,70 g,70,70,g
+FONTI PROTEICHE,Pesce,Calamaro,220 g,220,220,g
+FONTI PROTEICHE,Pesce,Cernia,190 g,190,190,g
+FONTI PROTEICHE,Pesce,Cozze,180 g,180,180,g
+FONTI PROTEICHE,Pesce,Croccole,2,2,2,pz
+FONTI PROTEICHE,Pesce,Cuore di merluzzo surgelato,200 g,200,200,g
+FONTI PROTEICHE,Pesce,Dentice,150 g,150,150,g
+FONTI PROTEICHE,Pesce,Fiori di branzino - Findus,90 g,90,90,g
+FONTI PROTEICHE,Pesce,Fior di merluzzo - Findus,200 g,200,200,g
+FONTI PROTEICHE,Pesce,Fiori di nasello - Findus,190 g,190,190,g
+FONTI PROTEICHE,Pesce,Fiori di salmone,80 g,80,80,g
+FONTI PROTEICHE,Pesce,Filetti di sardina - Noriberica,160 g,160,160,g
+FONTI PROTEICHE,Pesce,Filetti di tonno - Conad,150 g,150,150,g
+FONTI PROTEICHE,Pesce,Filetti di salmone,125 g,125,125,g
+FONTI PROTEICHE,Pesce,Gamberi,210 g,210,210,g
+FONTI PROTEICHE,Pesce,Gamberi sgusciati - Findus,210 g,210,210,g
+FONTI PROTEICHE,Pesce,Halibut,130 g,130,130,g
+FONTI PROTEICHE,Pesce,Hamburger di salmone,2,2,2,pz
+FONTI PROTEICHE,Pesce,Merluzzo o nasello freschi,210 g,210,210,g
+FONTI PROTEICHE,Pesce,Merluzzo o nasello surgelati,200 g,200,200,g
+FONTI PROTEICHE,Pesce,Merluzzo gratinato - Findus,120 g,120,120,g
+FONTI PROTEICHE,Pesce,Orata fresca,150 g,150,150,g
+FONTI PROTEICHE,Pesce,Palombo,190 g,190,190,g
+FONTI PROTEICHE,Pesce,Pesce spada,140 g,140,140,g
+FONTI PROTEICHE,Pesce,Pesce persico,200 g,200,200,g
+FONTI PROTEICHE,Pesce,Polpo,250 g,250,250,g
+FONTI PROTEICHE,Pesce,Polpette di salmone,100 g,100,100,g
+FONTI PROTEICHE,Pesce,Salmone affumicato,100 g,100,100,g
+FONTI PROTEICHE,Pesce,Salmone fresco,80 g,80,80,g
+FONTI PROTEICHE,Pesce,Sarda,120 g,120,120,g
+FONTI PROTEICHE,Pesce,Sgombro,90 g,90,90,g
+FONTI PROTEICHE,Pesce,Seppia surgelata,240 g,240,240,g
+FONTI PROTEICHE,Pesce,Scorfano,180 g,180,180,g
+FONTI PROTEICHE,Pesce,Sogliola,180 g,180,180,g
+FONTI PROTEICHE,Pesce,Spigola,180 g,180,180,g
+FONTI PROTEICHE,Pesce,Tonno fresco,90 g,90,90,g
+FONTI PROTEICHE,Pesce,Tonno in scatola,1 lattina media (80 g),80,80,g
+FONTI PROTEICHE,Pesce,Triglia,120 g,120,120,g
+FONTI PROTEICHE,Pesce,Trota,170 g,170,170,g
+FONTI PROTEICHE,Pesce,Vongole,200 g,200,200,g
+ASSOCIAZIONI,Esempi,Pasta + pasta di legumi,60 g + 40 g,,,
+ASSOCIAZIONI,Esempi,Bresaola + grana,100 g + 30 g,,,
+ASSOCIAZIONI,Esempi,Uova + fagioli in scatola,1 + 100 g,,,
+ASSOCIAZIONI,Esempi,Uova + tonno in scatola,1 + 1 lattina,,,
+ASSOCIAZIONI,Esempi,Uova + feta,1 + 40 g,,,
+ASSOCIAZIONI,Esempi,Petto di pollo + fagioli in scatola,100 g + 100 g,,,
+ASSOCIAZIONI,Esempi,Tonno in scatola + fagioli in scatola,80 g + 80 g,,,
+VERDURA,,Verdura fresca,200 g,200,200,g
+VERDURA,,Insalata a foglia,80 g,80,80,g
+FRUTTA,,Frutta,150 g,150,150,g
