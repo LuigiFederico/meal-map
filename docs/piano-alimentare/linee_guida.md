@@ -1,6 +1,6 @@
 # Linee guida del piano alimentare
 
-Fonte: piano alimentare della Dott.ssa Federica Bezzi (Biologo Nutrizionista), novembre 2024.
+Fonte: piano alimentare della nutrizionista, novembre 2024.
 
 ## Obiettivo
 
