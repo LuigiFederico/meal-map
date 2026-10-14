@@ -95,6 +95,13 @@ Le "associazioni" della tabella (es. "Uova + feta") non vengono importate. Le vo
 
 Al primo avvio il database contiene le regole e le alternative del piano (`app/src/main/assets/seed/foods.json`, generato con `python3 scripts/build_seed_foods.py`). La settimana resta vuota finché non la generi da "Nuova settimana".
 
+### Rilascio
+
+- **Quando:** ogni push su `main` diventa una release GitHub `v1.0.N`, dove N è il numero di esecuzione della Action e fa anche da `versionCode`. Esce una release anche per modifiche che non toccano l'app.
+- **Aggiornamenti:** nessun pulsante nell'app. Li installa Obtainium, che legge le release del repo.
+- **Firma:** una chiave di release dedicata, nei secret del repo. Le build locali senza chiave restano non firmate.
+- **Database:** l'aggiornamento conserva i dati, quindi ogni modifica allo schema Room richiede una migrazione. Senza, l'app aggiornata non si apre.
+
 ## Architettura
 
 Un solo modulo `app`, diviso in tre livelli:
