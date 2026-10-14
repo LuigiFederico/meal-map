@@ -30,6 +30,7 @@ class BalanceContentTest {
                     balance = sampleWeek.balance(FrequencyRule.DEFAULTS),
                 ),
                 onOpenWeek = { openedWeek = true },
+                onNewWeek = {},
             )
         }
     }

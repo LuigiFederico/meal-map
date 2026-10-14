@@ -46,6 +46,7 @@ class WeekContentTest {
                 onCancelSwap = {},
                 onOpenBalance = onOpenBalance,
                 onOpenMeal = { openedMeal = it },
+                onNewWeek = {},
                 onSwap = { swaps += it },
             )
         }

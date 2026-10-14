@@ -45,7 +45,12 @@ import it.mealmap.ui.theme.DashedOutline
 import it.mealmap.ui.theme.Warning
 
 @Composable
-fun BalanceScreen(state: BalanceUiState, onOpenWeek: () -> Unit, modifier: Modifier = Modifier) {
+fun BalanceScreen(
+    state: BalanceUiState,
+    onOpenWeek: () -> Unit,
+    onNewWeek: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     Column(modifier.verticalScroll(rememberScrollState())) {
         WaveHeader(
             title = stringResource(R.string.tab_balance),
@@ -58,7 +63,7 @@ fun BalanceScreen(state: BalanceUiState, onOpenWeek: () -> Unit, modifier: Modif
         ) {
             when {
                 state.loading -> Unit
-                balance == null -> EmptyWeek()
+                balance == null -> EmptyWeek(onNewWeek)
                 else -> {
                     if (balance.overLimit.isNotEmpty()) {
                         OverLimitAlert(

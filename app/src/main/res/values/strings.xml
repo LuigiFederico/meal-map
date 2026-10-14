@@ -67,7 +67,7 @@
     <string name="rule_free">libero</string>
 
     <string name="week_empty_title">Nessuna settimana pianificata</string>
-    <string name="week_empty_body">Generala da “Nuova settimana”.</string>
+    <string name="week_empty_body">Segna i pasti già decisi e l’app genera il resto rispettando le regole.</string>
     <string name="week_column_lunch">PRANZO</string>
     <string name="week_column_dinner">CENA</string>
     <string name="week_uncounted">non conta nel bilancio</string>
@@ -158,4 +158,27 @@
     <string name="cancel">Annulla</string>
     <string name="undo">Annulla</string>
     <string name="week_swap_here">Scambia qui</string>
+
+    <string name="new_week_title">Nuova settimana</string>
+    <string name="new_week_question">Cosa è già deciso?</string>
+    <string name="new_week_intro">Segna i pasti fuori, in mensa o a scelta. Il resto lo genera l’app rispettando le regole. Tocca un pasto per cambiarlo.</string>
+    <string name="new_week_generate_slot">Genera</string>
+    <string name="new_week_fixed_meal">Fisso · %1$s</string>
+    <string name="new_week_fixed_legend">Fisso (bloccato)</string>
+    <string name="new_week_change_hint">Tocca per cambiare</string>
+    <string name="new_week_lock_note">I pasti bloccati nella settimana attuale arrivano già fissati. Per fissarne un altro, bloccalo dal suo dettaglio.</string>
+    <plurals name="new_week_to_generate">
+        <item quantity="one">%1$d pasto da generare</item>
+        <item quantity="other">%1$d pasti da generare</item>
+    </plurals>
+    <plurals name="new_week_fixed_count">
+        <item quantity="one">%1$d fisso</item>
+        <item quantity="other">%1$d fissi</item>
+    </plurals>
+    <plurals name="new_week_uncounted">
+        <item quantity="one">%1$d senza categoria</item>
+        <item quantity="other">%1$d senza categoria</item>
+    </plurals>
+    <string name="new_week_cta">Genera settimana</string>
+    <string name="new_week_caption">Sostituisce la settimana attuale · potrai modificarla subito dopo</string>
 </resources>

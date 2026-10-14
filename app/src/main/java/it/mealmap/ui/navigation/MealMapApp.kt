@@ -21,7 +21,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -37,6 +36,7 @@ import it.mealmap.ui.appViewModel
 import it.mealmap.ui.balance.BalanceScreen
 import it.mealmap.ui.balance.BalanceViewModel
 import it.mealmap.ui.meal.EditMealScreen
+import it.mealmap.ui.newweek.NewWeekScreen
 import it.mealmap.ui.rules.RulesScreen
 import it.mealmap.ui.today.TodayScreen
 import it.mealmap.ui.week.WeekScreen
@@ -50,8 +50,9 @@ fun MealMapApp(navController: NavHostController = rememberNavController()) {
     // A meal waiting to be swapped by tapping another one; set from any meal detail sheet.
     var swapSource by remember { mutableStateOf<MealSlot?>(null) }
     val onEditMeal = { slot: MealSlot ->
-        navController.navigate(EditMealRoute(MealSlot.ALL.indexOf(slot)))
+        navController.navigate(EditMealRoute(MealSlot.ALL.indexOf(slot))) { launchSingleTop = true }
     }
+    val onNewWeek = { navController.navigate(NewWeekRoute) { launchSingleTop = true } }
     val currentDestination = navController.currentBackStackEntryAsState().value?.destination
     // The first frame has no destination yet: it is the start tab.
     val onTab = currentDestination == null ||
@@ -75,6 +76,7 @@ fun MealMapApp(navController: NavHostController = rememberNavController()) {
                         swapSource = slot
                         navController.navigateToTab(TopLevelDestination.WEEK)
                     },
+                    onNewWeek = onNewWeek,
                 )
             }
             composable<WeekRoute> {
@@ -84,24 +86,36 @@ fun MealMapApp(navController: NavHostController = rememberNavController()) {
                     onSwapSourceChange = { swapSource = it },
                     onEditMeal = onEditMeal,
                     onOpenBalance = { navController.navigateToTab(TopLevelDestination.BALANCE) },
+                    onNewWeek = onNewWeek,
                 )
             }
             composable<BalanceRoute> {
                 BalanceScreen(
                     state = balanceState,
                     onOpenWeek = { navController.navigateToTab(TopLevelDestination.WEEK) },
+                    onNewWeek = onNewWeek,
                 )
             }
             composable<RulesRoute> { RulesScreen() }
             composable<EditMealRoute> { entry ->
                 EditMealScreen(
                     slot = MealSlot.ALL[entry.toRoute<EditMealRoute>().slot],
-                    // Close and save can both fire: only the first one, while resumed, goes back.
-                    onDone = dropUnlessResumed { navController.popBackStack() },
+                    onDone = { navController.popBackStackFrom<EditMealRoute>() },
                 )
+            }
+            composable<NewWeekRoute> {
+                NewWeekScreen(onDone = { navController.popBackStackFrom<NewWeekRoute>() })
             }
         }
     }
+}
+
+/**
+ * Leaves a full-screen destination. Close and "done" can both fire (a double tap, or saving
+ * while closing): only the first call goes back, the others find another destination on top.
+ */
+private inline fun <reified T : Any> NavHostController.popBackStackFrom() {
+    if (currentDestination?.hasRoute(T::class) == true) popBackStack()
 }
 
 private fun NavHostController.navigateToTab(destination: TopLevelDestination) {

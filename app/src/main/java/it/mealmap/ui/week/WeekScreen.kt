@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SnackbarDuration
@@ -65,6 +66,7 @@ fun WeekScreen(
     onSwapSourceChange: (MealSlot?) -> Unit,
     onOpenBalance: () -> Unit,
     onEditMeal: (MealSlot) -> Unit,
+    onNewWeek: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val viewModel = appViewModel { WeekViewModel(it.weekRepository) }
@@ -85,13 +87,31 @@ fun WeekScreen(
             onCancelSwap = { onSwapSourceChange(null) },
             onOpenBalance = onOpenBalance,
             onOpenMeal = detail::show,
+            onNewWeek = onNewWeek,
             onSwap = { swap ->
                 viewModel.swap(swap)
                 onSwapSourceChange(null)
                 lastSwap = SwapEvent(swap, System.nanoTime())
             },
         )
-        SnackbarHost(snackbar, Modifier.align(Alignment.BottomCenter))
+        if (state.week != null) {
+            ExtendedFloatingActionButton(
+                onClick = onNewWeek,
+                icon = { Icon(AppIcons.Generate, contentDescription = null) },
+                text = { Text(stringResource(R.string.new_week_title)) },
+                containerColor = MaterialTheme.colorScheme.tertiary,
+                contentColor = MaterialTheme.colorScheme.onTertiary,
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(16.dp),
+            )
+        }
+        SnackbarHost(
+            snackbar,
+            Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 80.dp),
+        )
     }
     MealDetailSheet(detail, onEdit = onEditMeal, onSwap = onSwapSourceChange)
 
@@ -130,6 +150,7 @@ fun WeekContent(
     onCancelSwap: () -> Unit,
     onOpenBalance: () -> Unit,
     onOpenMeal: (MealSlot) -> Unit,
+    onNewWeek: () -> Unit,
     onSwap: (Swap) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -140,12 +161,12 @@ fun WeekContent(
         )
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 88.dp),
         ) {
             val week = state.week
             when {
                 state.loading -> Unit
-                week == null -> EmptyWeek()
+                week == null -> EmptyWeek(onNewWeek)
                 else -> {
                     if (overLimit.isNotEmpty()) OverLimitChip(overLimit, onOpenBalance)
                     swapSource?.let { SwapModeBanner(it, onCancelSwap) }

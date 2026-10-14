@@ -3,6 +3,9 @@ package it.mealmap.ui.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,9 +18,9 @@ import it.mealmap.R
 
 /** Shown in place of the week until the first one is generated. */
 @Composable
-fun EmptyWeek(modifier: Modifier = Modifier) {
+fun EmptyWeek(onCreateWeek: () -> Unit, modifier: Modifier = Modifier) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(4.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
         modifier = modifier.padding(vertical = 24.dp),
     ) {
         Text(
@@ -30,5 +33,9 @@ fun EmptyWeek(modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+        Button(onClick = onCreateWeek) {
+            Icon(AppIcons.Generate, contentDescription = null, modifier = Modifier.size(20.dp))
+            Text(stringResource(R.string.new_week_title), modifier = Modifier.padding(start = 8.dp))
+        }
     }
 }

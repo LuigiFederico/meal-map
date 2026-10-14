@@ -15,6 +15,7 @@ import it.mealmap.ui.theme.MealMapTheme
 import it.mealmap.ui.week.WeekUiState
 import java.time.DayOfWeek
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -26,6 +27,7 @@ class TodayContentTest {
 
     private var openedMeal: MealSlot? = null
     private var openedReminder: ReminderMoment? = null
+    private var newWeekRequested = false
 
     private fun show(state: WeekUiState = WeekUiState(loading = false, week = sampleWeek)) =
         compose.setContent {
@@ -35,6 +37,7 @@ class TodayContentTest {
                     today = DayOfWeek.WEDNESDAY,
                     onOpenMeal = { openedMeal = it },
                     onOpenReminder = { openedReminder = it },
+                    onNewWeek = { newWeekRequested = true },
                 )
             }
         }
@@ -81,5 +84,7 @@ class TodayContentTest {
 
         compose.onNodeWithText("Colazione").assertExists()
         compose.onNodeWithText("Nessuna settimana pianificata").assertExists()
+        compose.onNodeWithText("Nuova settimana").performScrollTo().performClick()
+        assertTrue(newWeekRequested)
     }
 }

@@ -52,6 +52,9 @@ object AppIcons {
     val Close = icon("M6 6l12 12 M18 6 6 18")
     val Edit = icon("M4 20h4L19 9l-4-4L4 16z")
     val Swap = icon("M7 4 3 8l4 4 M3 8h14 M17 20l4-4-4-4 M21 16H7")
+    val Generate = icon(
+        "M12 3.5v3 M12 17.5v3 M3.5 12h3 M17.5 12h3 M6 6l2 2 M16 16l2 2 M18 6l-2 2 M8 16l-2 2",
+    )
     val Drag = icon("M9 6v.01 M15 6v.01 M9 12v.01 M15 12v.01 M9 18v.01 M15 18v.01")
     val Link = icon(
         "M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1 " +

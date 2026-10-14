@@ -75,6 +75,7 @@ import java.time.DayOfWeek
 fun TodayScreen(
     onEditMeal: (MealSlot) -> Unit,
     onSwapMeal: (MealSlot) -> Unit,
+    onNewWeek: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val viewModel = appViewModel { WeekViewModel(it.weekRepository) }
@@ -87,6 +88,7 @@ fun TodayScreen(
         today = rememberToday(),
         onOpenMeal = detail::show,
         onOpenReminder = { reminder = it },
+        onNewWeek = onNewWeek,
         modifier = modifier,
     )
     MealDetailSheet(detail, onEdit = onEditMeal, onSwap = onSwapMeal)
@@ -99,6 +101,7 @@ fun TodayContent(
     today: DayOfWeek,
     onOpenMeal: (MealSlot) -> Unit,
     onOpenReminder: (ReminderMoment) -> Unit,
+    onNewWeek: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var selectedDay by rememberSaveable(today) { mutableStateOf(today) }
@@ -139,7 +142,7 @@ fun TodayContent(
                 onOpenReminder,
             )
             if (week == null) {
-                if (!state.loading) EmptyWeek()
+                if (!state.loading) EmptyWeek(onNewWeek)
             } else {
                 val lunch = MealSlot(selectedDay, Slot.LUNCH)
                 MealCard(Slot.LUNCH, week[lunch], onClick = { onOpenMeal(lunch) })
