@@ -10,9 +10,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -36,17 +34,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import it.mealmap.R
 import it.mealmap.domain.model.FoodGroup
 import it.mealmap.domain.model.FrequencyRule
 import it.mealmap.domain.model.ProteinCategory
-import it.mealmap.ui.appViewModel
 import it.mealmap.ui.components.AppIcons
 import it.mealmap.ui.components.IconTile
-import it.mealmap.ui.components.WaveHeader
 import it.mealmap.ui.components.colorCategory
 import it.mealmap.ui.components.containerColor
 import it.mealmap.ui.components.contentColor
@@ -55,13 +52,7 @@ import it.mealmap.ui.components.label
 import it.mealmap.ui.components.ruleText
 import java.util.Locale
 
-@Composable
-fun RulesScreen(onOpenGroup: (FoodGroup) -> Unit, modifier: Modifier = Modifier) {
-    val viewModel = appViewModel { RulesViewModel(it.rulesRepository, it.foodRepository) }
-    val state by viewModel.state.collectAsStateWithLifecycle()
-    RulesContent(state, viewModel::update, viewModel::resetToDefaults, onOpenGroup, modifier)
-}
-
+/** The rules section of the settings: weekly frequencies and food alternatives. */
 @Composable
 fun RulesContent(
     state: RulesUiState,
@@ -71,31 +62,33 @@ fun RulesContent(
     modifier: Modifier = Modifier,
 ) {
     var tab by rememberSaveable { mutableIntStateOf(0) }
-    Column(modifier.verticalScroll(rememberScrollState())) {
-        WaveHeader(
-            title = stringResource(R.string.tab_rules),
-            subtitle = stringResource(R.string.rules_subtitle),
-        )
-        Column(
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
-        ) {
-            val tabs = listOf(R.string.rules_tab_frequencies, R.string.rules_tab_alternatives)
-            SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                tabs.forEachIndexed { index, label ->
-                    SegmentedButton(
-                        selected = tab == index,
-                        onClick = { tab = index },
-                        shape = SegmentedButtonDefaults.itemShape(index, tabs.size),
-                        icon = {},
-                    ) { Text(stringResource(label)) }
-                }
+    Column(
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        modifier = modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 12.dp),
+    ) {
+        Column {
+            Text(
+                stringResource(R.string.rules_title),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.semantics { heading() },
+            )
+            Intro(stringResource(R.string.rules_subtitle))
+        }
+        val tabs = listOf(R.string.rules_tab_frequencies, R.string.rules_tab_alternatives)
+        SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+            tabs.forEachIndexed { index, label ->
+                SegmentedButton(
+                    selected = tab == index,
+                    onClick = { tab = index },
+                    shape = SegmentedButtonDefaults.itemShape(index, tabs.size),
+                    icon = {},
+                ) { Text(stringResource(label)) }
             }
-            if (state.loading) return@Column
-            when (tab) {
-                0 -> Frequencies(state.rules, onRuleChange, onReset)
-                else -> Groups(state.groupCounts, onOpenGroup)
-            }
+        }
+        if (state.loading) return@Column
+        when (tab) {
+            0 -> Frequencies(state.rules, onRuleChange, onReset)
+            else -> Groups(state.groupCounts, onOpenGroup)
         }
     }
 }

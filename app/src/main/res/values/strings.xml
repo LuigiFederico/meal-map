@@ -5,12 +5,14 @@
     <string name="tab_today">Oggi</string>
     <string name="tab_week">Settimana</string>
     <string name="tab_balance">Bilancio</string>
-    <string name="tab_rules">Regole</string>
+    <string name="tab_settings">Impostazioni</string>
 
     <string name="today_subtitle">Oggi · settimana tipo</string>
     <string name="week_title">Settimana tipo</string>
     <string name="week_subtitle">Lunedì – domenica · senza date</string>
     <string name="balance_subtitle">Settimana tipo pianificata</string>
+    <string name="settings_subtitle">Regole e aggiornamenti</string>
+    <string name="rules_title">Regole</string>
     <string name="rules_subtitle">Dal piano della nutrizionista · nov 2024</string>
 
     <string name="category_legumes">Legumi</string>
@@ -194,6 +196,14 @@
     <string name="rules_remove_max">Nessun limite</string>
     <string name="rules_reset_confirm">Minimi e massimi di tutte le categorie tornano quelli del piano della nutrizionista. Le tue modifiche andranno perse.</string>
     <string name="rules_reset_action">Ripristina</string>
+
+    <string name="update_title">Aggiornamenti</string>
+    <string name="update_version">Versione installata: %1$s</string>
+    <string name="update_check">Controlla aggiornamenti</string>
+    <string name="update_checking">Controllo in corso…</string>
+    <string name="update_up_to_date">Hai già l\'ultima versione.</string>
+    <string name="update_downloading">Scarico la versione %1$s…</string>
+    <string name="update_failed">Controllo non riuscito: verifica la connessione e riprova.</string>
 
     <string name="food_group_legumes">Legumi</string>
     <string name="food_group_fish">Pesce</string>
