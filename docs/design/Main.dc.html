@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Oggi</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400..700&amp;display=swap">
+<style>
+body{margin:0;background:#F8F9FF}
+a{color:#2F5B8A}a:hover{color:#1B3F66}
+.ic{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F8F9FF; color: #191C20; font-family: 'Roboto Flex', system-ui, sans-serif; display: flex; flex-direction: column">
+
+  <header style="position: relative; flex: none; height: 168px; color: #FFFFFF">
+    <svg width="390" height="168" viewBox="0 0 390 168" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; display: block">
+      <rect width="390" height="168" fill="#0F2A47"></rect>
+      <path fill="#183A60" d="M0 168V70C40 60 70 98 112 86S172 38 212 54 282 112 332 96 380 58 390 62V168Z"></path>
+      <path fill="#2A5482" d="M0 168V108C35 97 62 124 102 115S162 82 206 94 272 134 322 120 376 98 390 101V168Z"></path>
+      <path fill="#5C86B3" d="M110 168C134 146 168 132 204 136S262 154 302 143 362 120 390 122V168Z"></path>
+      <path fill="#A9C5E2" d="M244 0C266 22 298 18 312 42S298 84 330 92 380 72 390 62V0Z"></path>
+      <path fill="#E3EDF8" d="M298 0C312 15 330 13 338 30S332 54 352 58 384 42 390 34V0Z"></path>
+      <path fill="#F8F9FF" d="M0 168V156C60 143 122 162 192 151S322 136 390 147V168Z"></path>
+    </svg>
+    <div style="position: relative; padding: 28px 20px 0; display: flex; align-items: flex-start; justify-content: space-between">
+      <div>
+        <div style="font-size: 14px; font-weight: 500; color: #C9DBEE; letter-spacing: 0.2px">{{subtitle}}</div>
+        <h1 style="margin: 4px 0 0; font-size: 34px; line-height: 40px; font-weight: 500; letter-spacing: -0.2px">{{dayName}}</h1>
+      </div>
+      <sc-if value="{{notToday}}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{goToday}}" style="height: 40px; padding: 0 16px; border-radius: 20px; border: 1px solid #A9C5E2; background: transparent; color: #FFFFFF; font-size: 14px; font-weight: 500; cursor: pointer">Torna a oggi</button>
+      </sc-if>
+    </div>
+  </header>
+
+  <div role="group" aria-label="Giorno della settimana" style="flex: none; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; padding: 4px 16px 14px">
+    <sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+      <button onClick="{{d.pick}}" aria-pressed="{{d.selected}}" aria-label="{{d.name}}" style="{{d.style}}">
+        <span style="font-size: 13px; font-weight: 600">{{d.k}}</span>
+        <span style="width: 5px; height: 5px; border-radius: 50%; background: {{d.dot}}"></span>
+      </button>
+    </sc-for>
+  </div>
+
+  <main style="flex: 1; min-height: 0; overflow: auto; padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px">
+
+    <a href="Promemoria.dc.html" style="display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 8px 12px 8px 14px; border-radius: 16px; background: #F0F3FA; text-decoration: none; color: #191C20">
+      <span style="width: 36px; height: 36px; border-radius: 12px; background: #E1E8F2; color: #43474E; display: flex; align-items: center; justify-content: center"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.colazione}}"></path></svg></span>
+      <span style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 15px; font-weight: 500">Colazione</span>
+        <span style="font-size: 13px; color: #43474E">Promemoria · 4 tipi a scelta</span>
+      </span>
+      <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: #73777F"><path d="{{ic.chev}}"></path></svg>
+    </a>
+
+    <a href="Promemoria.dc.html" style="display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 8px 12px 8px 14px; border-radius: 16px; background: #F0F3FA; text-decoration: none; color: #191C20">
+      <span style="width: 36px; height: 36px; border-radius: 12px; background: #E1E8F2; color: #43474E; display: flex; align-items: center; justify-content: center"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.spuntino}}"></path></svg></span>
+      <span style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 15px; font-weight: 500">Spuntino</span>
+        <span style="font-size: 13px; color: #43474E">Promemoria · facoltativo</span>
+      </span>
+      <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: #73777F"><path d="{{ic.chev}}"></path></svg>
+    </a>
+
+    <sc-for list="{{pranzo}}" as="m" hint-placeholder-count="1">
+      <a href="Dettaglio.dc.html" style="display: flex; flex-direction: column; gap: 12px; padding: 16px; border-radius: 22px; background: #E6EDF7; text-decoration: none; color: #191C20">
+        <span style="display: flex; align-items: center; justify-content: space-between">
+          <span style="font-size: 14px; font-weight: 600; color: #2F5B8A; letter-spacing: 0.2px">{{m.slot}}</span>
+          <sc-if value="{{m.locked}}" hint-placeholder-val="{{ false }}">
+            <span style="display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500; color: #43474E"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.lock}}"></path></svg>Bloccato</span>
+          </sc-if>
+        </span>
+        <sc-if value="{{m.food}}" hint-placeholder-val="{{ true }}">
+          <span style="font-size: 22px; line-height: 28px; font-weight: 500">{{m.line}}</span>
+          <span style="display: flex; flex-wrap: wrap; gap: 8px">
+            <span style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px 0 8px; border-radius: 10px; font-size: 14px; font-weight: 500; background: {{m.bg}}; color: {{m.fg}}"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{m.icon}}"></path></svg>{{m.label}}</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px 0 8px; border-radius: 10px; font-size: 14px; font-weight: 500; border: 1px solid #C3C6CF; color: #43474E"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.verdure}}"></path></svg>Verdure</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px 0 8px; border-radius: 10px; font-size: 14px; font-weight: 500; border: 1px solid #C3C6CF; color: #43474E"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.cereale}}"></path></svg>{{m.cer}}</span>
+          </span>
+        </sc-if>
+        <sc-if value="{{m.nonfood}}" hint-placeholder-val="{{ false }}">
+          <span style="display: flex; align-items: center; gap: 12px">
+            <span style="width: 44px; height: 44px; border-radius: 14px; border: 1.5px dashed #8E929A; color: #43474E; display: flex; align-items: center; justify-content: center"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="{{m.icon}}"></path></svg></span>
+            <span style="display: flex; flex-direction: column; gap: 2px">
+              <span style="font-size: 22px; line-height: 28px; font-weight: 500">{{m.label}}</span>
+              <span style="font-size: 13px; color: #43474E">Nessuna categoria · ricorda il piatto sano</span>
+            </span>
+          </span>
+        </sc-if>
+      </a>
+    </sc-for>
+
+    <a href="Promemoria.dc.html" style="display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 8px 12px 8px 14px; border-radius: 16px; background: #F0F3FA; text-decoration: none; color: #191C20">
+      <span style="width: 36px; height: 36px; border-radius: 12px; background: #E1E8F2; color: #43474E; display: flex; align-items: center; justify-content: center"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.merenda}}"></path></svg></span>
+      <span style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 15px; font-weight: 500">Merenda</span>
+        <span style="font-size: 13px; color: #43474E">Promemoria · facoltativa</span>
+      </span>
+      <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: #73777F"><path d="{{ic.chev}}"></path></svg>
+    </a>
+
+    <sc-for list="{{cena}}" as="m" hint-placeholder-count="1">
+      <a href="Dettaglio.dc.html" style="display: flex; flex-direction: column; gap: 12px; padding: 16px; border-radius: 22px; background: #E6EDF7; text-decoration: none; color: #191C20">
+        <span style="display: flex; align-items: center; justify-content: space-between">
+          <span style="font-size: 14px; font-weight: 600; color: #2F5B8A; letter-spacing: 0.2px">{{m.slot}}</span>
+          <sc-if value="{{m.locked}}" hint-placeholder-val="{{ false }}">
+            <span style="display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500; color: #43474E"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.lock}}"></path></svg>Bloccato</span>
+          </sc-if>
+        </span>
+        <sc-if value="{{m.food}}" hint-placeholder-val="{{ true }}">
+          <span style="font-size: 22px; line-height: 28px; font-weight: 500">{{m.line}}</span>
+          <span style="display: flex; flex-wrap: wrap; gap: 8px">
+            <span style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px 0 8px; border-radius: 10px; font-size: 14px; font-weight: 500; background: {{m.bg}}; color: {{m.fg}}"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{m.icon}}"></path></svg>{{m.label}}</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px 0 8px; border-radius: 10px; font-size: 14px; font-weight: 500; border: 1px solid #C3C6CF; color: #43474E"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.verdure}}"></path></svg>Verdure</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px 0 8px; border-radius: 10px; font-size: 14px; font-weight: 500; border: 1px solid #C3C6CF; color: #43474E"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.cereale}}"></path></svg>{{m.cer}}</span>
+          </span>
+        </sc-if>
+        <sc-if value="{{m.nonfood}}" hint-placeholder-val="{{ false }}">
+          <span style="display: flex; align-items: center; gap: 12px">
+            <span style="width: 44px; height: 44px; border-radius: 14px; border: 1.5px dashed #8E929A; color: #43474E; display: flex; align-items: center; justify-content: center"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="{{m.icon}}"></path></svg></span>
+            <span style="display: flex; flex-direction: column; gap: 2px">
+              <span style="font-size: 22px; line-height: 28px; font-weight: 500">{{m.label}}</span>
+              <span style="font-size: 13px; color: #43474E">Nessuna categoria · ricorda il piatto sano</span>
+            </span>
+          </span>
+        </sc-if>
+      </a>
+    </sc-for>
+  </main>
+
+  <nav aria-label="Sezioni" style="flex: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); height: 80px; box-sizing: border-box; padding: 12px 0 16px; background: #ECEEF4">
+    <a href="Main.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #191C20; font-size: 12px; font-weight: 600">
+      <span style="width: 64px; height: 32px; border-radius: 16px; background: #D3E3FF; color: #001C38; display: flex; align-items: center; justify-content: center"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.oggi}}"></path></svg></span>Oggi</a>
+    <a href="Settimana.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #43474E; font-size: 12px; font-weight: 500">
+      <span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.settimana}}"></path></svg></span>Settimana</a>
+    <a href="Bilancio.dc.html" aria-label="Bilancio, 1 limite superato" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #43474E; font-size: 12px; font-weight: 500">
+      <span style="position: relative; width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.bilancio}}"></path></svg><span style="position: absolute; top: 3px; right: 17px; width: 8px; height: 8px; border-radius: 50%; background: #BA1A1A"></span></span>Bilancio</a>
+    <a href="Regole.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #43474E; font-size: 12px; font-weight: 500">
+      <span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.regole}}"></path></svg></span>Regole</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const IC = {
+  legumi: 'M4.5 15.5C7 9 12 5 19.5 4.5 19 12 14.5 17.5 8.5 19.5c-2.5.8-4.8-1.5-4-4z M8 15a1.4 1.4 0 1 0 2.8 0 1.4 1.4 0 1 0-2.8 0 M11.5 11.5a1.4 1.4 0 1 0 2.8 0 1.4 1.4 0 1 0-2.8 0 M15 8a1.4 1.4 0 1 0 2.8 0 1.4 1.4 0 1 0-2.8 0',
+  pesce: 'M6 12c2.5-3.3 5.4-5 8.5-5 3 0 5.2 2 6.5 5-1.3 3-3.5 5-6.5 5-3.1 0-6-1.7-8.5-5z M6 12 2.5 8.5v7z M16.5 10.8v.01',
+  bianca: 'M14.5 3.5c3.3 0 6 2.7 6 6 0 3.6-3.4 5.5-6.6 5.5l-3.6 3.6a2 2 0 1 1-2.6 2.3 2 2 0 1 1-2.3-2.6l3.6-3.6c0-3.2 1.9-11.2 5.5-11.2z',
+  rossa: 'M4.5 10c0-3.6 3.4-6 7.8-6 4.6 0 7.7 2.6 7.7 6.5 0 5-3.4 9.5-9 9.5-3.7 0-6.5-2-6.5-4.7 0-1.8 1.4-2.4 1.4-3.4S4.5 11.2 4.5 10z M13.5 10.5a1.6 1.6 0 1 0 3.2 0 1.6 1.6 0 1 0-3.2 0',
+  uova: 'M12 3c3.6 0 6.5 5.6 6.5 10a6.5 6.5 0 0 1-13 0C5.5 8.6 8.4 3 12 3z',
+  formaggi: 'M3 18v-6.5L15 5l6 6.5V18z M3 11.5h18 M8 15v.01 M15.5 14.5v.01',
+  affettati: 'M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0 M8 12a4 4 0 1 0 8 0 4 4 0 1 0-8 0',
+  mensa: 'M3 20h18 M5 20V9l7-4.5L19 9v11 M9.5 20v-5h5v5',
+  fuori: 'M7 3v18 M4.5 3v5a2.5 2.5 0 0 0 5 0V3 M17.5 21V3c-2.2 0-3.5 3-3.5 7h3.5',
+  libero: 'M4.5 4.5h15v15h-15z M9 9v.01 M15 15v.01 M12 12v.01 M15 9v.01 M9 15v.01',
+  colazione: 'M4 9h12v4.5A5.5 5.5 0 0 1 10.5 19h-1A5.5 5.5 0 0 1 4 13.5z M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16 M8 3.5v2.5 M12 3.5v2.5',
+  spuntino: 'M12 7.5c-2-1.8-7-1.4-7 3.8 0 4 2.8 8.7 4.8 8.7 1 0 1.4-.5 2.2-.5s1.2.5 2.2.5c2 0 4.8-4.7 4.8-8.7 0-5.2-5-5.6-7-3.8z M12 7.5c0-2 1-3.5 3-4',
+  merenda: 'M5.5 9h13l-1.5 11h-10z M4.5 9h15 M8.5 4.5h7l1 4.5h-9z',
+  oggi: 'M4 6h16v14H4z M4 10h16 M8 3v4 M16 3v4 M10 13.5h4v3.5h-4z',
+  settimana: 'M4 4h16v16H4z M4 9.3h16 M4 14.7h16 M9.3 4v16 M14.7 4v16',
+  bilancio: 'M3 20h18 M6 20v-8 M12 20V5 M18 20v-5',
+  regole: 'M4 7h9 M17 7h3 M15 5v4 M4 17h3 M11 17h9 M9 15v4',
+  lock: 'M6 11h12v9H6z M8.5 11V8a3.5 3.5 0 0 1 7 0v3',
+  chev: 'M9 6l6 6-6 6',
+  verdure: 'M5 19c0-8 5-14 14-14 0 9-6 14-14 14z M5 19l8-8',
+  cereale: 'M12 21V9 M12 9c-2.5 0-4-1.5-4-4 2.5 0 4 1.5 4 4z M12 9c2.5 0 4-1.5 4-4-2.5 0-4 1.5-4 4z M12 14c-2.5 0-4-1.5-4-4 2.5 0 4 1.5 4 4z M12 14c2.5 0 4-1.5 4-4-2.5 0-4 1.5-4 4z'
+};
+const CAT = {
+  legumi: { label: 'Legumi', bg: '#D0EBC6', fg: '#23461F' },
+  pesce: { label: 'Pesce', bg: '#C9E6F5', fg: '#0E4A61' },
+  bianca: { label: 'Carne bianca', bg: '#FADCC8', fg: '#6B3A1A' },
+  rossa: { label: 'Carne rossa', bg: '#F9D7DC', fg: '#842235' },
+  uova: { label: 'Uova', bg: '#F3E5AE', fg: '#574500' },
+  formaggi: { label: 'Formaggi', bg: '#E9DFD2', fg: '#54452F' },
+  affettati: { label: 'Affettati', bg: '#E5DBF5', fg: '#4E3478' },
+  mensa: { label: 'Mensa', none: true },
+  fuori: { label: 'Fuori casa', none: true },
+  libero: { label: 'A scelta', none: true }
+};
+const WEEK = [
+  { k: 'L', name: 'Lunedì', p: { c: 'uova', cer: 'Pane' }, c: { c: 'legumi', cer: 'Riso' } },
+  { k: 'M', name: 'Martedì', p: { c: 'mensa' }, c: { c: 'rossa', cer: 'Orzo' } },
+  { k: 'Me', name: 'Mercoledì', p: { c: 'affettati', cer: 'Piadina' }, c: { c: 'legumi', cer: 'Pasta' } },
+  { k: 'G', name: 'Giovedì', p: { c: 'legumi', cer: 'Farro' }, c: { c: 'bianca', cer: 'Pane' } },
+  { k: 'V', name: 'Venerdì', p: { c: 'uova', cer: 'Patate' }, c: { c: 'pesce', cer: 'Pasta', lock: true } },
+  { k: 'S', name: 'Sabato', p: { c: 'rossa', cer: 'Pasta' }, c: { c: 'libero' } },
+  { k: 'D', name: 'Domenica', p: { c: 'formaggi', cer: 'Polenta' }, c: { c: 'pesce', cer: 'Patate' } }
+];
+const TODAY = 2;
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const sel = st.sel != null ? st.sel : TODAY;
+    const day = WEEK[sel];
+    const mk = (slot, m) => {
+      const c = CAT[m.c];
+      return {
+        slot,
+        food: !c.none,
+        nonfood: !!c.none,
+        label: c.label,
+        line: c.none ? '' : c.label + ', verdure, ' + m.cer.toLowerCase(),
+        icon: IC[m.c],
+        bg: c.bg || '',
+        fg: c.fg || '',
+        cer: m.cer || '',
+        locked: !!m.lock
+      };
+    };
+    const base = 'height: 56px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 0; cursor: pointer; ';
+    const days = WEEK.map((d, i) => {
+      const s = i === sel;
+      const t = i === TODAY;
+      return {
+        k: d.k,
+        name: d.name + (t ? ' (oggi)' : ''),
+        selected: s,
+        pick: () => this.setState({ sel: i }),
+        style: base + (s ? 'background: #2F5B8A; color: #FFFFFF; border: 1px solid #2F5B8A' : t ? 'background: #F8F9FF; color: #191C20; border: 1.5px solid #2F5B8A' : 'background: #ECEEF4; color: #191C20; border: 1px solid #ECEEF4'),
+        dot: t ? (s ? '#FFFFFF' : '#2F5B8A') : 'transparent'
+      };
+    });
+    return {
+      ic: IC,
+      days,
+      dayName: day.name,
+      subtitle: sel === TODAY ? 'Oggi · settimana tipo' : 'Settimana tipo',
+      notToday: sel !== TODAY,
+      goToday: () => this.setState({ sel: TODAY }),
+      pranzo: [mk('Pranzo', day.p)],
+      cena: [mk('Cena', day.c)]
+    };
+  }
+}
+</script>
+</body>
+</html>

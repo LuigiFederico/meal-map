@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Promemoria pasti fissi</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400..700&amp;display=swap">
+<style>
+body{margin:0;background:#F8F9FF}
+a{color:#2F5B8A}a:hover{color:#1B3F66}
+.ic{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F8F9FF; color: #191C20; font-family: 'Roboto Flex', system-ui, sans-serif">
+
+  <div aria-hidden="true" style="position: absolute; inset: 0">
+    <svg width="390" height="168" viewBox="0 0 390 168" preserveAspectRatio="none" style="display: block">
+      <rect width="390" height="168" fill="#0F2A47"></rect>
+      <path fill="#183A60" d="M0 168V70C40 60 70 98 112 86S172 38 212 54 282 112 332 96 380 58 390 62V168Z"></path>
+      <path fill="#2A5482" d="M0 168V108C35 97 62 124 102 115S162 82 206 94 272 134 322 120 376 98 390 101V168Z"></path>
+      <path fill="#5C86B3" d="M110 168C134 146 168 132 204 136S262 154 302 143 362 120 390 122V168Z"></path>
+      <path fill="#A9C5E2" d="M244 0C266 22 298 18 312 42S298 84 330 92 380 72 390 62V0Z"></path>
+      <path fill="#F8F9FF" d="M0 168V156C60 143 122 162 192 151S322 136 390 147V168Z"></path>
+    </svg>
+    <div style="position: absolute; top: 28px; left: 20px; color: #FFFFFF; font-size: 34px; font-weight: 500">Mercoledì</div>
+  </div>
+  <a href="Main.dc.html" aria-label="Chiudi promemoria" style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.36)"></a>
+
+  <section role="dialog" aria-label="Promemoria pasti fissi" style="position: absolute; left: 0; right: 0; bottom: 0; top: 96px; background: #F8F9FF; border-radius: 28px 28px 0 0; display: flex; flex-direction: column; overflow: hidden">
+    <div style="flex: none; display: flex; justify-content: center; padding: 14px 0 6px"><span style="width: 32px; height: 4px; border-radius: 2px; background: #73777F"></span></div>
+
+    <div style="flex: none; padding: 6px 12px 0 24px; display: flex; align-items: flex-start; justify-content: space-between">
+      <div>
+        <div style="font-size: 14px; font-weight: 600; color: #2F5B8A">Uguale ogni giorno · scegli tu</div>
+        <h2 style="margin: 4px 0 0; font-size: 24px; line-height: 30px; font-weight: 500">{{title}}</h2>
+      </div>
+      <a href="Main.dc.html" aria-label="Chiudi" style="width: 48px; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #43474E"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.close}}"></path></svg></a>
+    </div>
+
+    <div role="group" aria-label="Momento" style="flex: none; margin: 16px 16px 4px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid #73777F; border-radius: 20px; overflow: hidden">
+      <sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+        <button onClick="{{t.pick}}" aria-pressed="{{t.on}}" style="{{t.style}}">{{t.label}}</button>
+      </sc-for>
+    </div>
+
+    <div style="flex: 1; min-height: 0; overflow: auto; padding: 12px 16px 24px; display: flex; flex-direction: column; gap: 10px">
+      <sc-if value="{{note}}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: #D7E3F8; color: #101C2B; font-size: 14px; line-height: 20px"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.info}}"></path></svg><span>{{note}}</span></div>
+      </sc-if>
+      <sc-for list="{{tipi}}" as="t" hint-placeholder-count="4">
+        <div style="padding: 14px 16px; border-radius: 18px; background: #F0F3FA; display: flex; gap: 14px">
+          <span style="flex: none; width: 36px; height: 36px; border-radius: 18px; background: #2F5B8A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600">{{t.n}}</span>
+          <ul style="flex: 1; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px">
+            <sc-for list="{{t.items}}" as="it" hint-placeholder-count="3">
+              <li style="display: flex; justify-content: space-between; gap: 12px; font-size: 15px; line-height: 22px"><span>{{it.n}}</span><span style="color: #43474E; text-align: right">{{it.q}}</span></li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-for>
+      <div style="display: flex; gap: 10px; align-items: flex-start; padding: 4px 4px 0; color: #43474E; font-size: 13px; line-height: 19px">
+        <svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.link}}"></path></svg>
+        <span>Consiglio: abbina i tipi con lo stesso numero (colazione 1 + spuntino 1 + merenda 1).</span>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const IC = {
+  close: 'M6 6l12 12 M18 6 6 18',
+  info: 'M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0 M12 11v5 M12 8v.01',
+  link: 'M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1 M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1'
+};
+const DATA = {
+  colazione: {
+    title: 'Colazione',
+    note: '',
+    tipi: [
+      { n: '1', items: [{ n: 'Pane', q: '40 g' }, { n: 'Frutto', q: '1' }] },
+      { n: '2', items: [{ n: 'Caffè o tè', q: '' }, { n: 'Biscotti a scelta', q: '4-5' }, { n: 'Latte o yogurt', q: '1 bicchiere' }] },
+      { n: '3', items: [{ n: 'Cereali a scelta', q: '5-6 cucchiai' }, { n: 'Yogurt o latte', q: '1 vasetto' }, { n: 'Frutta', q: 'a piacere' }, { n: 'Frutta secca', q: '20 g' }] },
+      { n: '4', items: [{ n: 'Fette biscottate', q: '3-4 fette' }, { n: 'Latte o yogurt', q: '1 bicchiere' }, { n: 'Marmellata', q: '5-6 cucchiaini' }] }
+    ]
+  },
+  spuntino: {
+    title: 'Spuntino',
+    note: 'Facoltativo. Se a metà mattina non riesci, aggiungilo a pranzo.',
+    tipi: [
+      { n: '1', items: [{ n: 'Cracker', q: '1 pacchetto' }, { n: 'Frutta secca', q: '' }] },
+      { n: '4', items: [{ n: 'Frutta secca', q: '' }] }
+    ]
+  },
+  merenda: {
+    title: 'Merenda',
+    note: 'Facoltativa. Se il pomeriggio non riesci, aggiungila a cena.',
+    tipi: [
+      { n: '1', items: [{ n: 'Dolcetto', q: '' }, { n: 'Yogurt', q: '1 vasetto' }] },
+      { n: '2', items: [{ n: 'Wasa', q: '2-3' }, { n: 'Grana', q: '20 g' }] }
+    ]
+  }
+};
+const TABS = [['colazione', 'Colazione'], ['spuntino', 'Spuntino'], ['merenda', 'Merenda']];
+class Component extends DCLogic {
+  renderVals() {
+    const tab = (this.state || {}).tab || 'colazione';
+    const d = DATA[tab];
+    const base = 'height: 40px; border: none; cursor: pointer; font-size: 14px; font-weight: 500; ';
+    return {
+      ic: IC,
+      title: d.title,
+      note: d.note,
+      tipi: d.tipi,
+      tabs: TABS.map(([k, label], i) => ({
+        label,
+        on: k === tab,
+        pick: () => this.setState({ tab: k }),
+        style: base + (i > 0 ? 'border-left: 1px solid #73777F; ' : '') + (k === tab ? 'background: #D7E3F8; color: #101C2B' : 'background: transparent; color: #191C20')
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

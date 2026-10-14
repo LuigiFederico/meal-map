@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Regole</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400..700&amp;display=swap">
+<style>
+body{margin:0;background:#F8F9FF}
+a{color:#2F5B8A}a:hover{color:#1B3F66}
+.ic{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+button{font:inherit}
+button:disabled{opacity:0.38;cursor:default}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F8F9FF; color: #191C20; font-family: 'Roboto Flex', system-ui, sans-serif; display: flex; flex-direction: column">
+
+  <header style="position: relative; flex: none; height: 140px; color: #FFFFFF">
+    <svg width="390" height="140" viewBox="0 0 390 168" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; display: block">
+      <rect width="390" height="168" fill="#0F2A47"></rect>
+      <path fill="#183A60" d="M0 168V70C40 60 70 98 112 86S172 38 212 54 282 112 332 96 380 58 390 62V168Z"></path>
+      <path fill="#2A5482" d="M0 168V108C35 97 62 124 102 115S162 82 206 94 272 134 322 120 376 98 390 101V168Z"></path>
+      <path fill="#5C86B3" d="M110 168C134 146 168 132 204 136S262 154 302 143 362 120 390 122V168Z"></path>
+      <path fill="#A9C5E2" d="M244 0C266 22 298 18 312 42S298 84 330 92 380 72 390 62V0Z"></path>
+      <path fill="#E3EDF8" d="M298 0C312 15 330 13 338 30S332 54 352 58 384 42 390 34V0Z"></path>
+      <path fill="#F8F9FF" d="M0 168V156C60 143 122 162 192 151S322 136 390 147V168Z"></path>
+    </svg>
+    <div style="position: relative; padding: 28px 20px 0">
+      <div style="font-size: 14px; font-weight: 500; color: #C9DBEE">Dal piano della nutrizionista · nov 2024</div>
+      <h1 style="margin: 4px 0 0; font-size: 34px; line-height: 40px; font-weight: 500">Regole</h1>
+    </div>
+  </header>
+
+  <div role="group" aria-label="Sezione regole" style="flex: none; margin: 0 16px 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 1px solid #73777F; border-radius: 20px; overflow: hidden">
+    <sc-for list="{{tabs}}" as="t" hint-placeholder-count="2">
+      <button onClick="{{t.pick}}" aria-pressed="{{t.on}}" style="{{t.style}}">{{t.label}}</button>
+    </sc-for>
+  </div>
+
+  <main style="flex: 1; min-height: 0; overflow: auto; padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px">
+    <sc-if value="{{freqTab}}" hint-placeholder-val="{{ true }}">
+      <div style="font-size: 13px; color: #43474E; line-height: 19px">Porzioni a settimana, contate su pranzi e cene. La generazione le rispetta; le tue modifiche vengono solo segnalate.</div>
+      <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+        <sc-for list="{{rows}}" as="r" hint-placeholder-count="7">
+          <li style="display: flex; flex-direction: column; gap: 10px; padding: 12px 14px; border-radius: 18px; background: #F0F3FA">
+            <div style="display: flex; align-items: center; gap: 10px">
+              <span style="width: 32px; height: 32px; border-radius: 10px; background: {{r.bg}}; color: {{r.fg}}; display: flex; align-items: center; justify-content: center"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{r.icon}}"></path></svg></span>
+              <span style="flex: 1; font-size: 15px; font-weight: 600">{{r.label}}</span>
+              <span style="font-size: 13px; color: #43474E">{{r.rule}}</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+              <sc-for list="{{r.steppers}}" as="s" hint-placeholder-count="2">
+                <div style="display: flex; align-items: center; justify-content: space-between; height: 44px; padding: 0 2px 0 12px; border-radius: 12px; background: #F8F9FF; border: 1px solid #C3C6CF">
+                  <span style="font-size: 13px; color: #43474E">{{s.name}}</span>
+                  <span style="display: flex; align-items: center">
+                    <button onClick="{{s.dec}}" disabled="{{s.noDec}}" aria-label="{{s.decLabel}}" style="width: 40px; height: 40px; border: none; border-radius: 20px; background: transparent; color: #2F5B8A; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.minus}}"></path></svg></button>
+                    <span style="width: 20px; text-align: center; font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums">{{s.val}}</span>
+                    <button onClick="{{s.inc}}" aria-label="{{s.incLabel}}" style="width: 40px; height: 40px; border: none; border-radius: 20px; background: transparent; color: #2F5B8A; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.plus}}"></path></svg></button>
+                  </span>
+                </div>
+              </sc-for>
+            </div>
+          </li>
+        </sc-for>
+      </ul>
+      <button onClick="{{reset}}" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 12px; border: none; border-radius: 20px; background: transparent; color: #2F5B8A; font-size: 14px; font-weight: 600; cursor: pointer"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.reset}}"></path></svg>Ripristina i valori del piano</button>
+    </sc-if>
+
+    <sc-if value="{{altTab}}" hint-placeholder-val="{{ false }}">
+      <div style="font-size: 13px; color: #43474E; line-height: 19px">Gli alimenti e le porzioni che vedi nel dettaglio di ogni pasto.</div>
+      <ul style="list-style: none; margin: 0; padding: 4px 0; border-radius: 20px; background: #F0F3FA">
+        <sc-for list="{{groups}}" as="g" hint-placeholder-count="8">
+          <li><a href="Alternative.dc.html" style="display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 12px 0 14px; text-decoration: none; color: #191C20">
+            <span style="width: 32px; height: 32px; border-radius: 10px; background: {{g.bg}}; color: {{g.fg}}; display: flex; align-items: center; justify-content: center"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{g.icon}}"></path></svg></span>
+            <span style="flex: 1; font-size: 15px; font-weight: 500">{{g.label}}</span>
+            <span style="font-size: 13px; color: #43474E; font-variant-numeric: tabular-nums">{{g.n}}</span>
+            <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="color: #73777F"><path d="{{ic.chev}}"></path></svg>
+          </a></li>
+        </sc-for>
+      </ul>
+    </sc-if>
+  </main>
+
+  <nav aria-label="Sezioni" style="flex: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); height: 80px; box-sizing: border-box; padding: 12px 0 16px; background: #ECEEF4">
+    <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #43474E; font-size: 12px; font-weight: 500">
+      <span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.oggi}}"></path></svg></span>Oggi</a>
+    <a href="Settimana.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #43474E; font-size: 12px; font-weight: 500">
+      <span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.settimana}}"></path></svg></span>Settimana</a>
+    <a href="Bilancio.dc.html" aria-label="Bilancio, 1 limite superato" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #43474E; font-size: 12px; font-weight: 500">
+      <span style="position: relative; width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.bilancio}}"></path></svg><span style="position: absolute; top: 3px; right: 17px; width: 8px; height: 8px; border-radius: 50%; background: #BA1A1A"></span></span>Bilancio</a>
+    <a href="Regole.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #191C20; font-size: 12px; font-weight: 600">
+      <span style="width: 64px; height: 32px; border-radius: 16px; background: #D3E3FF; color: #001C38; display: flex; align-items: center; justify-content: center"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.regole}}"></path></svg></span>Regole</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const IC = {
+  legumi: 'M4.5 15.5C7 9 12 5 19.5 4.5 19 12 14.5 17.5 8.5 19.5c-2.5.8-4.8-1.5-4-4z M8 15a1.4 1.4 0 1 0 2.8 0 1.4 1.4 0 1 0-2.8 0 M11.5 11.5a1.4 1.4 0 1 0 2.8 0 1.4 1.4 0 1 0-2.8 0 M15 8a1.4 1.4 0 1 0 2.8 0 1.4 1.4 0 1 0-2.8 0',
+  pesce: 'M6 12c2.5-3.3 5.4-5 8.5-5 3 0 5.2 2 6.5 5-1.3 3-3.5 5-6.5 5-3.1 0-6-1.7-8.5-5z M6 12 2.5 8.5v7z M16.5 10.8v.01',
+  bianca: 'M14.5 3.5c3.3 0 6 2.7 6 6 0 3.6-3.4 5.5-6.6 5.5l-3.6 3.6a2 2 0 1 1-2.6 2.3 2 2 0 1 1-2.3-2.6l3.6-3.6c0-3.2 1.9-11.2 5.5-11.2z',
+  rossa: 'M4.5 10c0-3.6 3.4-6 7.8-6 4.6 0 7.7 2.6 7.7 6.5 0 5-3.4 9.5-9 9.5-3.7 0-6.5-2-6.5-4.7 0-1.8 1.4-2.4 1.4-3.4S4.5 11.2 4.5 10z M13.5 10.5a1.6 1.6 0 1 0 3.2 0 1.6 1.6 0 1 0-3.2 0',
+  uova: 'M12 3c3.6 0 6.5 5.6 6.5 10a6.5 6.5 0 0 1-13 0C5.5 8.6 8.4 3 12 3z',
+  formaggi: 'M3 18v-6.5L15 5l6 6.5V18z M3 11.5h18 M8 15v.01 M15.5 14.5v.01',
+  affettati: 'M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0 M8 12a4 4 0 1 0 8 0 4 4 0 1 0-8 0',
+  colazione: 'M4 9h12v4.5A5.5 5.5 0 0 1 10.5 19h-1A5.5 5.5 0 0 1 4 13.5z M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16 M8 3.5v2.5 M12 3.5v2.5',
+  spuntino: 'M12 7.5c-2-1.8-7-1.4-7 3.8 0 4 2.8 8.7 4.8 8.7 1 0 1.4-.5 2.2-.5s1.2.5 2.2.5c2 0 4.8-4.7 4.8-8.7 0-5.2-5-5.6-7-3.8z M12 7.5c0-2 1-3.5 3-4',
+  cereale: 'M12 21V9 M12 9c-2.5 0-4-1.5-4-4 2.5 0 4 1.5 4 4z M12 9c2.5 0 4-1.5 4-4-2.5 0-4 1.5-4 4z M12 14c-2.5 0-4-1.5-4-4 2.5 0 4 1.5 4 4z M12 14c2.5 0 4-1.5 4-4-2.5 0-4 1.5-4 4z',
+  oggi: 'M4 6h16v14H4z M4 10h16 M8 3v4 M16 3v4 M10 13.5h4v3.5h-4z',
+  settimana: 'M4 4h16v16H4z M4 9.3h16 M4 14.7h16 M9.3 4v16 M14.7 4v16',
+  bilancio: 'M3 20h18 M6 20v-8 M12 20V5 M18 20v-5',
+  regole: 'M4 7h9 M17 7h3 M15 5v4 M4 17h3 M11 17h9 M9 15v4',
+  minus: 'M5 12h14',
+  plus: 'M12 5v14 M5 12h14',
+  chev: 'M9 6l6 6-6 6',
+  reset: 'M4 12a8 8 0 1 0 2.3-5.7 M4 4v5h5'
+};
+const DEFAULTS = {
+  legumi: [3, null], pesce: [2, null], uova: [2, 2], bianca: [1, 2], rossa: [null, 1], affettati: [null, 2], formaggi: [null, 2]
+};
+const META = [
+  ['legumi', 'Legumi', '#D0EBC6', '#23461F'],
+  ['pesce', 'Pesce', '#C9E6F5', '#0E4A61'],
+  ['uova', 'Uova', '#F3E5AE', '#574500'],
+  ['bianca', 'Carne bianca', '#FADCC8', '#6B3A1A'],
+  ['rossa', 'Carne rossa', '#F9D7DC', '#842235'],
+  ['affettati', 'Affettati', '#E5DBF5', '#4E3478'],
+  ['formaggi', 'Formaggi', '#E9DFD2', '#54452F']
+];
+const GROUPS = [
+  { label: 'Legumi', n: '26', icon: 'legumi', bg: '#D0EBC6', fg: '#23461F' },
+  { label: 'Pesce', n: '40', icon: 'pesce', bg: '#C9E6F5', fg: '#0E4A61' },
+  { label: 'Carne e affettati', n: '27', icon: 'bianca', bg: '#FADCC8', fg: '#6B3A1A' },
+  { label: 'Uova', n: '2', icon: 'uova', bg: '#F3E5AE', fg: '#574500' },
+  { label: 'Formaggi', n: '30', icon: 'formaggi', bg: '#E9DFD2', fg: '#54452F' },
+  { label: 'Cereali e carboidrati', n: '33', icon: 'cereale', bg: '#E6E8EE', fg: '#43474E' },
+  { label: 'Colazione', n: '79', icon: 'colazione', bg: '#E6E8EE', fg: '#43474E' },
+  { label: 'Spuntini e merende', n: '52', icon: 'spuntino', bg: '#E6E8EE', fg: '#43474E' }
+];
+const fmt = (v) => (v == null ? '—' : String(v));
+const ruleText = (mn, mx) => mn != null && mx != null ? (mn === mx ? 'esattamente ' + mn : mn + '–' + mx) : mn != null ? 'almeno ' + mn : mx != null ? 'al massimo ' + mx : 'libero';
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const tab = st.tab || 'freq';
+    const vals = st.vals || DEFAULTS;
+    const set = (k, i, v) => {
+      const next = { ...vals, [k]: vals[k].slice() };
+      next[k][i] = v;
+      this.setState({ vals: next });
+    };
+    const rows = META.map(([k, label, bg, fg]) => {
+      const [mn, mx] = vals[k];
+      const stepper = (i, name) => {
+        const v = vals[k][i];
+        return {
+          name,
+          val: fmt(v),
+          noDec: v == null,
+          dec: () => set(k, i, v == null ? null : v <= 1 ? null : v - 1),
+          inc: () => set(k, i, v == null ? 1 : v + 1),
+          decLabel: 'Diminuisci ' + name.toLowerCase() + ' ' + label,
+          incLabel: 'Aumenta ' + name.toLowerCase() + ' ' + label
+        };
+      };
+      return { label, bg, fg, icon: IC[k], rule: ruleText(mn, mx), steppers: [stepper(0, 'Minimo'), stepper(1, 'Massimo')] };
+    });
+    const tabStyle = (on, i) => 'height: 40px; border: none; cursor: pointer; font-size: 14px; font-weight: 500; ' + (i > 0 ? 'border-left: 1px solid #73777F; ' : '') + (on ? 'background: #D7E3F8; color: #101C2B' : 'background: transparent; color: #191C20');
+    return {
+      ic: IC,
+      freqTab: tab === 'freq',
+      altTab: tab === 'alt',
+      tabs: [['freq', 'Frequenze'], ['alt', 'Alternative']].map(([k, label], i) => ({ label, on: k === tab, pick: () => this.setState({ tab: k }), style: tabStyle(k === tab, i) })),
+      rows,
+      reset: () => this.setState({ vals: DEFAULTS }),
+      groups: GROUPS.map((g) => ({ ...g, icon: IC[g.icon] }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Settimana</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400..700&amp;display=swap">
+<style>
+body{margin:0;background:#F8F9FF}
+a{color:#2F5B8A}a:hover{color:#1B3F66}
+.ic{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F8F9FF; color: #191C20; font-family: 'Roboto Flex', system-ui, sans-serif; display: flex; flex-direction: column">
+
+  <header style="position: relative; flex: none; height: 140px; color: #FFFFFF">
+    <svg width="390" height="140" viewBox="0 0 390 168" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; display: block">
+      <rect width="390" height="168" fill="#0F2A47"></rect>
+      <path fill="#183A60" d="M0 168V70C40 60 70 98 112 86S172 38 212 54 282 112 332 96 380 58 390 62V168Z"></path>
+      <path fill="#2A5482" d="M0 168V108C35 97 62 124 102 115S162 82 206 94 272 134 322 120 376 98 390 101V168Z"></path>
+      <path fill="#5C86B3" d="M110 168C134 146 168 132 204 136S262 154 302 143 362 120 390 122V168Z"></path>
+      <path fill="#A9C5E2" d="M244 0C266 22 298 18 312 42S298 84 330 92 380 72 390 62V0Z"></path>
+      <path fill="#E3EDF8" d="M298 0C312 15 330 13 338 30S332 54 352 58 384 42 390 34V0Z"></path>
+      <path fill="#F8F9FF" d="M0 168V156C60 143 122 162 192 151S322 136 390 147V168Z"></path>
+    </svg>
+    <div style="position: relative; padding: 28px 20px 0">
+      <div style="font-size: 14px; font-weight: 500; color: #C9DBEE">Lunedì – domenica · senza date</div>
+      <h1 style="margin: 4px 0 0; font-size: 34px; line-height: 40px; font-weight: 500">Settimana tipo</h1>
+    </div>
+  </header>
+
+  <main style="flex: 1; min-height: 0; overflow: auto; padding: 0 16px 88px; display: flex; flex-direction: column; gap: 12px">
+    <a href="Bilancio.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px 0 10px; border-radius: 10px; background: #FFDAD6; color: #410002; text-decoration: none; font-size: 14px; font-weight: 500"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.warn}}"></path></svg>Carne rossa oltre il limite<svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.chev}}"></path></svg></a>
+
+    <div role="grid" aria-label="Griglia della settimana" style="display: flex; flex-direction: column; gap: 6px">
+      <div role="row" style="display: grid; grid-template-columns: 44px repeat(2, minmax(0, 1fr)); gap: 6px; align-items: center">
+        <span></span>
+        <span role="columnheader" style="padding-left: 4px; font-size: 12px; font-weight: 600; color: #43474E; letter-spacing: 0.4px">PRANZO</span>
+        <span role="columnheader" style="padding-left: 4px; font-size: 12px; font-weight: 600; color: #43474E; letter-spacing: 0.4px">CENA</span>
+      </div>
+      <sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+        <div role="row" style="display: grid; grid-template-columns: 44px repeat(2, minmax(0, 1fr)); gap: 6px; align-items: stretch">
+          <span role="rowheader" aria-label="{{d.name}}" style="{{d.style}}">{{d.k}}</span>
+          <sc-for list="{{d.tiles}}" as="t" hint-placeholder-count="2">
+            <a href="Dettaglio.dc.html" aria-label="{{t.aria}}" style="{{t.style}}">
+              <sc-if value="{{t.food}}" hint-placeholder-val="{{ true }}">
+                <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; line-height: 16px; font-weight: 600; white-space: nowrap"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="{{t.icon}}"></path></svg>{{t.prot}}</span>
+                <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 16px; white-space: nowrap"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.cereale}}"></path></svg>{{t.cer}}</span>
+                <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 16px; white-space: nowrap"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.verdure}}"></path></svg>Verdure</span>
+              </sc-if>
+              <sc-if value="{{t.none}}" hint-placeholder-val="{{ false }}">
+                <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; line-height: 16px; font-weight: 600"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="{{t.icon}}"></path></svg>{{t.prot}}</span>
+                <span style="font-size: 11px; line-height: 14px">non conta nel bilancio</span>
+              </sc-if>
+              <sc-if value="{{t.locked}}" hint-placeholder-val="{{ false }}">
+                <span style="position: absolute; top: 6px; right: 6px; width: 20px; height: 20px; border-radius: 10px; background: #2F5B8A; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg class="ic" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width: 2.6"><path d="{{ic.lock}}"></path></svg></span>
+              </sc-if>
+            </a>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 8px; color: #43474E; font-size: 13px">
+      <svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width: 3"><path d="{{ic.drag}}"></path></svg>
+      <span>Tieni premuto e <a href="Trascina.dc.html">trascina</a> per scambiare due pasti o due giorni.</span>
+    </div>
+
+  </main>
+
+  <a href="NuovaSettimana.dc.html" style="position: absolute; right: 16px; bottom: 96px; display: inline-flex; align-items: center; gap: 10px; height: 56px; padding: 0 20px 0 16px; border-radius: 16px; background: #0F2A47; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; box-shadow: 0 4px 10px rgba(15, 42, 71, 0.3)"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.gen}}"></path></svg>Nuova settimana</a>
+
+  <nav aria-label="Sezioni" style="flex: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); height: 80px; box-sizing: border-box; padding: 12px 0 16px; background: #ECEEF4">
+    <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #43474E; font-size: 12px; font-weight: 500">
+      <span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.oggi}}"></path></svg></span>Oggi</a>
+    <a href="Settimana.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #191C20; font-size: 12px; font-weight: 600">
+      <span style="width: 64px; height: 32px; border-radius: 16px; background: #D3E3FF; color: #001C38; display: flex; align-items: center; justify-content: center"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.settimana}}"></path></svg></span>Settimana</a>
+    <a href="Bilancio.dc.html" aria-label="Bilancio, 1 limite superato" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #43474E; font-size: 12px; font-weight: 500">
+      <span style="position: relative; width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.bilancio}}"></path></svg><span style="position: absolute; top: 3px; right: 17px; width: 8px; height: 8px; border-radius: 50%; background: #BA1A1A"></span></span>Bilancio</a>
+    <a href="Regole.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: #43474E; font-size: 12px; font-weight: 500">
+      <span style="width: 64px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ic.regole}}"></path></svg></span>Regole</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const IC = {
+  legumi: 'M4.5 15.5C7 9 12 5 19.5 4.5 19 12 14.5 17.5 8.5 19.5c-2.5.8-4.8-1.5-4-4z M8 15a1.4 1.4 0 1 0 2.8 0 1.4 1.4 0 1 0-2.8 0 M11.5 11.5a1.4 1.4 0 1 0 2.8 0 1.4 1.4 0 1 0-2.8 0 M15 8a1.4 1.4 0 1 0 2.8 0 1.4 1.4 0 1 0-2.8 0',
+  pesce: 'M6 12c2.5-3.3 5.4-5 8.5-5 3 0 5.2 2 6.5 5-1.3 3-3.5 5-6.5 5-3.1 0-6-1.7-8.5-5z M6 12 2.5 8.5v7z M16.5 10.8v.01',
+  bianca: 'M14.5 3.5c3.3 0 6 2.7 6 6 0 3.6-3.4 5.5-6.6 5.5l-3.6 3.6a2 2 0 1 1-2.6 2.3 2 2 0 1 1-2.3-2.6l3.6-3.6c0-3.2 1.9-11.2 5.5-11.2z',
+  rossa: 'M4.5 10c0-3.6 3.4-6 7.8-6 4.6 0 7.7 2.6 7.7 6.5 0 5-3.4 9.5-9 9.5-3.7 0-6.5-2-6.5-4.7 0-1.8 1.4-2.4 1.4-3.4S4.5 11.2 4.5 10z M13.5 10.5a1.6 1.6 0 1 0 3.2 0 1.6 1.6 0 1 0-3.2 0',
+  uova: 'M12 3c3.6 0 6.5 5.6 6.5 10a6.5 6.5 0 0 1-13 0C5.5 8.6 8.4 3 12 3z',
+  formaggi: 'M3 18v-6.5L15 5l6 6.5V18z M3 11.5h18 M8 15v.01 M15.5 14.5v.01',
+  affettati: 'M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0 M8 12a4 4 0 1 0 8 0 4 4 0 1 0-8 0',
+  mensa: 'M3 20h18 M5 20V9l7-4.5L19 9v11 M9.5 20v-5h5v5',
+  fuori: 'M7 3v18 M4.5 3v5a2.5 2.5 0 0 0 5 0V3 M17.5 21V3c-2.2 0-3.5 3-3.5 7h3.5',
+  libero: 'M4.5 4.5h15v15h-15z M9 9v.01 M15 15v.01 M12 12v.01 M15 9v.01 M9 15v.01',
+  cereale: 'M12 21V5 M12 17c-2.6 0-4.3-1.6-4.8-4.2 2.6 0 4.3 1.6 4.8 4.2z M12 17c2.6 0 4.3-1.6 4.8-4.2-2.6 0-4.3 1.6-4.8 4.2z M12 11.5c-2.6 0-4.3-1.6-4.8-4.2 2.6 0 4.3 1.6 4.8 4.2z M12 11.5c2.6 0 4.3-1.6 4.8-4.2-2.6 0-4.3 1.6-4.8 4.2z',
+  verdure: 'M5 19c0-8.3 5.2-14 14-14 0 8.8-5.7 14-14 14z M5 19l8.5-8.5',
+  oggi: 'M4 6h16v14H4z M4 10h16 M8 3v4 M16 3v4 M10 13.5h4v3.5h-4z',
+  settimana: 'M4 4h16v16H4z M4 9.3h16 M4 14.7h16 M9.3 4v16 M14.7 4v16',
+  bilancio: 'M3 20h18 M6 20v-8 M12 20V5 M18 20v-5',
+  regole: 'M4 7h9 M17 7h3 M15 5v4 M4 17h3 M11 17h9 M9 15v4',
+  lock: 'M6 11h12v9H6z M8.5 11V8a3.5 3.5 0 0 1 7 0v3',
+  warn: 'M12 4 2.5 20h19z M12 10v4.5 M12 17.2v.01',
+  chev: 'M9 6l6 6-6 6',
+  drag: 'M9 6v.01 M15 6v.01 M9 12v.01 M15 12v.01 M9 18v.01 M15 18v.01',
+  gen: 'M12 3.5v3 M12 17.5v3 M3.5 12h3 M17.5 12h3 M6 6l2 2 M16 16l2 2 M18 6l-2 2 M8 16l-2 2'
+};
+const CAT = {
+  legumi: { label: 'Legumi', bg: '#D0EBC6', fg: '#23461F' },
+  pesce: { label: 'Pesce', bg: '#C9E6F5', fg: '#0E4A61' },
+  bianca: { label: 'Carne bianca', bg: '#FADCC8', fg: '#6B3A1A' },
+  rossa: { label: 'Carne rossa', bg: '#F9D7DC', fg: '#842235' },
+  uova: { label: 'Uova', bg: '#F3E5AE', fg: '#574500' },
+  formaggi: { label: 'Formaggi', bg: '#E9DFD2', fg: '#54452F' },
+  affettati: { label: 'Affettati', bg: '#E5DBF5', fg: '#4E3478' },
+  mensa: { label: 'Mensa', none: true },
+  fuori: { label: 'Fuori casa', none: true },
+  libero: { label: 'A scelta', none: true }
+};
+const WEEK = [
+  { k: 'L', name: 'Lunedì', p: { c: 'uova', cer: 'Pane' }, c: { c: 'legumi', cer: 'Riso' } },
+  { k: 'M', name: 'Martedì', p: { c: 'mensa' }, c: { c: 'rossa', cer: 'Orzo' } },
+  { k: 'Me', name: 'Mercoledì', p: { c: 'affettati', cer: 'Piadina' }, c: { c: 'legumi', cer: 'Pasta' } },
+  { k: 'G', name: 'Giovedì', p: { c: 'legumi', cer: 'Farro' }, c: { c: 'bianca', cer: 'Pane' } },
+  { k: 'V', name: 'Venerdì', p: { c: 'uova', cer: 'Patate' }, c: { c: 'pesce', cer: 'Pasta', lock: true } },
+  { k: 'S', name: 'Sabato', p: { c: 'rossa', cer: 'Pasta' }, c: { c: 'libero' } },
+  { k: 'D', name: 'Domenica', p: { c: 'formaggi', cer: 'Polenta' }, c: { c: 'pesce', cer: 'Patate' } }
+];
+const TODAY = 2;
+const ABBR = ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'];
+class Component extends DCLogic {
+  renderVals() {
+    const tile = (d, i, slotName, m) => {
+      const c = CAT[m.c];
+      const today = i === TODAY ? ' outline: 2px solid #2F5B8A; outline-offset: 1px;' : '';
+      const look = c.none
+        ? 'background: #F8F9FF; color: #43474E; border: 1.5px dashed #8E929A;'
+        : 'background: ' + c.bg + '; color: ' + c.fg + '; border: 1.5px solid ' + c.bg + ';';
+      return {
+        food: !c.none,
+        none: !!c.none,
+        icon: IC[m.c],
+        prot: c.label,
+        cer: m.cer || '',
+        locked: !!m.lock,
+        aria: d.name + ' ' + slotName + ': ' + (c.none ? c.label : c.label + ', ' + m.cer.toLowerCase() + ', verdure') + (m.lock ? ', bloccato' : ''),
+        style: 'position: relative; min-height: 66px; box-sizing: border-box; padding: 7px 10px; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; gap: 2px; text-decoration: none; min-width: 0; overflow: hidden; ' + look + today
+      };
+    };
+    return {
+      ic: IC,
+      days: WEEK.map((d, i) => ({
+        k: ABBR[i],
+        name: d.name + (i === TODAY ? ' (oggi)' : ''),
+        tiles: [tile(d, i, 'pranzo', d.p), tile(d, i, 'cena', d.c)],
+        style: 'border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; ' + (i === TODAY ? 'background: #2F5B8A; color: #FFFFFF' : 'color: #43474E')
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
