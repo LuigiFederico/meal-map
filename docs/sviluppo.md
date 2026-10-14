@@ -79,7 +79,11 @@ La tabella porzioni ha un'unica voce "Carne"; l'app la divide secondo le linee g
 - **affettati:** salumi, salsiccia e bresaola;
 - **carne bianca:** pollo, tacchino, coniglio e gallina.
 
-Le "associazioni" della tabella (es. "Uova + feta") non vengono importate.
+Le "associazioni" della tabella (es. "Uova + feta") non vengono importate. Le voci "Pane (invece della pasta)" sono marcate "· invece della pasta", per distinguerle dalle porzioni piccole di "Pane e sostituti".
+
+### Dati iniziali
+
+Al primo avvio il database contiene le regole e le alternative del piano (`app/src/main/assets/seed/foods.json`, generato con `python3 scripts/build_seed_foods.py`). La settimana resta vuota finché non la generi da "Nuova settimana".
 
 ## Architettura
 
