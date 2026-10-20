@@ -14,8 +14,9 @@ data class FrequencyRule(val min: Int? = null, val max: Int? = null) {
     companion object {
         /**
          * Limits from the nutritionist's plan (docs/piano-alimentare/frequenze_settimanali.csv),
-         * with cured meat lowered to the food pyramid's "less than 1 a week"
-         * (docs/piano-alimentare/linee_guida.md).
+         * with cured meat lowered from 2 to 1 like red meat: the food pyramid puts the two
+         * together at less than one portion a week (docs/piano-alimentare/linee_guida.md). That
+         * combined limit is not applied, so each keeps its own max.
          */
         val DEFAULTS: Map<ProteinCategory, FrequencyRule> = mapOf(
             ProteinCategory.LEGUMES to FrequencyRule(min = 3),
