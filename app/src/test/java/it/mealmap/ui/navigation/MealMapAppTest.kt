@@ -39,7 +39,7 @@ class MealMapAppTest {
 
         tab("Impostazioni").performClick()
         tab("Impostazioni").assertIsSelected()
-        compose.onNodeWithText("Dal piano della nutrizionista · nov 2024").assertExists()
+        compose.onNodeWithText("Piano della nutrizionista e piramide alimentare").assertExists()
         compose.onNodeWithText("Controlla aggiornamenti").performScrollTo().assertExists()
 
         tab("Oggi").performClick()

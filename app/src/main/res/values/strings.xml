@@ -13,7 +13,7 @@
     <string name="balance_subtitle">Settimana tipo pianificata</string>
     <string name="settings_subtitle">Regole e aggiornamenti</string>
     <string name="rules_title">Regole</string>
-    <string name="rules_subtitle">Dal piano della nutrizionista · nov 2024</string>
+    <string name="rules_subtitle">Piano della nutrizionista e piramide alimentare</string>
 
     <string name="category_legumes">Legumi</string>
     <string name="category_fish">Pesce</string>
@@ -192,9 +192,9 @@
     <string name="rules_unset">nessuno</string>
     <string name="rules_decrease">Diminuisci %1$s %2$s</string>
     <string name="rules_increase">Aumenta %1$s %2$s</string>
-    <string name="rules_reset">Ripristina i valori del piano</string>
+    <string name="rules_reset">Ripristina i valori predefiniti</string>
     <string name="rules_remove_max">Nessun limite</string>
-    <string name="rules_reset_confirm">Minimi e massimi di tutte le categorie tornano quelli del piano della nutrizionista. Le tue modifiche andranno perse.</string>
+    <string name="rules_reset_confirm">Minimi e massimi di tutte le categorie tornano ai valori predefiniti, presi dal piano della nutrizionista e dalla piramide alimentare. Le tue modifiche andranno perse.</string>
     <string name="rules_reset_action">Ripristina</string>
 
     <string name="update_title">Aggiornamenti</string>
