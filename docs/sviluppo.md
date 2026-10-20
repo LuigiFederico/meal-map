@@ -20,6 +20,7 @@ Meal Map è un'app Android personale che disegna la mappa della settimana dei pa
 
 - Conta solo pranzi e cene con categoria, e li confronta con i min/max settimanali.
 - Gli sforamenti vengono segnalati, mai impediti.
+- In fondo, anche senza una settimana pianificata, una card apre un pannello dal basso su come si compone un pasto sano: il piatto (½ verdura e frutta, ¼ cereali, ¼ proteine), le frequenze settimanali della piramide, l'organizzazione della giornata e il riepilogo numerico di [`linee_guida.md`](piano-alimentare/linee_guida.md). Il testo è fisso: le frequenze della piramide non dipendono dalle Regole.
 
 ### Generazione
 
@@ -27,7 +28,10 @@ Meal Map è un'app Android personale che disegna la mappa della settimana dei pa
 - I pasti bloccati restano fissi.
 - Criteri di varietà:
   - mai la stessa proteina due volte nello stesso giorno, se i pasti fissi lo permettono;
-  - evitare la stessa proteina in pasti consecutivi, compreso il passaggio da domenica sera a lunedì a pranzo;
+  - una proteina mangiata un giorno (a pranzo o a cena) non torna il giorno dopo, compreso il passaggio da domenica a lunedì;
+  - al massimo una ripetizione in giorni consecutivi a settimana, e i min/max restano sempre rispettati. La ripetizione non è mai necessaria con i default (i giorni non consecutivi bastano per 14 pasti), ma è permessa: dopo i minimi ogni posto va a caso a una categoria sotto il max, e una volta a settimana può andare a una categoria che così finisce in giorni consecutivi (di solito legumi o pesce, al quarto giorno). Succede in circa il 95% delle settimane vuote;
+  - le ripetizioni rese inevitabili dai pasti fissi o bloccati non contano nel limite di una;
+  - ogni categoria ha abbastanza giorni da sola, ma le categorie si contendono i giorni con un solo posto libero: se le proteine scelte non si dispongono al meglio, il generatore le sceglie di nuovo (fino a 6 volte, alternando con e senza la ripetizione permessa) e tiene la settimana migliore;
   - carboidrati il più possibile vari.
 
 ### Modifiche
@@ -40,7 +44,7 @@ Meal Map è un'app Android personale che disegna la mappa della settimana dei pa
 ### Regole
 
 - I min/max e le liste di alternative con le porzioni si modificano dall'app.
-- I min/max si possono riportare ai valori del piano, dopo una conferma. Le alternative non hanno un ripristino: tornano quelle del piano solo cancellando i dati dell'app.
+- I min/max si possono riportare ai valori predefiniti, dopo una conferma. Le alternative non hanno un ripristino: tornano quelle del piano solo cancellando i dati dell'app.
 - I promemoria di colazione, spuntino e merenda sono i tipi fissi del piano. Le liste "Colazione" e "Spuntini e merende" delle alternative servono solo come riferimento per le porzioni e non li modificano.
 
 ### Navigazione
@@ -60,7 +64,7 @@ Quattro tab: Oggi · Settimana · Bilancio · Impostazioni. L'app si apre sul gi
   - il massimo, fino a 0 ("mai");
   - "Nessun limite", con un pulsante apposito. Il mockup toglieva il limite premendo "−" su 1: è stato cambiato perché faceva il contrario di quanto ci si aspetta.
 - **Regole impossibili:** gli stepper non permettono min > max. Se i pasti con categoria non bastano a coprire tutti i minimi (per esempio troppi pasti in mensa), il generatore riempie quello che può e il deficit compare nel Bilancio.
-- **Limiti indipendenti:** carne rossa e affettati hanno ciascuno il proprio max (1 e 2), come nella tabella delle frequenze. Il limite combinato della piramide non viene applicato.
+- **Limiti indipendenti:** carne rossa e affettati hanno ciascuno il proprio max, 1 e 1. La tabella delle frequenze dava 2 agli affettati, ma la piramide indica meno di una porzione a settimana. Il limite combinato della piramide non viene applicato. Le regole già salvate non cambiano da sole: i nuovi valori si applicano con "Ripristina i valori predefiniti".
 - **Promemoria esclusi dal bilancio:** formaggi o affettati a merenda non vengono conteggiati, anche se ci sono.
 - **Carboidrati:** il generatore li varia. Il consiglio "il carboidrato della cena si ripete nel pranzo del giorno dopo" non viene applicato in automatico; si ottiene modificando il pasto a mano.
 - **Lucchetto:** il blocco segue il pasto. Se scambi un pasto bloccato, il blocco si sposta con lui. Solo i pasti con categoria si bloccano.

@@ -1,7 +1,9 @@
 package it.mealmap.ui.meal
 
+import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.junit4.v2.createComposeRule
+import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
@@ -60,7 +62,8 @@ class EditMealContentTest {
         compose.onNodeWithText("Sabato · Pranzo").assertExists()
         compose.onNodeWithText("Ora: Legumi, verdure, pasta").assertExists()
         compose.onNodeWithText("attuale · 4 · min 3").assertExists()
-        compose.onNodeWithText("diventa 2 · max 1").assertExists()
+        // Red meat and cured meat.
+        compose.onAllNodesWithText("diventa 2 · max 1").assertCountEquals(2)
         compose.onNodeWithText("arriverebbe", substring = true).assertDoesNotExist()
     }
 

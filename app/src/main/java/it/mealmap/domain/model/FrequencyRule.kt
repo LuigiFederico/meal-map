@@ -12,14 +12,19 @@ data class FrequencyRule(val min: Int? = null, val max: Int? = null) {
     fun isExceededBy(count: Int): Boolean = max != null && count > max
 
     companion object {
-        /** Limits from the nutritionist's plan (docs/piano-alimentare/frequenze_settimanali.csv). */
+        /**
+         * Limits from the nutritionist's plan (docs/piano-alimentare/frequenze_settimanali.csv),
+         * with cured meat lowered from 2 to 1 like red meat: the food pyramid puts the two
+         * together at less than one portion a week (docs/piano-alimentare/linee_guida.md). That
+         * combined limit is not applied, so each keeps its own max.
+         */
         val DEFAULTS: Map<ProteinCategory, FrequencyRule> = mapOf(
             ProteinCategory.LEGUMES to FrequencyRule(min = 3),
             ProteinCategory.FISH to FrequencyRule(min = 2),
             ProteinCategory.EGGS to FrequencyRule(min = 2, max = 2),
             ProteinCategory.WHITE_MEAT to FrequencyRule(min = 1, max = 2),
             ProteinCategory.RED_MEAT to FrequencyRule(max = 1),
-            ProteinCategory.CURED_MEAT to FrequencyRule(max = 2),
+            ProteinCategory.CURED_MEAT to FrequencyRule(max = 1),
             ProteinCategory.CHEESE to FrequencyRule(max = 2),
         )
     }

@@ -1,5 +1,6 @@
 package it.mealmap.ui.balance
 
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
@@ -22,12 +23,12 @@ class BalanceContentTest {
 
     private var openedWeek = false
 
-    private fun show() = compose.setContent {
+    private fun show(withWeek: Boolean = true) = compose.setContent {
         MealMapTheme {
             BalanceScreen(
                 BalanceUiState(
                     loading = false,
-                    balance = sampleWeek.balance(FrequencyRule.DEFAULTS),
+                    balance = if (withWeek) sampleWeek.balance(FrequencyRule.DEFAULTS) else null,
                 ),
                 onOpenWeek = { openedWeek = true },
                 onNewWeek = {},
@@ -59,5 +60,23 @@ class BalanceContentTest {
         compose.onNodeWithContentDescription("Carne bianca, 1–2: 1, nei limiti").assertExists()
         compose.onNodeWithContentDescription("Legumi, almeno 3: 3, nei limiti").performScrollTo()
         compose.onNodeWithText("I pasti senza categoria (2)", substring = true).assertExists()
+    }
+
+    @Test
+    fun opensTheHealthyPlateGuide() {
+        show()
+
+        compose.onNodeWithText("Il pasto sano").assertDoesNotExist()
+        compose.onNodeWithText("Come si compone un piatto sano?").performScrollTo().performClick()
+        compose.onNodeWithText("Il pasto sano").assertIsDisplayed()
+    }
+
+    @Test
+    fun showsTheHealthyPlateGuideEvenWithoutAWeek() {
+        show(withWeek = false)
+
+        compose.onNodeWithText("Nessuna settimana pianificata").assertExists()
+        compose.onNodeWithText("Come si compone un piatto sano?").performScrollTo().performClick()
+        compose.onNodeWithText("Il pasto sano").assertIsDisplayed()
     }
 }

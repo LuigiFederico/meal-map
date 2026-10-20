@@ -2,6 +2,7 @@ package it.mealmap.ui.balance
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,11 +21,16 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.font.FontWeight
@@ -52,6 +58,7 @@ fun BalanceScreen(
     onNewWeek: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    var showHealthyPlate by rememberSaveable { mutableStateOf(false) }
     Column(modifier.verticalScroll(rememberScrollState())) {
         WaveHeader(
             title = stringResource(R.string.tab_balance),
@@ -76,8 +83,10 @@ fun BalanceScreen(
                     Footnote(balance)
                 }
             }
+            if (!state.loading) HealthyPlateCard(onClick = { showHealthyPlate = true })
         }
     }
+    if (showHealthyPlate) HealthyPlateSheet(onDismiss = { showHealthyPlate = false })
 }
 
 @Composable
@@ -265,5 +274,34 @@ private fun Footnote(balance: Balance) {
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+    }
+}
+
+@Composable
+private fun HealthyPlateCard(onClick: () -> Unit) {
+    val color = MaterialTheme.colorScheme.onSecondaryContainer
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.secondaryContainer, RoundedCornerShape(20.dp))
+            .clickable(role = Role.Button, onClick = onClick)
+            .padding(horizontal = 14.dp, vertical = 12.dp),
+    ) {
+        PlateDrawing(Modifier.size(40.dp))
+        Column(Modifier.weight(1f)) {
+            Text(
+                stringResource(R.string.healthy_plate_card_title),
+                style = MaterialTheme.typography.titleSmall,
+                color = color,
+            )
+            Text(
+                stringResource(R.string.healthy_plate_card_subtitle),
+                style = MaterialTheme.typography.bodySmall,
+                color = color,
+            )
+        }
+        Icon(AppIcons.ChevronRight, contentDescription = null, tint = color)
     }
 }
