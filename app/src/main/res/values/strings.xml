@@ -145,6 +145,7 @@
     <string name="healthy_plate_coffee_value">max 2–3 al giorno</string>
     <string name="healthy_plate_alcohol">Alcolici</string>
     <string name="healthy_plate_alcohol_value">max 2 a settimana</string>
+    <string name="healthy_plate_sweets_extra">Dolci oltre la colazione</string>
     <string name="healthy_plate_sweets_value">max 4 a settimana</string>
 
     <string-array name="days_letter">

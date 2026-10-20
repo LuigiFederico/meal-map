@@ -55,7 +55,7 @@ private val Numbers = listOf(
     R.string.healthy_plate_oil to R.string.healthy_plate_oil_value,
     R.string.healthy_plate_coffee to R.string.healthy_plate_coffee_value,
     R.string.healthy_plate_alcohol to R.string.healthy_plate_alcohol_value,
-    R.string.healthy_plate_sweets to R.string.healthy_plate_sweets_value,
+    R.string.healthy_plate_sweets_extra to R.string.healthy_plate_sweets_value,
 )
 
 /** Bottom sheet explaining the healthy plate, from docs/piano-alimentare/linee_guida.md. */
