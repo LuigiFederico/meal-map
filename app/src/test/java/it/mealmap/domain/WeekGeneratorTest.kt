@@ -30,6 +30,11 @@ class WeekGeneratorTest {
     private fun Week.proteins(day: DayOfWeek) =
         listOf(LUNCH, DINNER).mapNotNull { (this[MealSlot(day, it)] as? Meal.Food)?.protein }
 
+    /** Proteins eaten on a day and again the next one, Sunday to Monday included. */
+    private fun Week.consecutiveDayRepeats() = DayOfWeek.entries.sumOf { day ->
+        proteins(day).distinct().count { it in proteins(day.plus(1)) }
+    }
+
     @Test
     fun respectsEveryLimit() {
         for (seed in seeds) {
@@ -64,6 +69,37 @@ class WeekGeneratorTest {
             carbs.chunked(2).forEach { (lunch, dinner) ->
                 assertTrue("seed $seed", lunch != dinner)
             }
+        }
+    }
+
+    @Test
+    fun repeatsAProteinOnConsecutiveDaysAtMostOnce() {
+        for (seed in seeds) {
+            val week = generate(seed = seed)
+            assertTrue("seed $seed: $week", week.consecutiveDayRepeats() <= 1)
+        }
+    }
+
+    @Test
+    fun repeatsAtMostOnceAroundFixedMeals() {
+        val fixed = mapOf(
+            slot(TUESDAY, LUNCH) to Meal.Other(OtherKind.CANTEEN),
+            slot(FRIDAY, DINNER) to food(ProteinCategory.RED_MEAT, Carb.PASTA, locked = true),
+        )
+        for (seed in seeds) {
+            val week = generate(fixed, seed)
+            assertTrue("seed $seed: $week", week.consecutiveDayRepeats() <= 1)
+        }
+    }
+
+    @Test
+    fun repeatsCausedByFixedMealsDoNotUseUpTheAllowedOne() {
+        // Legumes from Monday to Friday already repeat four times.
+        val fixed = listOf(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY)
+            .associate { day -> slot(day, LUNCH) to food(ProteinCategory.LEGUMES, locked = true) }
+        for (seed in seeds) {
+            val week = generate(fixed, seed)
+            assertTrue("seed $seed: $week", week.consecutiveDayRepeats() <= 5)
         }
     }
 
