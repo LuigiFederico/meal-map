@@ -12,6 +12,7 @@ import it.mealmap.domain.model.Week
 import java.time.DayOfWeek
 import java.time.DayOfWeek.FRIDAY
 import java.time.DayOfWeek.MONDAY
+import java.time.DayOfWeek.SUNDAY
 import java.time.DayOfWeek.THURSDAY
 import java.time.DayOfWeek.TUESDAY
 import java.time.DayOfWeek.WEDNESDAY
@@ -85,6 +86,21 @@ class WeekGeneratorTest {
         val fixed = mapOf(
             slot(TUESDAY, LUNCH) to Meal.Other(OtherKind.CANTEEN),
             slot(FRIDAY, DINNER) to food(ProteinCategory.RED_MEAT, Carb.PASTA, locked = true),
+        )
+        for (seed in seeds) {
+            val week = generate(fixed, seed)
+            assertTrue("seed $seed: $week", week.consecutiveDayRepeats() <= 1)
+        }
+    }
+
+    @Test
+    fun repeatsAtMostOnceWhenSomeDaysHaveASingleFreeSlot() {
+        // Categories that each fit on non-consecutive days compete for Monday's single slot.
+        val fixed = mapOf(
+            slot(MONDAY, DINNER) to Meal.Other(OtherKind.CANTEEN),
+            slot(FRIDAY, DINNER) to food(ProteinCategory.FISH, locked = true),
+            slot(SUNDAY, LUNCH) to Meal.Other(OtherKind.CANTEEN),
+            slot(SUNDAY, DINNER) to Meal.Other(OtherKind.CANTEEN),
         )
         for (seed in seeds) {
             val week = generate(fixed, seed)

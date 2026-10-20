@@ -10,6 +10,7 @@ import it.mealmap.domain.model.Week
 import java.time.DayOfWeek
 import kotlin.random.Random
 
+private const val PICKS = 6
 private const val ATTEMPTS = 50
 private const val SAME_DAY_PENALTY = 100
 private const val CONSECUTIVE_DAY_PENALTY = 10
@@ -20,7 +21,8 @@ private const val CONSECUTIVE_DAY_PENALTY = 10
  * Category minimums are covered first, then the remaining slots get random categories still
  * under their maximum, preferring those that still fit on non-consecutive days. At most one
  * slot may go to a category that would then land on two consecutive days, so that limited
- * categories are not all pushed to their max. If the free slots cannot cover every minimum,
+ * categories are not all pushed to their max. If the picked categories cannot be arranged as
+ * well as they allow, they are picked again. If the free slots cannot cover every minimum,
  * the shortfall stays visible in the balance. Proteins are then arranged so that, whenever the
  * fixed meals allow it, no day has the same protein twice and a protein eaten one day is not
  * eaten the next (Sunday to Monday included, since the week repeats). Carbs are spread evenly
@@ -34,9 +36,18 @@ fun generateWeek(
     val free = MealSlot.ALL.filterNot { it in fixed }
     val fixedProteins = fixed.mapValues { (_, meal) -> (meal as? Meal.Food)?.protein }
     val dayRoom = dayRoom(fixedProteins, free)
-    val proteins = pickProteins(rules, fixedProteins, free, dayRoom, random)
-    val arrangement = arrangeProteins(free, proteins, fixedProteins, dayRoom, random)
-    return Week(assignCarbs(fixed, free.zip(arrangement), random))
+    // Each category fits its days on its own, but categories compete for days with a single
+    // free slot, so a pick may not arrange as well as it should. Then pick again, every other
+    // time without the allowed repeat, and keep the best week.
+    var best: Pair<List<ProteinCategory>, Int>? = null
+    for (pick in 0 until PICKS) {
+        val proteins = pickProteins(rules, fixedProteins, free, dayRoom, pick % 2 == 0, random)
+        val floor = lowestPenalty(proteins, fixedProteins, dayRoom)
+        val arranged = arrangeProteins(free, proteins, fixedProteins, floor, random)
+        if (best == null || arranged.second < best.second) best = arranged
+        if (arranged.second <= floor) break
+    }
+    return Week(assignCarbs(fixed, free.zip(checkNotNull(best).first), random))
 }
 
 /**
@@ -66,6 +77,7 @@ private fun pickProteins(
     fixedProteins: Map<MealSlot, ProteinCategory?>,
     free: List<MealSlot>,
     dayRoom: Map<ProteinCategory, Int>,
+    repeatAllowed: Boolean,
     random: Random,
 ): List<ProteinCategory> {
     val counts = ProteinCategory.entries
@@ -106,37 +118,46 @@ private fun pickProteins(
     }
     // One slot may repeat a category on consecutive days, so that the extra slot can go to any
     // category under its max instead of filling up the limited ones.
-    var repeatAllowed = true
+    var repeatLeft = repeatAllowed
     while (picked.size < free.size) {
         val fitting = ProteinCategory.entries.filter { underMax(it) && fitsInADay(it) }
         val spread = fitting.filter(::spreadsOut)
-        val repeating = if (repeatAllowed) fitting - spread.toSet() else emptyList()
-        val category = (spread + repeating).randomOrNull(random)
-            ?.also { if (it in repeating) repeatAllowed = false }
-            ?: fitting.randomOrNull(random)
+        val category = (if (repeatLeft) fitting else spread.ifEmpty { fitting })
+            .randomOrNull(random)
             ?: ProteinCategory.entries.filter(::underMax).randomOrNull(random)
             ?: leastOverMax()
+        if (category !in spread) repeatLeft = false
         take(category)
     }
     return picked
 }
 
-/** Random restarts of a pairwise-swap local search on the repetition penalty. */
+/**
+ * No arrangement of [proteins] goes below this: the fixed meals' own repeats, plus one
+ * consecutive-day repeat (or a worse same-day one) for each slot of a category beyond the days
+ * it can spread over.
+ */
+private fun lowestPenalty(
+    proteins: List<ProteinCategory>,
+    fixedProteins: Map<MealSlot, ProteinCategory?>,
+    dayRoom: Map<ProteinCategory, Int>,
+) = repetitionPenalty { fixedProteins[it] } +
+    ProteinCategory.entries.sumOf { category ->
+        val excess = proteins.count { it == category } - dayRoom.getValue(category)
+        minOf(SAME_DAY_PENALTY, excess.coerceAtLeast(0) * CONSECUTIVE_DAY_PENALTY)
+    }
+
+/**
+ * Random restarts of a pairwise-swap local search on the repetition penalty, stopping early at
+ * [floor]. Returns the best arrangement and its penalty.
+ */
 private fun arrangeProteins(
     free: List<MealSlot>,
     proteins: List<ProteinCategory>,
     fixedProteins: Map<MealSlot, ProteinCategory?>,
-    dayRoom: Map<ProteinCategory, Int>,
+    floor: Int,
     random: Random,
-): List<ProteinCategory> {
-    // No arrangement goes below this: the fixed meals' own repeats, plus one consecutive-day
-    // repeat (or a worse same-day one) for each slot of a category beyond the days it can
-    // spread over.
-    val floor = repetitionPenalty { fixedProteins[it] } +
-        ProteinCategory.entries.sumOf { category ->
-            val excess = proteins.count { it == category } - dayRoom.getValue(category)
-            minOf(SAME_DAY_PENALTY, excess.coerceAtLeast(0) * CONSECUTIVE_DAY_PENALTY)
-        }
+): Pair<List<ProteinCategory>, Int> {
     fun penalty(arrangement: List<ProteinCategory>): Int {
         val generated = free.zip(arrangement).toMap()
         return repetitionPenalty { slot -> fixedProteins[slot] ?: generated[slot] }
@@ -145,7 +166,7 @@ private fun arrangeProteins(
     var best = proteins
     var bestPenalty = penalty(best)
     repeat(ATTEMPTS) {
-        if (bestPenalty <= floor) return best
+        if (bestPenalty <= floor) return best to bestPenalty
         val candidate = proteins.shuffled(random).toMutableList()
         var candidatePenalty = penalty(candidate)
         var improved = true
@@ -170,7 +191,7 @@ private fun arrangeProteins(
             bestPenalty = candidatePenalty
         }
     }
-    return best
+    return best to bestPenalty
 }
 
 private fun repetitionPenalty(proteinOf: (MealSlot) -> ProteinCategory?): Int {

@@ -29,8 +29,9 @@ Meal Map è un'app Android personale che disegna la mappa della settimana dei pa
 - Criteri di varietà:
   - mai la stessa proteina due volte nello stesso giorno, se i pasti fissi lo permettono;
   - una proteina mangiata un giorno (a pranzo o a cena) non torna il giorno dopo, compreso il passaggio da domenica a lunedì;
-  - al massimo una ripetizione in giorni consecutivi a settimana, e i min/max restano sempre rispettati. Con i default i posti liberi senza ripetizioni sono esattamente 14, quindi quasi sempre il posto in più va a caso a una categoria sotto il max (di solito legumi o pesce, al quarto giorno) e crea l'unica ripetizione;
-  - le ripetizioni causate dai pasti fissi o bloccati non contano nel limite di una;
+  - al massimo una ripetizione in giorni consecutivi a settimana, e i min/max restano sempre rispettati. La ripetizione non è mai necessaria con i default (i giorni non consecutivi bastano per 14 pasti), ma è permessa: dopo i minimi ogni posto va a caso a una categoria sotto il max, e una volta a settimana può andare a una categoria che così finisce in giorni consecutivi (di solito legumi o pesce, al quarto giorno). Succede in circa il 95% delle settimane vuote;
+  - le ripetizioni rese inevitabili dai pasti fissi o bloccati non contano nel limite di una;
+  - ogni categoria ha abbastanza giorni da sola, ma le categorie si contendono i giorni con un solo posto libero: se le proteine scelte non si dispongono al meglio, il generatore le sceglie di nuovo (fino a 6 volte, alternando con e senza la ripetizione permessa) e tiene la settimana migliore;
   - carboidrati il più possibile vari.
 
 ### Modifiche
